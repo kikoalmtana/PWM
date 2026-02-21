@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    background-color: lightgray;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 0 5px black;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: system-ui;
+    font-size: 20px;
+}
+
+ul li a:hover{
+    color: white;
+}
+
+.container{
+    display: flex;
+}
+
+.icon{
+    float: right;
+}
+
+.logo img{
+    width: 100px;
+
+}
+
+.icon img{
+    width: 50px;
+}

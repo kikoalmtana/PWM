@@ -1,0 +1,30 @@
+article{
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 25%;
+    flex-wrap: wrap;
+}
+
+img{
+    max-width: 200px;
+    height: auto;
+    margin: 10px;
+}
+
+button{
+    height: 30px;
+    width: 40px;
+    margin: 10px;
+}
+
+.container{
+    display: flex;
+    gap: 30px;
+}
+
+.text{
+    font-family: system-ui;
+    flex-shrink: 0;
+}

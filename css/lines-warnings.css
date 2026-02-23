@@ -1,0 +1,16 @@
+.lines-warning {
+    width: 200px;
+    height: 140px;
+    background: lightgray;
+    box-shadow: 3px 3px 10px gray;
+    padding: 1px 15px;
+    border-radius: 5px;
+}
+
+.warning {
+    font-family: system-ui;
+    font-size: 0.9rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 120px;
+}

@@ -1,0 +1,99 @@
+body{
+    margin: 0;
+}
+
+main{
+    margin: 10px;
+    gap: 10px;
+}
+.header{
+    display: flex;
+    align-items: center;
+    background-color: lightgray;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 0 5px black;
+}
+
+.navbar{
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.navbar li a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: system-ui;
+    font-size: 20px;
+}
+
+.navbar li a:hover{
+    color: white;
+}
+
+.container{
+    display: flex;
+}
+
+.icon{
+    float: right;
+}
+
+.logo img{
+    width: 100px;
+
+}
+
+.icon img{
+    width: 50px;
+}
+
+.lines-warning {
+    width: 200px;
+    height: 140px;
+    background: lightgray;
+    box-shadow: 3px 3px 10px gray;
+    padding: 1px 15px;
+    border-radius: 5px;
+}
+
+.warning {
+    font-family: system-ui;
+    font-size: 0.9rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 120px;
+}
+
+.info-pass {
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 25%;
+    flex-wrap: wrap;
+}
+
+.img-pass{
+    max-width: 200px;
+    height: auto;
+    margin: 10px;
+}
+
+.button-pass{
+    height: 30px;
+    width: 40px;
+    margin: 10px;
+}
+
+.container-pass{
+    display: flex;
+    gap: 30px;
+}
+
+.text{
+    font-family: system-ui;
+    flex-shrink: 0;
+}

@@ -97,3 +97,44 @@ main{
     font-family: system-ui;
     flex-shrink: 0;
 }
+
+.fila {
+    display: flex;        /* Imagen y textos en horizontal */
+    align-items: flex-start;
+    gap: 50px;            /* Espacio entre imagen y textos */
+    background-color: lightgrey;
+    box-shadow: 0 0 5px black;
+}
+.imagen_footer {
+    width: 150px;
+    padding: 10px 0 0 10px;
+}
+.textos_footer {
+    display: flex;
+    flex-direction: column;     /* Apila los textos verticalmente */
+    gap: 10px;               /* Espacio entre textos */
+}
+
+.boton_line-schedule {
+    padding: 15px;
+    width: 65%;
+    height: 70px;
+    text-align: left;
+    background-color: lightgray;
+    border-color: white;
+    display: flex;
+    box-shadow: 0 0 5px black;
+    align-items: center;
+    margin: 25px auto;
+}
+
+#number_schedule {
+    background-color: grey;
+    margin-left: 45px;
+    font-size: 40px;
+    padding: 2px 30px 2px 30px;
+}
+#texto_schedule{
+    margin-left: 45px;
+    font-size: 40px;
+}

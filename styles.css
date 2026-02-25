@@ -1,5 +1,8 @@
 body{
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 main{
@@ -13,6 +16,10 @@ main{
     justify-content: space-between;
     padding: 10px 20px;
     box-shadow: 0 0 5px black;
+}
+
+footer{
+    margin-top: auto;
 }
 
 .navbar{
@@ -99,9 +106,9 @@ main{
 }
 
 .fila {
-    display: flex;        /* Imagen y textos en horizontal */
+    display: flex;
     align-items: flex-start;
-    gap: 50px;            /* Espacio entre imagen y textos */
+    gap: 50px;
     background-color: lightgrey;
     box-shadow: 0 0 5px black;
 }
@@ -111,8 +118,8 @@ main{
 }
 .textos_footer {
     display: flex;
-    flex-direction: column;     /* Apila los textos verticalmente */
-    gap: 10px;               /* Espacio entre textos */
+    flex-direction: column;
+    gap: 10px;
 }
 
 .boton_line-schedule {

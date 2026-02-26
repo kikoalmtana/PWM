@@ -145,3 +145,19 @@ footer{
     margin-left: 45px;
     font-size: 40px;
 }
+
+.preview-noticia {
+    font-family: system-ui;
+    max-width: 300px;
+    width: 15rem;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a > img {
+        height: 15rem;
+        width: 15rem;
+    }
+}

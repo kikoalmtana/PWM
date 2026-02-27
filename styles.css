@@ -1,12 +1,17 @@
+*{
+    font-family: system-ui;
+}
+
 body{
     margin: 0;
+    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 main{
-    margin: 10px;
+    margin: 0;
     gap: 10px;
 }
 .header{
@@ -165,5 +170,58 @@ footer{
         display: flex;
         justify-self: center;
 
+    }
+}
+
+/* About Us styles*/
+
+.heading{
+    font-size: 50px;
+    background-color: lightgray;
+    text-align: center;
+}
+
+.header-img{
+    display: block;
+    margin: auto;
+    width: 600px;
+    height: 250px;
+}
+
+.paragraph{
+    font-size: medium;
+    margin: auto;
+    padding: 20px;
+    width: 600px;
+}
+
+.socials{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+
+    a img{
+        width: 80px;
+    }
+}
+
+.suggestions{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    gap: 5px;
+    margin: 20px auto;
+    position: relative;
+
+    input{
+        width: 50%;
+    }
+
+    button{
+        align-self: flex-end;
+        border-radius: 10px;
+        width: 70px;
+        height: 30px;
     }
 }

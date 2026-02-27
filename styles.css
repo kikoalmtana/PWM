@@ -150,6 +150,9 @@ footer{
     font-family: system-ui;
     max-width: 300px;
     width: 15rem;
+    padding: 20px;
+
+
 
     a {
         text-decoration: none;
@@ -157,7 +160,10 @@ footer{
     }
 
     a > img {
-        height: 15rem;
-        width: 15rem;
+        height: 10rem;
+        width: 14rem;
+        display: flex;
+        justify-self: center;
+
     }
 }

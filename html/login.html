@@ -3,28 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Log in</title>
-    <script src="../xlu-include-file.js"></script>
-    <link rel="stylesheet" href="../styles.css">
+    <script src="/xlu-include-file.js"></script>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body class="login-page">
 
-  <aside class="aside-left">
-    <div>
-      <img src="../img/dummy.jpg" alt="logo">
-    </div>
-  </aside>
+  <aside xlu-include-file="/templates/aside.html"></aside>
   <main>
     <h1 class="login-header">Iniciar Sesión</h1>
     <form class="login" action="" method="post">
       <label for="username">Username:</label>
-      <input type="text" id="username" name="username" placeholder="Username">
+      <input type="text" id="username" name="username" placeholder="Username" required>
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Password">
+      <input type="password" id="password" name="password" placeholder="Password" required>
       <button type="submit">Login</button>
     </form>
     <div class="form-footer">
       <a href="">Lorem ipsum</a>
-      <a href="">Loren ipsum dolor sit amet</a>
+      <a href="register.html">Loren ipsum dolor sit amet</a>
     </div>
   </main>
 

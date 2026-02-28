@@ -21,7 +21,7 @@ function xLuIncludeFile() {
             }
 
             // false makes the send operation synchronous, which solves a problem
-            // when using this function in short pages with Chrome. But it is
+            // when using this function in short html with Chrome. But it is
             // deprecated on the main thread due to its impact on responsiveness.
             // This call may end up throwing an exception someday.
 

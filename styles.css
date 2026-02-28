@@ -83,8 +83,6 @@ footer{
     border-top: 1px solid black;
     display: flex;
     justify-content: space-between;
-    width: 50%;
-    margin-left: 25%;
     flex-wrap: wrap;
 }
 
@@ -173,6 +171,21 @@ footer{
     }
 }
 
+.aside-left{
+    height: 100vh;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    position: relative;
+
+    img {
+        width: 350px;
+    }
+}
+
 /* About Us styles*/
 
 .heading{
@@ -232,21 +245,6 @@ footer{
     display: flex;
     flex-direction: row;
 
-    aside{
-        height: 100vh;
-        background-color: lightgray;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 350px;
-        position: relative;
-
-        img {
-            width: 350px;
-        }
-    }
-
     main{
         flex: 1;
         display: flex;
@@ -285,4 +283,77 @@ footer{
 .form-footer{
     display: flex;
     gap: 25px;
+}
+
+/* User info styles */
+
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+
+    img{
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    h3{
+        margin: 0;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    button{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        margin-top: -55px;
+        margin-left: 120px;
+    }
+}
+
+.user-pass{
+    margin: 20px;
+    min-width: 50%;
+}
+
+.add-pass{
+    border-top: 1px solid black;
+    display: flex;
+    align-items: center;
+    gap: 25%;
+    flex-wrap: wrap;
+
+    img{
+        max-width: 200px;
+        height: auto;
+        margin: 10px;
+    }
+
+    a{
+        padding: 10px;
+        font-size: xx-large;
+    }
+}
+
+.user-footer{
+    display: flex;
+    gap: 200px;
+    margin: 50px;
+
+    button{
+        padding: 10px 20px;
+    }
 }

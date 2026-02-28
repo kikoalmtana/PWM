@@ -362,6 +362,51 @@ footer{
     }
 }
 
+/* Stops page styles */
+
+.stops {
+
+    form {
+        display: flex;
+
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    form input[type="text"] {
+        background: #d9d9d9;
+        border: none;
+        outline: none;
+        padding: 0.75rem 0.5rem;
+        font-size: 1.5rem;
+
+        width: 40rem;
+    }
+
+    .stops-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        background: #d9d9d9;
+        margin: 3rem auto;
+        padding: 2rem;
+
+        min-height: 50rem;
+        max-width: 30rem;
+
+
+
+        font-size: 1.4rem;
+
+        h2, h3 {
+            background: #bdbdbd;
+            padding: 1rem;
+            min-width: 25rem;
+        }
+    }
+}
+
 /* Notice page style (a single new)*/
 
 .single-new{

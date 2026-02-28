@@ -2,19 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>InfoGuaguas - Main</title>
   <script src="/xlu-include-file.js"></script>
   <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
 
   <header xlu-include-file="/templates/header.html"></header>
 
-  <main>
-    <article xlu-include-file="/templates/lines-warnings.html" ></article>
-    <article xlu-include-file="/templates/pass-info.html" ></article>
-    <article xlu-include-file="/templates/line-button.html" ></article>
-    <article xlu-include-file="/templates/preview-new.html" ></article>
+  <main class="index-page">
+
+    <div class="carrousel">
+
+      <div class="carrousel-images">
+        <img src="/img/dummy.jpg" class="slide">
+        <!--img src="/img/dummy.jpg" class="slide">
+        <img src="/img/dummy.jpg" class="slide"-->
+      </div>
+
+      <div class="dots">
+        <span class="dot" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
+    </div>
+
+    <div class="main-buttons">
+      <button>boton1</button>
+      <button>boton2</button>
+      <button>boton3</button>
+    </div>
+
+    <div class="principal-new">
+      <img src="/img/dummy.jpg">
+
+      <article>
+        <h3>Heading</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit laoreet vitae ac
+          vehicula euismod integer, cras nisl curabitur sociosqu nec enim pulvinar
+          nulla ligula posuere molestie leo. Nascetur dapibus dictumst metus ut
+          turpis fames, aliquam sem luctus dui. Nunc sapien fermentum non lobortis
+          faucibus senectus ornare malesuada, cum viverra eget molestie hac blandit
+          condimentum etiam, varius habitant at velit nulla vel vitae.
+          Vivamus tempor condimentum ad vulputate tristique quisque sociosqu mattis
+          neque odio, euismod ut ante pellentesque vel ultrices ligula curae montes
+          natoque, dictum molestie cras dui nulla duis elementum malesuada blandit.
+        </p>
+      </article>
+    </div>
+
   </main>
 
   <footer xlu-include-file="/templates/footer.html"> </footer>

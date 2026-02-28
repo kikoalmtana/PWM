@@ -306,19 +306,16 @@ footer{
 }
 
 .principal-new {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
 
     justify-content: center;
     align-items: center;
 
     margin: 5rem 2rem auto 2rem;
 
-    gap: 3rem;
-
     img {
-        width: 40rem;
-        height: 25rem;
+        max-width: 30rem;
     }
 
     article {

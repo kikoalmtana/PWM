@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Líneas</title>
+    <script src="/xlu-include-file.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header xlu-include-file="/templates/header.html"></header>
+
+<main class="lines-page">
+
+    <!-- HERO -->
+    <section class="heading">
+        <h1>HEADER</h1>
+    </section>
+
+    <!-- SELECTION BAR -->
+    <section class="selection-wrapper">
+        <div class="selection-bar">
+            Selection bar
+        </div>
+    </section>
+
+    <!-- WARNINGS (bloque gris con 2 columnas de texto) -->
+    <section class="warnings">
+        <div xlu-include-file="/templates/lines-warnings.html"></div>
+        <div xlu-include-file="/templates/lines-warnings.html"></div>
+    </section>
+
+    <!-- LISTADO DE LÍNEAS -->
+    <section class="lines-list">
+
+        <div xlu-include-file="/templates/line-button.html"></div>
+        <div xlu-include-file="/templates/line-button.html"></div>
+        <div xlu-include-file="/templates/line-button.html"></div>
+        <div xlu-include-file="/templates/line-button.html"></div>
+        <div xlu-include-file="/templates/line-button.html"></div>
+
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer xlu-include-file="/templates/footer.html"></footer>
+
+
+<script>
+
+    xLuIncludeFile();
+
+</script>
+
+</body>
+</html>

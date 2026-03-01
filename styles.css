@@ -641,7 +641,7 @@ footer{
     }
 
     .selection-bar {
-        background: #d9d9d9;
+        background: lightgray;
         padding: 15px 40px;
         width: 500px;
         text-align: left;
@@ -809,3 +809,108 @@ footer{
         margin: 0 auto;
     }
 }
+
+.selection-page{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+
+    main{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 60px;
+
+        h1{
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+
+        .content-wrapper{
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .selection-bar{
+            background: lightgray;
+            padding: 12px 20px;
+            font-weight: bold;
+            width:40%;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+
+            .form-box{
+                width: 100%;
+                height: 350px;
+                background: #cfcfcf;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 30px;
+            }
+
+            button{
+                width: 150px;
+                padding: 10px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.bonus-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 25px;
+
+    h1{
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .selection-bar{
+        width: 500px;
+        background: lightgray;
+        padding: 10px 20px;
+        font-weight: bold;
+    }
+
+    .image-box{
+        width: 300px;
+        height: 150px;
+        background: #cfcfcf;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        .form-box{
+            width: 450px;
+            height: 250px;
+            background: #cfcfcf;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        button{
+            width: 120px;
+            padding: 8px;
+        }
+    }
+}
+

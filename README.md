@@ -30,8 +30,8 @@ a la misma información pero de una forma más personalizada.
 - Los usuarios registrados deben poder configurar su cuenta y ver información personalizada (sus bonos disponibles, ...)
 
 ## Mockups y Storyboard
-[] to-do kiko pon aqui un pdf con los mockups y los storyboard
-
+En la carpeta /mockups existe un documento pdf con todos los mockups y diferentes storyboards
+[Acceso al documento](./mockups/Mockups%20y%20Storyboard.pdf)
 ## Páginas HTML
 
 En esta sección se listan las diferentes páginas implementadas en HTML a partir 

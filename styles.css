@@ -304,12 +304,6 @@ footer{
     }
 }
 
-.secondary-news{
-    a {
-        text-decoration: none;
-    }
-}
-
 /* News page styles */
 
 .first-new {
@@ -317,6 +311,7 @@ footer{
 
     a {
         text-decoration: none;
+        color: black;
     }
 
     img {
@@ -354,11 +349,12 @@ footer{
     padding: 1rem 0;
     margin: 4rem 1rem 4rem 1rem;
 
-    article{
-        border-right: 2px solid #4e4e4e;
+    a{
+        text-decoration: none;
     }
-    article:last-child {
-        border-right: none;
+
+    a + a{
+        border-left: 2px solid #4e4e4e;
     }
 }
 

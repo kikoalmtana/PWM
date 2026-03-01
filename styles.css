@@ -765,29 +765,41 @@ footer{
     }
 
     .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
+        display: flex;
+        gap: 45px;
+        justify-content: center;
+        flex-wrap: wrap;
 
-        .card {
-            h3 {
-                background: #d9d9d9;
-                padding: 5px 10px;
-                font-size: 20px;
-            }
+        h3 {
+            background: #d9d9d9;
+            padding: 5px 10px;
+            font-size: 20px;
+        }
 
-            p {
-                font-size: 20px;
+        .card-colum{
+            min-width: 25%;
+
+            .card {
+                p {
+                    font-size: 20px;
+                }
+
+                img{
+                    width: 350px;
+                    height: 250px;
+                }
             }
         }
     }
 
     .text-columns {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        justify-content: center;
         gap: 35px;
+        flex-wrap: wrap;
 
         .column {
+            min-width: 25%;
             h3 {
                 background: #d9d9d9;
                 padding: 5px 10px;

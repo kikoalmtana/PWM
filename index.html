@@ -3,20 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <title>InfoGuaguas - Main</title>
-  <script src="/xlu-include-file.js"></script>
-  <link rel="stylesheet" href="/styles.css">
+  <script src="./xlu-include-file.js"></script>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
-  <header xlu-include-file="/templates/header.html"></header>
+  <header class="header">
+    <div class="container">
+      <a class="logo" href="./index.html">
+        <img src="./img/dummy.jpg" alt="logo image">
+      </a>
+      <nav>
+        <ul class="navbar">
+          <li>
+            <a href="./html/lines.html">Lineas</a>
+          </li>
+          <li>
+            <a href="./html/stops.html">Paradas</a>
+          </li>
+          <li>
+            <a href="./html/news.html">Noticias</a>
+          </li>
+          <li>
+            <a href="">Info Bonos</a>
+          </li>
+          <li>
+            <a href="./html/about-us.html">Sobre Nosotros</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <a class="icon" href="./html/login.html">
+      <img src="./img/user.svg" alt="user">
+    </a>
+  </header>
 
   <main class="index-page">
 
     <div class="carrousel">
 
       <div class="carrousel-images">
-        <img src="/img/dummy.jpg" class="slide">
+        <img src="./img/dummy.jpg" class="slide">
         <!--img src="/img/dummy.jpg" class="slide">
         <img src="/img/dummy.jpg" class="slide"-->
       </div>
@@ -29,13 +57,13 @@
     </div>
 
     <div class="main-buttons">
-      <a href ="/html/lines.html">button1</a>
-      <a href ="/html/stops.html">button2</a>
-      <a href ="/html/login.html">button3</a>
+      <a href ="./html/lines.html">button1</a>
+      <a href ="./html/stops.html">button2</a>
+      <a href ="./html/login.html">button3</a>
     </div>
 
     <div class="principal-new">
-      <img src="/img/dummy.jpg">
+      <img src="./img/dummy.jpg">
 
       <article>
         <h3>Heading</h3>
@@ -53,7 +81,7 @@
 
   </main>
 
-  <footer xlu-include-file="/templates/footer.html"> </footer>
+  <footer xlu-include-file="./templates/footer.html"> </footer>
 
 <script>
 

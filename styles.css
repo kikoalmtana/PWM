@@ -529,15 +529,16 @@ footer{
         font-size: 1rem;
         font-weight: bold;
     }
-
-    button{
+    a{
+        position: absolute;
+        top: 280px;
+        left: calc(50% + 40px);
+    }
+    a img{
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        cursor: pointer;
-        position: relative;
-        margin-top: -55px;
-        margin-left: 120px;
+        display: block;
     }
 }
 
@@ -560,6 +561,8 @@ footer{
     }
 
     a{
+        text-decoration: none;
+        color: black;
         padding: 10px;
         font-size: xx-large;
     }
@@ -572,6 +575,7 @@ footer{
 
     button{
         padding: 10px 20px;
+        font-size: 1.2rem;
     }
 }
 
@@ -604,3 +608,75 @@ footer{
     }
 }
 
+/* User edition styles */
+
+.edit-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    a img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    form {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .form-row{
+            display: flex;
+            flex-direction: column;
+
+            label{
+                font-size: 0.9rem;
+            }
+            div {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                input{
+                    flex: 1;
+                    padding: 8px 12px;
+                    background: #d9d9d9;
+                    border: none;
+                    font-size: 0.95rem;
+                    color: #555;
+                }
+
+                button{
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                    background: #d9d9d9;
+                    flex-shrink: 0;
+                    margin: 0 10px;
+                }
+
+            }
+
+        }
+
+        button {
+            width: 60%;
+            padding: 10px;
+            background: #d9d9d9;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    }
+
+    button{
+        margin-top: 10px;
+        padding: 5px;
+        width: 250px;
+    }
+}

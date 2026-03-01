@@ -30,7 +30,7 @@ a la misma información pero de una forma más personalizada.
 - Los usuarios registrados deben poder configurar su cuenta y ver información personalizada (sus bonos disponibles, ...)
 
 ## Mockups y Storyboard
-En la carpeta /mockups existe un documento pdf con todos los mockups y diferentes storyboards
+En la carpeta /mockups existe un documento pdf con todos los mockups y diferentes storyboards.
 [Acceso al documento](./mockups/Mockups%20y%20Storyboard.pdf)
 ## Páginas HTML
 
@@ -39,18 +39,18 @@ de los diferentes mockups realizados previamente
 
 - **index.html** <==> 0-main.png
 - **/html/lines.html** <==> 1.0-lines-page.png
-- **().html** <==> 1.1-lines-info.png
+- **/html/line-info.html** <==> 1.1-lines-info.png
 - **/html/stops.html** <==> 2-stops.png
 - **/html/news.html** <==> 3.0-news-page.png
 - **/html/new.html** <==> 3.1-new-page.png
-- **().html** <==> 4.0-select-pass-page.png
-- **().html** <==> 4.1-pass-info.png
+- **/html/select-pass.html** <==> 4.0-select-pass-page.png
+- **/html/pass-info.html** <==> 4.1-pass-info.png
 - **/html/about-us.html** <==> 5-about-us-page.png
 - **/html/login.html** <==> 6.0-login-page.png
 - **/html/register.html** <==> 6.1-create-account-page.png
 - **/html/user-info.html** <==> 6.2.0-user-info-page.png
 - **/html/user-edit.html** <==> 6.2.1-user-settings-page.png
-- **().html** <==> 6.2.2-add-pass-page.png
+- **/html/add-pass.html** <==> 6.2.2-add-pass-page.png
 
 Nota: index.html es la página principal del sitio web (homepage)
 
@@ -59,8 +59,6 @@ Nota: index.html es la página principal del sitio web (homepage)
 Para los diferentes elementos HTML que se repetían en diferentes páginas se ha optado por
 realizar diferentes templates, se localizan todos en el directorio /templates del proyecto
 
-Además en dicha carpeta existe un documento pdf con todos los mockups y diferentes storyboards
-[Acceso al documento](./mockups/Mockups%20y%20Storyboard.pdf)
 
 - **aside.html** ==> elemento decorativo para páginas con formularios 
 - **footer.html** ==> footer de casi todas las páginas del sitio web

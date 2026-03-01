@@ -117,12 +117,13 @@ footer{
 }
 .imagen_footer {
     width: 150px;
-    padding: 10px 0 0 10px;
+    padding: 20px 20px 20px 20px;
 }
 .textos_footer {
+    padding-top: 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    column-gap: 30px;
 }
 
 .boton_line-schedule {
@@ -615,6 +616,11 @@ footer{
         font-size: 50px;
     }
 
+    .lines-list{
+        a {
+            text-decoration: none;
+        }
+    }
 
     .warnings {
         display: flex;
@@ -708,5 +714,93 @@ footer{
         margin-top: 10px;
         padding: 5px;
         width: 250px;
+    }
+}
+
+/* line info styles */
+
+.line-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #d9d9d9;
+    padding: 20px 30px;
+    margin: 80px 90px 30px 80px;
+    font-size: 25px;
+
+    .line-number {
+        background: #bfbfbf;
+        padding: 15px 45px;
+        font-weight: bold;
+    }
+
+    .line-name {
+        flex: 1;
+        margin-left: 20px;
+        font-weight: bold;
+    }
+
+    .line-icon {
+        width: 50px;
+        height: 30px;
+        background: #bfbfbf;
+    }
+}
+
+.line-info-page {
+    padding: 25px 80px;
+
+    h2 {
+        font-size: 18px;
+        font-weight: bold;
+        background-color: lightgray;
+        width: 115%;
+        margin-left: -80px;
+        padding: 6px 8px 10px 80px;
+    }
+
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+
+        .card {
+            h3 {
+                background: #d9d9d9;
+                padding: 5px 10px;
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .text-columns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+
+        .column {
+            h3 {
+                background: #d9d9d9;
+                padding: 5px 10px;
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 20px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .map-placeholder {
+        height: 450px;
+        width: 550px;
+        display: block;
+        margin: 0 auto;
     }
 }

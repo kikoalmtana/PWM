@@ -59,6 +59,9 @@ Nota: index.html es la página principal del sitio web (homepage)
 Para los diferentes elementos HTML que se repetían en diferentes páginas se ha optado por
 realizar diferentes templates, se localizan todos en el directorio /templates del proyecto
 
+Además en dicha carpeta existe un documento pdf con todos los mockups y diferentes storyboards
+[Acceso al documento](./mockups/Mockups%20y%20Storyboard.pdf)
+
 - **aside.html** ==> elemento decorativo para páginas con formularios 
 - **footer.html** ==> footer de casi todas las páginas del sitio web
 - **header.html** ==> header de casi todas las páginas del sitio web

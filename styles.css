@@ -305,6 +305,11 @@ footer{
     width: 90%;
 }
 
+.principal-new-anchor {
+    color: black;
+    text-decoration: none;
+}
+
 .principal-new {
     display: flex;
 

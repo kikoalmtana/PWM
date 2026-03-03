@@ -2,9 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>InfoGuaguas - Main</title>
+  <script src="./xplu-include-file.js"></script>
+  <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
+
+  <header class="header">
+    <div class="container">
+      <a class="logo" href="./index.html">
+        <img src="./img/dummy.jpg" alt="logo image">
+      </a>
+      <nav>
+        <ul class="navbar">
+          <li>
+            <a href="./html/lines.html">Lineas</a>
+          </li>
+          <li>
+            <a href="./html/stops.html">Paradas</a>
+          </li>
+          <li>
+            <a href="./html/news.html">Noticias</a>
+          </li>
+          <li>
+            <a href="./html/select-pass.html">Info Bonos</a>
+          </li>
+          <li>
+            <a href="./html/about-us.html">Sobre Nosotros</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <a class="icon" href="./html/login.html">
+      <img src="./img/user.svg" alt="user">
+    </a>
+  </header>
+
+  <main class="index-page">
+
+    <div class="carrousel">
+
+      <div class="carrousel-images">
+        <img src="./img/dummy.jpg" class="slide">
+        <!--img src="/img/dummy.jpg" class="slide">
+        <img src="/img/dummy.jpg" class="slide"-->
+      </div>
+
+      <div class="dots">
+        <span class="dot" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
+    </div>
+
+    <div class="main-buttons">
+      <a href ="./html/lines.html">button1</a>
+      <a href ="./html/stops.html">button2</a>
+      <a href ="./html/login.html">button3</a>
+    </div>
+
+    <a href="./html/new.html" class="principal-new-anchor">
+      <div class="principal-new">
+        <img src="./img/dummy.jpg">
+
+        <article>
+          <h3>Heading</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipiscing elit laoreet vitae ac
+            vehicula euismod integer, cras nisl curabitur sociosqu nec enim pulvinar
+            nulla ligula posuere molestie leo. Nascetur dapibus dictumst metus ut
+            turpis fames, aliquam sem luctus dui. Nunc sapien fermentum non lobortis
+            faucibus senectus ornare malesuada, cum viverra eget molestie hac blandit
+            condimentum etiam, varius habitant at velit nulla vel vitae.
+            Vivamus tempor condimentum ad vulputate tristique quisque sociosqu.
+          </p>
+        </article>
+      </div>
+    </a>
+
+  </main>
+
+  <footer xlu-include-file="./templates/footer.html"> </footer>
+
+  <script>
+
+    xLuIncludeFile();
+
+  </script>
 
 </body>
 </html>

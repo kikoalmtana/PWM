@@ -2,6 +2,11 @@
     font-family: system-ui;
 }
 
+:root{
+    --orange: #fe8906;
+    --blue: #094c9d;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -17,14 +22,16 @@ main{
 .header{
     display: flex;
     align-items: center;
-    background-color: lightgray;
+    background-color: var(--orange);
     justify-content: space-between;
     padding: 10px 20px;
     box-shadow: 0 0 5px black;
+    color: darkblue;
 }
 
 footer{
     margin-top: auto;
+    background-color: var(--orange);
 }
 
 .navbar{
@@ -35,7 +42,7 @@ footer{
 
 .navbar li a{
     text-decoration: none;
-    color: black;
+    color: var(--blue);
     font-weight: bold;
     font-family: system-ui;
     font-size: 20px;
@@ -112,7 +119,6 @@ footer{
     display: flex;
     align-items: flex-start;
     gap: 50px;
-    background-color: lightgrey;
     box-shadow: 0 0 5px black;
 }
 .imagen_footer {
@@ -124,6 +130,7 @@ footer{
     display: flex;
     flex-direction: column;
     column-gap: 30px;
+    color: var(--blue);
 }
 
 .boton_line-schedule {

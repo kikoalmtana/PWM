@@ -5,6 +5,8 @@
 :root{
     --orange: #fe8906;
     --blue: #094c9d;
+    --light-yellow: #fff9f2;
+    --shadow: #fe890633;
 }
 
 body{
@@ -13,6 +15,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--light-yellow);
 }
 
 main{
@@ -25,13 +28,14 @@ main{
     background-color: var(--orange);
     justify-content: space-between;
     padding: 10px 20px;
-    box-shadow: 0 0 5px black;
+    box-shadow: 0 2px 16px var(--orange);
     color: darkblue;
 }
 
 footer{
     margin-top: auto;
     background-color: var(--orange);
+
 }
 
 .navbar{
@@ -119,7 +123,7 @@ footer{
     display: flex;
     align-items: flex-start;
     gap: 50px;
-    box-shadow: 0 0 5px black;
+    box-shadow: 0 2px 16px var(--orange);
 }
 .imagen_footer {
     width: 150px;
@@ -284,8 +288,10 @@ footer{
     align-content: center;
     margin: 6rem auto;
 
+
     a {
-        background-color: #d9d9d9;
+        background-color: var(--orange);
+        box-shadow: 0 4px 24px var(--shadow);
         border: none;
         border-radius: 10px;
         padding: 3rem 1rem;
@@ -293,6 +299,7 @@ footer{
 
         text-decoration: none;
         color: black;
+        font-weight: bold;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -301,8 +308,8 @@ footer{
     }
 
     a:hover {
-        background: #bdbdbd;
-        color: #4e4e4e;
+        background: var(--blue);
+        color: white;
     }
 
 }

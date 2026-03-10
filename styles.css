@@ -7,6 +7,7 @@
     --blue: #094c9d;
     --light-yellow: #fff9f2;
     --shadow: #fe890633;
+    --font-color: #5a4020;
 }
 
 body{
@@ -305,6 +306,12 @@ footer{
         align-items: center;
         box-sizing: border-box;
         cursor: pointer;
+
+        img{
+            width: 30px;
+            margin: 0 5px;
+        }
+
     }
 
     a:hover {
@@ -328,19 +335,37 @@ footer{
 .principal-new {
     display: flex;
 
+    width: 1250px;
     gap: 4rem;
     justify-content: center;
+    justify-self: center;
     align-items: center;
-
     margin: 5rem 2rem auto 2rem;
-
     flex-wrap: wrap;
+
+    &:hover{
+        background-color: var(--shadow);
+        border-radius: 30px;
+    }
 
     img {
         max-width: 30rem;
     }
 
     article {
+
+        h3{
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--orange);
+        }
+
+        p{
+            color: var(--font-color);
+            line-height: 2rem;
+            font-size: 1.2rem;
+        }
+
         font-size: 1.3rem;
 
         max-width: 30rem;

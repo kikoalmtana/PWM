@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>InfoGuaguas - Main</title>
+  <title>InfoGuaguas</title>
   <script src="./xlu-include-file.js"></script>
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -40,13 +40,37 @@
   </header>
 
   <main class="index-page">
-
+    <div class="hero">
+      <h1>
+        Bienvenido a
+        <span>InfoGuagua</span>
+      </h1>
+      <p>
+        Rutas, horarios y paradas en tiempo real. <br>
+        Viaja sin sorpresas con el transporte público de tu ciudad.
+      </p>
+      <div class="cards">
+        <div class="card-content">
+          <div class="card-num">47</div>
+          <div class="card-text">lineas activas</div>
+        </div>
+        <div class="card-content">
+          <div class="card-num">180</div>
+          <div class="card-text">paradas <br> en la ciudad</div>
+        </div>
+        <div class="card-content">
+          <div class="card-num">40</div>
+          <div class="card-text">años de <br> experiencia</div>
+        </div>
+      </div>
+    </div>
+    <!--
     <div class="carrousel">
 
-      <div class="carrousel-images">
+      <div class="image-carousel">
         <img src="./img/dummy.jpg" class="slide">
-        <!--img src="/img/dummy.jpg" class="slide">
-        <img src="/img/dummy.jpg" class="slide"-->
+        img src="/img/dummy.jpg" class="slide">
+        <img src="/img/dummy.jpg" class="slide"
       </div>
 
       <div class="dots">
@@ -55,28 +79,28 @@
         <span class="dot" data-index="2"></span>
       </div>
     </div>
-
+    -->
     <div class="main-buttons">
       <a href ="./html/lines.html"> <img src="./img/map.svg" alt=""> Lineas</a>
       <a href ="./html/stops.html"> <img src="./img/map-pin.svg" alt=""> Paradas</a>
       <a href ="./html/login.html"> <img src="./img/ticket.svg" alt="">Tus bonos</a>
     </div>
 
-    <a href="./html/new.html" class="principal-new-anchor">
-      <div class="principal-new">
-        <img src="./img/dummy.jpg">
+    <div class="principal-new">
+      <img src="./img/dummy.jpg" alt="Imagen de la noticia">
 
-        <article>
-          <h3>Heading</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipiscing elit laoreet vitae ac
-            vehicula euismod integer, cras nisl curabitur sociosqu nec enim pulvinar
-            nulla ligula posuere molestie leo. Nascetur dapibus dictumst metus ut
-            turpis fames, aliquam sem luctus dui.
-          </p>
-        </article>
-      </div>
-    </a>
+      <article>
+        <h3>Heading</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit laoreet vitae ac
+          vehicula euismod integer, cras nisl curabitur sociosqu nec enim pulvinar
+          nulla ligula posuere molestie leo. Nascetur dapibus dictumst metus ut
+          turpis fames, aliquam sem luctus dui.
+        </p>
+        <a href="./html/new.html">Leer más →</a>
+      </article>
+    </div>
+
 
   </main>
 

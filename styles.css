@@ -35,8 +35,13 @@ main{
     justify-content: space-between;
     padding: 10px 20px;
     box-shadow: 0 2px 10px var(--orange);
-    color: darkblue;
+    color: var(--blue);
     z-index: 100;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 footer{

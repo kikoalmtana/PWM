@@ -35,8 +35,13 @@ main{
     justify-content: space-between;
     padding: 10px 20px;
     box-shadow: 0 2px 10px var(--orange);
-    color: darkblue;
+    color: var(--blue);
     z-index: 100;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 footer{
@@ -196,7 +201,8 @@ footer{
 
 .heading{
     font-size: 50px;
-    background-color: lightgray;
+    background-color: var(--blue);
+    color: var(--light-yellow);
     text-align: center;
 }
 
@@ -208,10 +214,13 @@ footer{
 }
 
 .paragraph{
-    font-size: medium;
     margin: auto;
     padding: 20px;
     width: 600px;
+
+    color: var(--font-color);
+    line-height: 2rem;
+    font-size: 1.2rem;
 }
 
 .socials{
@@ -220,8 +229,16 @@ footer{
     justify-content: center;
     gap: 100px;
 
-    a img{
-        width: 80px;
+    a svg{
+        width: 5rem;
+        height: 5rem;
+        color: var(--orange);
+
+        &:hover {
+            transition: 0.2s;
+            color: var(--blue);
+            transform: scale(1.1);
+        }
     }
 }
 
@@ -233,15 +250,75 @@ footer{
     margin: 20px auto;
     position: relative;
 
+    border: 3px solid var(--orange);
+    border-radius: 1rem;
+    padding: 2rem;
+
+    h2 {
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--orange);
+    }
+
+    label {
+        text-transform: uppercase;
+        color: var(--font-color);
+    }
+
     input{
         width: 50%;
+        height: 30px;
+
+        padding: 0 12px;
+
+        border: 1px solid var(--shadow);
+        border-radius: 10px;
+        outline: none;
+
+        background-color: var(--light-yellow);
+        color: var(--font-color);
+
+    }
+
+    textarea{
+        border: 1px solid var(--shadow);
+        border-radius: 10px;
+        outline: none;
+
+        padding: 6px 12px;
+
+        background-color: var(--light-yellow);
+        color: var(--font-color);
+    }
+
+    input:focus, textarea:focus {
+        border-color: var(--orange);
+        box-shadow: 0 0 10px var(--shadow);
     }
 
     button{
-        align-self: flex-end;
+
+        width: 80%;
+        height: 40px;
+
+        margin-top: 1rem;
+        align-self: center;
+
+        outline: none;
+        border: none;
         border-radius: 10px;
-        width: 70px;
-        height: 30px;
+
+        color: var(--font-color);
+        background-color: var(--orange);
+        font-size: 1.2rem;
+        font-weight: bold;
+
+        &:hover, &:focus{
+            transition: 0.2s;
+            color: var(--light-yellow);
+            background: var(--blue);
+            transform: scale(1.05);
+        }
     }
 }
 
@@ -475,6 +552,13 @@ footer{
 
 /* News page styles */
 
+.news-main {
+    .heading {
+        background-color: var(--blue);
+        color: var(--light-yellow);
+    }
+}
+
 
 .first-new {
     display: flex;
@@ -487,9 +571,22 @@ footer{
 
     max-width: 70rem;
 
+
     a {
         text-decoration: none;
         color: black;
+
+        h2 {
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--orange);
+        }
+
+        p {
+            color: var(--font-color);
+            line-height: 2rem;
+            font-size: 1.2rem;
+        }
     }
 
     img {
@@ -499,6 +596,10 @@ footer{
 
     article {
         font-size: 1.3rem;
+    }
+
+    &:hover {
+        background-color: var(--shadow);
     }
 }
 
@@ -516,6 +617,22 @@ footer{
         width: 100%;
         height: auto;
     }
+
+    h3 {
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--orange);
+    }
+
+    p {
+        color: var(--font-color);
+        line-height: 2rem;
+        font-size: 1.2rem;
+    }
+
+    &:hover {
+        background-color: var(--shadow);
+    }
 }
 
 .secondary-news {
@@ -524,6 +641,10 @@ footer{
 
     border-top: 2px solid #4e4e4e;
     border-bottom: 2px solid #4e4e4e;
+
+    border-top-color: var(--font-color);
+    border-bottom-color: var(--font-color);
+
     padding: 1rem 0;
     margin: 3rem auto;
 
@@ -535,6 +656,7 @@ footer{
 
     a + a{
         border-left: 2px solid #4e4e4e;
+        border-left-color: var(--font-color);
     }
 }
 
@@ -549,9 +671,15 @@ footer{
         justify-content: center;
     }
 
+    .heading {
+        background-color: var(--blue);
+        color: var(--light-yellow)
+    }
+
     form input[type="text"] {
-        background: #d9d9d9;
-        border: none;
+        background: var(--light-yellow);
+        border: 3px solid var(--orange);
+        border-radius: 10px;
         outline: none;
         padding: 0.75rem 0.5rem;
         font-size: 1.5rem;
@@ -564,7 +692,7 @@ footer{
         flex-direction: column;
         align-items: center;
 
-        background: #d9d9d9;
+        background: var(--orange);
         margin: 3rem auto;
         padding: 2rem;
 
@@ -574,7 +702,8 @@ footer{
         font-size: 1.4rem;
 
         h2, h3 {
-            background: #bdbdbd;
+            background: var(--light-yellow);
+            color: var(--blue);
             padding: 1rem;
             min-width: 25rem;
         }
@@ -584,14 +713,15 @@ footer{
 /* Notice page style (a single new)*/
 
 .single-new{
-    margin: auto 2rem;
+    margin: auto;
+
+    .heading {
+        background-color: var(--blue);
+        color: var(--light-yellow)
+    }
 
     a {
         text-decoration: none;
-    }
-
-    .heading {
-        background-color: white;
     }
 
     .new-cover {
@@ -612,6 +742,9 @@ footer{
             text-align: left;
             font-size: 1.2rem;
 
+            color: var(--font-color);
+            line-height: 2rem;
+
             margin: 0 2rem;
         }
 
@@ -619,6 +752,7 @@ footer{
             align-content: center;
             justify-self: center;
             border-left: 2px solid #4e4e4e;
+            border-left-color: var(--font-color);
 
             padding: 0 0 0 2rem;
 
@@ -628,6 +762,7 @@ footer{
 
 .another-news a:nth-child(1) article{
     border-bottom: 2px solid #4e4e4e;
+    border-bottom-color: var(--font-color);
 }
 
 /* Login styles*/
@@ -866,15 +1001,20 @@ footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #d9d9d9;
     padding: 20px 30px;
     margin: 80px 90px 30px 80px;
     font-size: 25px;
+    background-color: white;
+    color: var(--blue);
+    border-radius: 15px;
+    box-shadow: 2px 2px 4px var(--shadow);
 
     .line-number {
-        background: #bfbfbf;
+        background: var(--orange);
+        color: var(--light-yellow);
         padding: 15px 45px;
         font-weight: bold;
+        border-radius: 15px;
     }
 
     .line-name {
@@ -886,40 +1026,48 @@ footer{
     .line-icon {
         width: 50px;
         height: 30px;
-        background: #bfbfbf;
+        background: var(--orange);
+        border-radius: 15px;
     }
 }
 
 .line-info-page {
-    padding: 25px 80px;
+
 
     h2 {
         font-size: 18px;
         font-weight: bold;
-        background-color: lightgray;
-        width: 115%;
-        margin-left: -80px;
+        background-color: var(--blue);
+        color: var(--light-yellow);
         padding: 6px 8px 10px 80px;
+        margin: 0;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    h3 {
+        background-color: var(--orange);
+        color: var(--light-yellow);
+        padding: 5px 10px;
+        font-size: 20px;
+        border-radius: 5px;
+        width: 350px;
     }
 
     .cards-grid {
         display: flex;
-        gap: 45px;
+        gap: 90px;
         justify-content: center;
         flex-wrap: wrap;
-
-        h3 {
-            background: #d9d9d9;
-            padding: 5px 10px;
-            font-size: 20px;
-        }
+        padding-bottom: 20px;
 
         .card-colum{
-            min-width: 25%;
+
 
             .card {
                 p {
-                    font-size: 20px;
+                    font-size: 18px;
+                    font-weight: bold;
                 }
 
                 img{
@@ -930,29 +1078,8 @@ footer{
         }
     }
 
-    .text-columns {
-        display: flex;
-        justify-content: center;
-        gap: 35px;
-        flex-wrap: wrap;
-
-        .column {
-            min-width: 25%;
-            h3 {
-                background: #d9d9d9;
-                padding: 5px 10px;
-                font-size: 20px;
-                margin-bottom: 10px;
-            }
-
-            p {
-                font-size: 20px;
-                margin-bottom: 5px;
-            }
-        }
-    }
-
     .map-placeholder {
+        padding: 20px;
         height: 450px;
         width: 550px;
         display: block;

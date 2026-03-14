@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InfoGuaguas</title>
   <script src="./xlu-include-file.js"></script>
   <link rel="stylesheet" href="./styles.css">
@@ -9,35 +10,34 @@
 
 <body>
 
-  <header class="header">
-    <div class="container">
-      <a class="logo" href="./index.html">
-        <img src="./img/logo/imagotipo-horizontal-azul.svg" alt="logo image">
-      </a>
-      <nav>
-        <ul class="navbar">
-          <li>
-            <a href="./html/lines.html">Lineas</a>
-          </li>
-          <li>
-            <a href="./html/stops.html">Paradas</a>
-          </li>
-          <li>
-            <a href="./html/news.html">Noticias</a>
-          </li>
-          <li>
-            <a href="./html/select-pass.html">Bonos</a>
-          </li>
-          <li>
-            <a href="./html/about-us.html">Sobre Nosotros</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <a class="icon" href="./html/login.html">
-      <img src="./img/user.svg" alt="user">
-    </a>
-  </header>
+<header class="header">
+  <a class="logo" href="./index.html">
+    <img src="./img/logo/imagotipo-horizontal-azul.svg" alt="logo image">
+  </a>
+
+  <input type="checkbox" id="menu-toggle" hidden>
+  <label for="menu-toggle" class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <nav>
+    <ul class="navbar">
+      <li><a href="./html/lines.html">Lineas</a></li>
+      <li><a href="./html/stops.html">Paradas</a></li>
+      <li><a href="./html/news.html">Noticias</a></li>
+      <li><a href="./html/select-pass.html">Bonos</a></li>
+      <li><a href="./html/about-us.html">Sobre Nosotros</a></li>
+      <li><a class="user-nav" href="./html/login.html">Tu Perfil</a></li>
+    </ul>
+  </nav>
+
+  <a class="icon" href="./html/login.html">
+    <img src="./img/user.svg" alt="user">
+  </a>
+
+</header>
 
   <main class="index-page">
     <div class="hero">

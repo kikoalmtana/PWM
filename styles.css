@@ -1105,16 +1105,16 @@ main{
 /* line info styles */
 
 .line-selector {
+    animation: fadeUp 0.5s ease both;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 20px 30px;
-    margin: 80px 90px 30px 80px;
+    margin: 60px 200px;
     font-size: 25px;
     background-color: white;
     color: var(--blue);
     border-radius: 15px;
-    box-shadow: 2px 2px 4px var(--shadow);
+    box-shadow: 2px 2px 10px lightgray;
 
     .line-number {
         background: var(--orange);
@@ -1139,17 +1139,26 @@ main{
 }
 
 .line-info-page {
-
+    animation: fadeUp 0.75s ease both;
 
     h2 {
         font-size: 18px;
         font-weight: bold;
         background-color: var(--blue);
         color: var(--light-yellow);
-        padding: 6px 8px 10px 80px;
-        margin: 0;
+        padding: 20px 80px;
+        margin: 5px 50px;
+        border-radius: 15px;
         box-sizing: border-box;
-        width: 100%;
+        cursor: pointer;
+    }
+
+    h2::after {
+        content: " ▼";
+    }
+
+    h2.active::after {
+        content: " ▲";
     }
 
     h3 {
@@ -1166,15 +1175,22 @@ main{
         gap: 90px;
         justify-content: center;
         flex-wrap: wrap;
-        padding-bottom: 20px;
+
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+
+        transition: height 0.5s ease, opacity 0.4s ease;
 
         .card-colum{
 
 
             .card {
+
                 p {
                     font-size: 18px;
                     font-weight: bold;
+
                 }
 
                 img{
@@ -1183,7 +1199,13 @@ main{
                 }
             }
         }
+
     }
+
+    .cards-grid.active {
+        opacity: 1;
+    }
+
 
     .map-placeholder {
         padding: 20px;

@@ -13,7 +13,7 @@
 
 <div class="line-selector">
     <div class="line-number">01</div>
-    <div class="line-name">Lorem ipsum</div>
+    <div class="line-name">Tamaraceite - Alcaravaneras</div>
     <div class="line-icon"></div>
 </div>
 
@@ -81,15 +81,55 @@
     </div>
 
 
-    <h2>Header</h2>
+    <h2>Mapa</h2>
 
+    <div class="cards-grid">
     <img src="../img/dummy.jpg" alt="photo" class="map-placeholder">
-
+    </div>
 </div>
 
 <script>
 
     xLuIncludeFile();
+
+    document.querySelectorAll(".line-info-page h2").forEach(title => {
+
+        title.addEventListener("click", () => {
+
+            const grid = title.nextElementSibling;
+
+            if (!grid.classList.contains("cards-grid")) return;
+
+            if (grid.classList.contains("active")) {
+
+                grid.style.height = grid.scrollHeight + "px";
+
+                requestAnimationFrame(() => {
+                    grid.style.height = "0px";
+                });
+
+                grid.classList.remove("active");
+
+            } else {
+
+                grid.classList.add("active");
+                grid.style.height = grid.scrollHeight + "px";
+
+                grid.addEventListener("transitionend", () => {
+                    grid.style.height = "auto";
+                }, { once: true });
+
+            }
+
+        });
+
+    });
+
+    document.querySelectorAll(".line-info-page h2").forEach(h2 => {
+        h2.addEventListener("click", () => {
+            h2.classList.toggle("active");
+        });
+    });
 
 </script>
 

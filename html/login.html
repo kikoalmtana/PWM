@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
     <script src="../xlu-include-file.js"></script>
     <link rel="stylesheet" href="../styles.css">
@@ -11,16 +12,19 @@
   <aside xlu-include-file="../templates/aside.html"></aside>
   <main>
     <h1 class="login-header">Iniciar Sesión</h1>
-    <form class="login" action="" method="post">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" placeholder="Username" required>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Password" required>
-      <button type="submit">Login</button>
+    <form class="suggestions" action="" method="post">
+      <label for="username">Nombre:</label>
+      <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
+      <label for="password">Contraseña:</label>
+      <div class="input-wrapper">
+        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+        <button type="button" id="toggle-btn" onclick=""><img src="../img/eye.svg" alt=""></button>
+      </div>
+      <button type="submit">Iniciar Sesión</button>
     </form>
     <div class="form-footer">
-      <a href="">Lorem ipsum</a>
-      <a href="./register.html">Loren ipsum dolor sit amet</a>
+      <a href="">He olvidado mi contraseña</a>
+      <a href="./register.html">¿No tienes cuenta? Regístrate</a>
     </div>
   </main>
 

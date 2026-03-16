@@ -814,25 +814,98 @@ main{
         width: 40rem;
     }
 
-    .stops-list {
+    p {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
 
-        background: var(--orange);
-        margin: 3rem auto;
-        padding: 2rem;
+        text-align: left;
+        font-size: 1.2rem;
 
-        min-height: 50rem;
-        max-width: 30rem;
+        color: var(--font-color);
+        line-height: 2rem;
+    }
 
-        font-size: 1.4rem;
+    .stop-information-area{
+        display: flex;
+        justify-content: center;
+        margin: 2rem 4rem 2rem 4rem;
+        gap: 2rem;
 
-        h2, h3 {
-            background: var(--light-yellow);
-            color: var(--blue);
+        .stop-info{
+            flex: 1;
+            border: 3px solid var(--orange);
+            border-radius: 15px;
             padding: 1rem;
-            min-width: 25rem;
+        }
+
+        h3 {
+            background: var(--orange);
+            color: var(--light-yellow);
+            border: 1px solid var(--orange);
+
+            text-align: center;
+
+            border-radius: 5px;
+
+            padding: 0.5rem 3rem;
+
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .bus-from-stop {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            width: 100%;
+
+            h4 {
+                background: var(--blue);
+                color: var(--light-yellow);
+                border: 1px solid var(--blue);
+                border-radius: 5px;
+
+                padding: 0.5rem;
+            }
+
+            p {
+                margin-left: auto;
+            }
+        }
+
+        .bus-from-stop + .bus-from-stop {
+            border-top: 2px solid var(--blue);
+        }
+
+        .buttons-info-stops {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-left: 20px;
+
+            a {
+                width: 10rem;
+                height: 2rem;
+
+                background: var(--blue);
+                color: var(--light-yellow);
+                border: 1px solid var(--blue);
+                text-decoration: none;
+                text-align: center;
+                justify-content: center;
+                font-weight: bold;
+
+                border-radius: 5px;
+
+                padding: 0.5rem 3rem;
+            }
+        }
+        .stop-button:hover {
+            background: var(--orange);
+            color: var(--blue);
+            border-color: var(--orange);
         }
     }
 }

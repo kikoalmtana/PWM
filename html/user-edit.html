@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edicion de usuario</title>
     <script src="../xlu-include-file.js"></script>
     <link rel="stylesheet" href="../styles.css">
@@ -11,26 +12,25 @@
 <header xlu-include-file="../templates/header.html"></header>
 
 <main class="edit-user">
-    <h1>Header</h1>
-    <a href=""><img src="../img/dummy.jpg" alt=""></a>
-    <form>
-        <div class="form-row">
-            <label for="name-edit">Name:</label>
+    <h1>Edita tu perfil</h1>
+    <div>
+        <form class="form-row">
+            <label for="name-edit">Cambiar nombre:</label>
             <div>
-                <input id="name-edit" type="text" placeholder="Username">
-                <button></button>
+                <input id="name-edit" type="text" placeholder="Nombre nuevo" required>
+                <button type="submit"><img src="../img/edit.svg" alt="edit"></button>
             </div>
-        </div>
-        <div class="form-row">
-            <label for="email-edit">Email:</label>
+        </form>
+        <form class="form-row">
+            <label for="email-edit">Cambiar Email:</label>
             <div>
-                <input id="email-edit" type="text" placeholder="Email">
-                <button></button>
+                <input id="email-edit" type="text" placeholder="Email nuevo" required>
+                <button type="submit"><img src="../img/edit.svg" alt="edit"></button>
             </div>
-        </div>
+        </form>
 
-    </form>
-    <button>Lorem ipsum</button>
+    </div>
+    <button class="change">Cambiar contraseña</button>
 </main>
 
 <footer xlu-include-file="../templates/footer.html"> </footer>

@@ -2,11 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../img/logo/isotipo.svg">
     <title>Líneas</title>
-    <script src="../js/templateLoader.js"></script>
     <link rel="stylesheet" href="../styles.css">
+    <script src="../js/templateLoader.js"></script>
 </head>
 <body>
 
@@ -18,28 +16,29 @@
         <h1>HEADER</h1>
     </section>
 
-
-    <section class="selection-wrapper">
-        <div class="selection-bar">
-            Selection bar
-        </div>
-    </section>
-
+    <div class="stops">
+    <form role="search">
+        <input required type="text" placeholder="Número o nombre de la parada ">
+    </form>
+    </div>
 
     <section class="warnings">
-        <div data-template="lines-warnings.html"></div>
-        <div data-template="lines-warnings.html"></div>
+        <div data-template="lines-warnings"></div>
+        <div data-template="lines-warnings"></div>
     </section>
 
 
     <section class="lines-list">
 
-        <a href="../html/line-info.html"><div xlu-include-file="../templates/line-button.html"></div></a>
+        <a class="line-selector" href="../html/line-info.html">
+            <div class="line-number">01</div>
+            <div class="line-name">Tamaraceite - Alcaravaneras</div>
+            <div class="line-icon"></div>
+        </a>
 
     </section>
 
 </main>
-
 
 <footer data-template="footer"></footer>
 

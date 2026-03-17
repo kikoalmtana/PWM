@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/logo/isotipo.svg">
     <title>Añadir bono</title>
-    <script src="../xlu-include-file.js"></script>
+    <script src="../js/templateLoader.js"></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<header xlu-include-file="../templates/header.html"></header>
+<header data-template="header"></header>
 
 <main class="bonus-page">
 
@@ -29,11 +31,7 @@
 
 </main>
 
-<script>
-    xLuIncludeFile();
-</script>
+<footer data-template="footer"></footer>
+
 </body>
-
-<footer xlu-include-file="../templates/footer.html"></footer>
-
 </html>

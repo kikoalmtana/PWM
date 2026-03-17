@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/logo/isotipo.svg">
     <title>Log in</title>
-    <script src="../xlu-include-file.js"></script>
+    <script src="../js/templateLoader.js"></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="login-page">
 
-  <aside xlu-include-file="../templates/aside.html"></aside>
+  <aside data-template="aside"></aside>
   <main>
     <h1 class="login-header">Iniciar Sesión</h1>
     <form class="suggestions" action="" method="post">
@@ -28,11 +29,5 @@
     </div>
   </main>
 
-
-  <script>
-
-    xLuIncludeFile();
-
-  </script>
 </body>
 </html>

@@ -101,3 +101,28 @@ document.querySelectorAll('.item').forEach(el => {
         console.log('elemento eliminado');
     });
 });
+
+//funciones para el desplegable de la ventana de selección de bono
+function toggleOptions() {
+    const options = document.getElementById("options");
+    options.style.display = options.style.display === "block" ? "none" : "block";
+}
+
+function selectOption(element, tipo) {
+    document.querySelector(".selected").textContent = element.textContent;
+    document.getElementById("options").style.display = "none";
+
+    // Cambiar formulario según bono
+    const dniField = document.getElementById("dniField");
+
+    if (tipo === "con_dni") {
+        dniField.style.display = "block";
+    } else {
+        dniField.style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const options = document.getElementById("options");
+        if (options) options.style.display = "none";
+    });
+}

@@ -7,6 +7,7 @@
     <title>Selección de Bono</title>
     <script src="../js/templateLoader.js"></script>
     <link rel="stylesheet" href="../styles.css">
+
 </head>
 
 <body class="selection-page">
@@ -15,27 +16,39 @@
 
 <main>
 
-    <h1>Header</h1>
+    <h1>SELECCIONAR BONO</h1>
 
-    <div class="content-wrapper">
 
-        <div class="selection-wrapper">
-            <div class="selection-bar">
-                Selection bar
+
+    <form class = "suggestions">
+
+        <div class="selector">
+            <div class="selected" onclick="toggleOptions()">
+                Selecciona un bono
+            </div>
+            <div class="options" id="options">
+                <div class="option" onclick="selectOption(this, 'basico')">Bono Guagua</div>
+                <div class="option" onclick="selectOption(this, 'con_dni')">Bono Residente Canario</div>
+                <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta Wawa Joven</div>
+                <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta bono oro</div>
             </div>
         </div>
 
-        <form>
-            <div class="form-box">
-                FORM
-            </div>
+        <!-- Siempre es visible -->
+        <input type="text" placeholder="Código de bono" required>
 
-            <button>Button</button>
-        </form>
+        <!-- Aparece que si la opción es con_dni -->
+        <div id="dniField" style="display:none;">
+            <input type="text" placeholder="DNI" required>
+        </div>
 
-    </div>
+        <button type="submit">Enviar</button>
+    </form>
 
 </main>
 
 </body>
+
+<script src="../js/interactions.js"></script>
+
 </html>

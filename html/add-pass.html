@@ -13,20 +13,34 @@
 
 <main class="bonus-page">
 
-    <h1>Header</h1>
+    <h1 class="login-header">Añade un Bono a tu cuenta</h1>
 
-    <div class="selection-bar">
-        Selection bar
-    </div>
 
-    <img src = "../img/dummy.jpg" class="image-box" alt = "">
+    <img src = "../img/Tarjeta_Wawa_Joven.png" class="image-box" alt = "">
 
-    <form>
-        <div class="form-box">
-            FORM
+    <form class = "suggestions">
+
+        <div class="selector">
+            <div class="selected" onclick="toggleOptions()">
+                Selecciona un bono
+            </div>
+            <div class="options" id="options">
+                <div class="option" onclick="selectOption(this, 'basico')">Bono Guagua</div>
+                <div class="option" onclick="selectOption(this, 'con_dni')">Bono Residente Canario</div>
+                <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta Wawa Joven</div>
+                <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta bono oro</div>
+            </div>
         </div>
 
-        <button>Button</button>
+        <!-- Siempre es visible -->
+        <input type="text" placeholder="Código de bono" required>
+
+        <!-- Aparece que si la opción es con_dni -->
+        <div id="dniField" style="display:none;">
+            <input type="text" placeholder="DNI" required>
+        </div>
+
+        <button type="submit">Enviar</button>
     </form>
 
 </main>
@@ -34,4 +48,7 @@
 <footer data-template="footer"></footer>
 
 </body>
+
+<script src="../js/interactions.js"></script>
+
 </html>

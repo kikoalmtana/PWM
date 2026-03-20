@@ -1715,6 +1715,16 @@ main{
     flex-direction: row;
     min-height: 100vh;
 
+    h1 {
+        text-align: center;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--orange);
+        margin-bottom: 0.5rem;
+        animation: fadeUp 0.5s ease both;
+    }
+
     main{
         flex: 1;
         display: flex;
@@ -1747,22 +1757,47 @@ main{
             align-items: center;
             gap: 20px;
 
-            .form-box{
-                width: 100%;
-                height: 350px;
-                background: #cfcfcf;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 30px;
-            }
-
-            button{
-                width: 150px;
-                padding: 10px;
-                font-weight: bold;
-            }
         }
+
+        button{
+            width: 150px;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .selector {
+            width: 200px;
+            position: relative;
+        }
+
+        .selected {
+            background: var(--light-yellow);
+            border: 1px solid var(--orange);
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        .options {
+            display: none;
+            position: absolute;
+            width: 100%;
+            border: 1px solid var(--orange);
+            background: var(--light-yellow);
+            border-radius: 15px;
+
+        }
+
+        .option {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #f0f0f0;
+            border-radius: 15px;
+        }
+
     }
 }
 
@@ -1772,45 +1807,98 @@ main{
     align-items: center;
     padding: 40px 20px;
     gap: 25px;
+    color: var(--orange);
+    font-weight: bold;
 
-    h1{
-        font-size: 40px;
-        margin-bottom: 10px;
-    }
-
-    .selection-bar{
-        width: 500px;
-        background: lightgray;
-        padding: 10px 20px;
-        font-weight: bold;
-    }
 
     .image-box{
         width: 300px;
         height: 150px;
-        background: #cfcfcf;
     }
 
-    form{
+    h1 {
+        text-align: center;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--orange);
+        margin-bottom: 0.5rem;
+        animation: fadeUp 0.5s ease both;
+    }
+
+    main{
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        padding: 60px;
 
-        .form-box{
-            width: 450px;
-            height: 250px;
-            background: #cfcfcf;
+        h1{
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+
+        .content-wrapper{
+            width: 600px;
             display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .selection-bar{
+            background: lightgray;
+            padding: 12px 20px;
+            font-weight: bold;
+            width:40%;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 28px;
+            gap: 20px;
+
         }
 
         button{
-            width: 120px;
-            padding: 8px;
+            width: 150px;
+            padding: 10px;
+            font-weight: bold;
         }
+
+        .selector {
+            width: 200px;
+            position: relative;
+        }
+
+        .selected {
+            background: var(--light-yellow);
+            border: 1px solid var(--orange);
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        .options {
+            display: none;
+            position: absolute;
+            width: 100%;
+            border: 1px solid var(--orange);
+            background: var(--light-yellow);
+            border-radius: 15px;
+
+        }
+
+        .option {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #f0f0f0;
+            border-radius: 15px;
+        }
+
     }
 }
 

@@ -68,13 +68,13 @@ function selectOption(element, tipo) {
     const dniField = document.getElementById("dniField");
 
     if (tipo === "con_dni") {
-        dniField.style.display = "block";
+        dniField.style.display = "inline-block";
     } else {
         dniField.style.display = "none";
     }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const options = document.getElementById("options");
-        if (options) options.style.display = "none";
-    });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const options = document.getElementById("options");
+    if (options) options.style.display = "none";
+});

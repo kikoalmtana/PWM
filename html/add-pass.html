@@ -8,10 +8,11 @@
     <script src="../js/templateLoader.js"></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+
+<body class="bonus-page">
 <header data-template="header"></header>
 
-<main class="bonus-page">
+<main>
 
     <h1 class="login-header">Añade un Bono a tu cuenta</h1>
 
@@ -32,13 +33,10 @@
             </div>
         </div>
 
-        <!-- Siempre es visible -->
         <input type="text" placeholder="Código de bono" required>
 
-        <!-- Aparece que si la opción es con_dni -->
-        <div id="dniField" style="display:none;">
-            <input type="text" placeholder="DNI" required>
-        </div>
+
+        <input id = "dniField" type="text" placeholder="DNI" required>
 
         <button type="submit">Enviar</button>
     </form>

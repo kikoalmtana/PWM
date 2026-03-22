@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../img/logo/isotipo.svg">
   <title>User information</title>
-
+  <script src="../js/popUp.js" ></script>
   <script src="../js/templateLoader.js"></script>
   <link rel="stylesheet" href="../styles.css">
 </head>
@@ -31,9 +31,19 @@
       <a class="plus" href="../html/add-pass.html"><img src="../img/plus.svg" alt="add new pass"></a>
     </article>
   </div>
+  <div class="overlay" id="overlay">
+    <div class="popup">
+      <h3>¿Estás seguro?</h3>
+      <p>Con esta acción borrarás todos tus datos de forma permanentemente.</p>
+      <div class="buttons">
+        <button id="closePopup">Cancelar</button>
+        <button>Borrar cuenta</button>
+      </div>
+    </div>
+  </div>
   <div class="user-footer">
     <button>Cerrar sesión</button>
-    <button>Borrar cuenta</button>
+    <button id="openPopup">Borrar cuenta</button>
   </div>
 
 </main>

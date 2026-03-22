@@ -329,6 +329,11 @@ main{
             transform: scale(1.1);
         }
     }
+
+    @media (max-width: 768px) {
+        padding: 5px;
+        gap: 25px;
+    }
 }
 
 .suggestions{
@@ -1096,6 +1101,7 @@ main{
             line-height: 2rem;
 
             margin: 0 2rem;
+
         }
 
         .another-news{
@@ -1108,6 +1114,35 @@ main{
 
         }
     }
+
+
+}
+
+@media (max-width: 768px) {
+
+    .single-new .new-content {
+        grid-template-columns: 1fr;
+        margin: 1rem;
+    }
+
+    .single-new .another-news {
+        border: none !important;
+        padding: 0 !important;
+        margin: 2rem auto !important;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+
+        width: 100%;
+    }
+
+    .single-new .another-news a {
+        width: 100%;
+        max-width: 30rem;
+    }
+
 }
 
 .another-news a:nth-child(1) article{
@@ -1283,6 +1318,31 @@ main{
 
             form{
                 width: 50% !important;
+            }
+            #formContent{
+                width: 100% !important
+            }
+        }
+
+    }
+    .aside-left{
+        height: auto;
+        width: 100%;
+        img{
+            margin: 10px;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .selection-page{
+        display: flex;
+        flex-direction: column-reverse;
+        main{
+            margin: 30px 0;
+
+            form{
+                width: 60% !important;
             }
             #formContent{
                 width: 100% !important
@@ -1745,6 +1805,11 @@ main{
     flex-direction: row;
     min-height: 100vh;
 
+    @media(max-width: 768px) {
+        align-content: center;
+        flex-direction: column;
+    }
+
     h1 {
         text-align: center;
         font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -1838,6 +1903,7 @@ main{
 
 .bonus-page{
 
+
     h1 {
         text-align: center;
         font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -1856,9 +1922,19 @@ main{
         color: var(--orange);
         font-weight: bold;
 
+        @media(max-width: 768px) {
+            align-content: center;
+            flex-direction: column;
+        }
+
         h1{
             font-size: 50px;
             margin-bottom: 30px;
+
+            @media(max-width: 768px) {
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
         }
 
         .content-wrapper{
@@ -1866,6 +1942,11 @@ main{
             display: flex;
             flex-direction: column;
             gap: 20px;
+
+            @media(max-width: 768px) {
+                width: 300px;
+                gap: 10px
+            }
         }
 
         .selection-bar{

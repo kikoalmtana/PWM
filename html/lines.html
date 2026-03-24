@@ -7,6 +7,7 @@
     <title>Líneas</title>
     <link rel="stylesheet" href="../styles.css">
     <script src="../js/templateLoader.js"></script>
+    <script type="module" src="../js/lines.js"></script>
 </head>
 <body>
 
@@ -15,7 +16,7 @@
 <main class="lines-page">
 
     <section class="heading">
-        <h1>HEADER</h1>
+        <h1>LÍNEAS</h1>
     </section>
 
     <div class="stops">
@@ -24,21 +25,10 @@
     </form>
     </div>
 
-    <section class="warnings">
-        <div data-template="lines-warnings"></div>
-        <div data-template="lines-warnings"></div>
-    </section>
+    <section class="warnings" id="warning-section"></section>
 
 
-    <section class="lines-list">
-
-        <a class="line-selector" href="../html/line-info.html">
-            <div class="line-number">01</div>
-            <div class="line-name">Tamaraceite - Alcaravaneras</div>
-            <div class="line-icon"></div>
-        </a>
-
-    </section>
+    <section class="lines-list" id="listado-lineas"></section>
 
 </main>
 

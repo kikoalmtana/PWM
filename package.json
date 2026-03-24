@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "api": "json-server --watch ./json/db.json --port 3000"
+  }
+}

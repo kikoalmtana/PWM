@@ -6,6 +6,7 @@
   <link rel="icon" type="image/png" href="../img/logo/isotipo.svg">
   <title>Paradas</title>
   <script src="../js/templateLoader.js"></script>
+  <script type="module" src="../js/stops.js"></script>
   <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -20,11 +21,11 @@
   <p>Busca tu parada para obtener información sobre próximas guaguas</p>
 
   <form role="search">
-    <input required type="text" placeholder="Número o nombre de la parada ">
+    <input required type="text" placeholder="Número o nombre de la parada " id="input">
   </form>
 
 
-  <div class="stop-information-area">
+  <div class="stop-information-area" id="guaguas-box">
     <div class="stop-info">
 
       <h3>Ciencias básicas</h3>
@@ -55,9 +56,9 @@
     </div>
 
     <div class="buttons-info-stops">
-      <a class="stop-button" href="">Actualizar tiempos</a>
-      <a class="stop-button" href="">Guardar en favoritos</a>
-      <a class="stop-button" href="">Ver en el mapa</a>
+      <a class="stop-button" href="" id="update-box">Actualizar tiempos</a>
+      <a class="stop-button" href="" id="save-stop">Guardar en favoritos</a>
+      <a class="stop-button" href="" id="go-map">Ver en el mapa</a>
     </div>
   </div>
 

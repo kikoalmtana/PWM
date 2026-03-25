@@ -296,6 +296,11 @@ main{
     margin: auto;
     width: 600px;
     height: 250px;
+
+    @media(max-width: 768px) {
+        width: 80%;
+        height: 30%;
+    }
 }
 
 .paragraph{
@@ -306,6 +311,12 @@ main{
     color: var(--font-color);
     line-height: 2rem;
     font-size: 1.2rem;
+
+    @media(max-width: 768px) {
+        font-size: 1rem;
+        justify-self: center;
+        width: 90%;
+    }
 }
 
 .socials{
@@ -1042,6 +1053,10 @@ main{
         height: auto;
         display: block;
         margin: 1rem auto;
+
+        @media (max-width: 678px) {
+            width: 80%;
+        }
     }
 
     .new-content {

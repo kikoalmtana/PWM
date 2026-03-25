@@ -280,9 +280,6 @@ main{
         width: 300px;
     }
 
-    @media (max-width: 768px) {
-        display: none;
-    }
 }
 
 /* About Us styles*/
@@ -490,46 +487,7 @@ main{
         }
     }
 }
-/*
-.carrousel {
-    margin: auto;
-    overflow: hidden;
-    position: relative;
 
-    align-items: center;
-}
-
-.slide{
-    display: block;
-
-    width: 100%;
-    max-width: 1200px;
-
-    height: 22rem;
-    flex-shrink: 0;
-
-    justify-self: center;
-}
-
-.dots {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.dot {
-    height: 18px;
-    width: 18px;
-    margin: 0 10px;
-    background-color: #d9d9d9;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-
-    &:hover, &:active {
-        background-color: #4e4e4e;
-    }
-}
-*/
 .main-buttons {
     display: grid;
 
@@ -1344,6 +1302,21 @@ main{
 
 }
 
+input.touched:invalid {
+    border: 2px solid red;
+}
+
+input:valid {
+    border: 2px solid green;
+}
+
+form small{
+    color: red;
+    font-size: 0.8rem;
+    min-height: 1em;
+    display: block;
+}
+
 @media (max-width: 768px){
     .login-page{
         display: flex;
@@ -1372,7 +1345,7 @@ main{
 @media (max-width: 768px){
     .selection-page{
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column-reverse !important;
         main{
             margin: 30px 0;
 
@@ -1385,16 +1358,7 @@ main{
         }
 
     }
-    .aside-left{
-        height: auto;
-        width: 100%;
-        img{
-            margin: 10px;
-        }
-    }
 }
-
-
 
 /* User info styles */
 

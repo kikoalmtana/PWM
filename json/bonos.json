@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 7,
+      "tipo_de_bono": "Tarjeta Guagua Joven",
+      "viajes_realizados": 15,
+      "propietario_bono": "Nereida Vega Benitez",
+      "fecha_caducidad": "2026-05-14",
+      "saldo": null
+    },
+    {
+      "id": 8,
+      "tipo_de_bono": "Tarjeta Bono Oro",
+      "viajes_realizados": 22,
+      "propietario_bono": "Manuela Benítez Falcón",
+      "fecha_caducidad": "2026-06-23",
+      "saldo": null
+    },
+    {
+      "id": 10,
+      "tipo_de_bono": "Bono Residente Canario",
+      "viajes_realizados": 32,
+      "propietario_bono": "David Domínguez Rivero",
+      "fecha_caducidad": "2026-04-10",
+      "saldo": null
+    },
+    {
+      "id": 11,
+      "tipo_de_bono": "Bono Guagua",
+      "viajes_realizados": 44,
+      "propietario_bono": "Juan Vega Soriano",
+      "fecha_caducidad": "2026-06-23",
+      "saldo": 3.84
+    }
+  ]
+}

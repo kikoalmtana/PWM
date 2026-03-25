@@ -1,0 +1,66 @@
+const res1 = await fetch('http://localhost:3000/avisos-de-linea');
+const avisos = await res1.json();
+console.log(avisos);
+const seccionAvisos = document.getElementById("warning-section")
+
+const res2 = await fetch('http://localhost:3000/lineas');
+const lineas = await res2.json();
+lineas.sort((a, b) => { return a.numero - b.numero });
+
+const listadoLineas = document.getElementById('listado-lineas');
+
+const template = document.querySelectorAll('[data-template="lines-warnings"]');
+
+// Función para cargar avisos de líneas
+const cargarAvisosDeLinea = () => {
+    avisos.forEach((aviso, id) => {
+        const article = document.createElement("article");
+        article.className = "lines-warning";
+
+        const p = document.createElement("p");
+        p.className = "warning";
+        p.textContent = aviso.descripcion;
+
+        article.appendChild(p);
+
+        // Insertamos dentro del div correspondiente si existe
+        if (template[id]) {
+            template[id].appendChild(article);
+        } else {
+            // Si hay más datos que templates, añadimos al final de la sección
+            seccionAvisos.appendChild(article);
+        }
+    })
+};
+
+const cargarLineas = () => {
+  lineas.forEach((linea) => {
+      const anchor = document.createElement("a");
+      anchor.className = "line-selector";
+      anchor.href = "../html/line-info.html"
+
+      const div1 = document.createElement("div");
+      div1.className = "line-number";
+      div1.textContent = linea.numero;
+
+      const div2 = document.createElement("div");
+      div2.className = "line-name";
+      div2.textContent = linea.primera_salida + " - " + linea.segunda_salida;
+
+      const div3 = document.createElement("div");
+      div3.className = "line-icon";
+
+      anchor.appendChild(div1);
+      anchor.appendChild(div2);
+      anchor.appendChild(div3);
+
+      listadoLineas.appendChild(anchor);
+  })
+};
+
+try {
+    cargarAvisosDeLinea()
+    cargarLineas()
+} catch (e) {
+    console.error(e);
+}

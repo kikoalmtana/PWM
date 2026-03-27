@@ -7,6 +7,7 @@
     <title>Información de líneas</title>
     <script src="../js/templateLoader.js"></script>
     <script src="../js/interactions.js"></script>
+    <script type="module" src="../js/line-info.js"></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -14,73 +15,22 @@
 <main>
 <header data-template="header"></header>
 
-<div class="line-selector">
-    <div class="line-number">01</div>
-    <div class="line-name">Tamaraceite - Alcaravaneras</div>
-    <div class="line-icon"></div>
-</div>
+<div class="line-selector" id="header-linea"></div>
 
 <div class="line-info-page">
 
     <h2>Horarios</h2>
 
-    <div class="cards-grid">
+    <div class="cards-grid" id="seccion-horarios">
 
-        <div class="card-colum">
-            <h3>Desde: Tamaraceite</h3>
-            <div class="card">
-                <p>De Lunes a Viernes:</p>
-                <img src="../img/dummy.jpg" alt="photo">
-            </div>
-            <div class="card">
-                <p>Sábado, Domingo y Festivos:</p>
-                <img src="../img/dummy.jpg" alt="photo">
-            </div>
-        </div>
 
-        <div class="card-colum">
-            <h3>Desde: Alcaravaneras</h3>
-            <div class="card">
-                <p>De lunes a Viernes:</p>
-                <img src="../img/dummy.jpg" alt="photo">
-            </div>
-            <div class="card">
-                <p>Sábado, Domingo y Festivos:</p>
-                <img src="../img/dummy.jpg" alt="photo">
-            </div>
-        </div>
+
     </div>
 
     <h2>Paradas</h2>
 
-    <div class="cards-grid">
-        <div class="card-colum">
-            <h3>Desde: Tamaraceite</h3>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-        </div>
+    <div class="cards-grid" id="seccion-lineas">
 
-        <div class="card-colum">
-            <h3>Desde: Alcaravaneras</h3>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-        </div>
     </div>
 
 

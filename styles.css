@@ -1786,25 +1786,58 @@ form small{
 
         margin-bottom: 30px;
 
-        .card-colum{
-
+        .card-column {
 
             .card {
 
-                p {
+                .horarios-dia {
                     font-size: 18px;
                     font-weight: bold;
 
                 }
 
-                img{
-                    width: 350px;
-                    height: 250px;
+                .horarios {
+                    width: 380px;
+                    font-size: 1.3rem;
+                }
 
+                .horarios-chess {
+                    display: grid;
+                    grid-template-columns: repeat(7, 1fr);
+                    width: 380px;
+                    gap: 2px;
+                    margin-top: 4px;
+                }
+
+                .horarios-chess {
+                    display: grid;
+                    grid-template-columns: repeat(7, 1fr);
+                    width: 380px;
+                    gap: 0;
+                    margin-top: 4px;
+                }
+
+                .horarios-chess > p {
+                    padding: 7px 4px;
+                    text-align: center;
+                    margin: 0;
+                    font-size: 1.1rem;
+                    border-radius: 0;
+                }
+
+                .horarios-chess > p:nth-child(odd) {
+                    background-color: #ffdb91;
+                }
+
+                .horarios-chess > p:nth-child(even) {
+                    background-color: #ffb074;
                 }
             }
-        }
 
+            .card + .card {
+                margin-top: 20px;
+            }
+        }
     }
 
     .cards-grid.active {

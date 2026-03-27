@@ -1,14 +1,18 @@
-const res1 = await fetch('http://localhost:3000/avisos-de-linea');
-const avisos = await res1.json();
-console.log(avisos);
-const seccionAvisos = document.getElementById("warning-section")
+const getData = async (link) => {
+    return await fetch(link)
+        .catch(error => console.error('Error fetching data:', error))
+        .then(response => response.json());
+}
 
-const res2 = await fetch('http://localhost:3000/lineas');
-const lineas = await res2.json();
+const avisos = await getData('http://localhost:3000/avisos-de-linea');
+
+console.log(avisos);
+const seccionAvisos = document.getElementById("warning-section");
+
+const lineas = await getData('http://localhost:3000/lineas');
 lineas.sort((a, b) => { return a.numero - b.numero });
 
 const listadoLineas = document.getElementById('listado-lineas');
-
 const template = document.querySelectorAll('[data-template="lines-warnings"]');
 
 // Función para cargar avisos de líneas
@@ -37,7 +41,9 @@ const cargarLineas = () => {
   lineas.forEach((linea) => {
       const anchor = document.createElement("a");
       anchor.className = "line-selector";
-      anchor.href = "../html/line-info.html"
+      anchor.href = `../html/line-info.html?id=${linea.numero}`;
+      console.log(linea.numero);
+      console.log(linea);
 
       const div1 = document.createElement("div");
       div1.className = "line-number";
@@ -59,8 +65,8 @@ const cargarLineas = () => {
 };
 
 try {
-    cargarAvisosDeLinea()
-    cargarLineas()
+    cargarAvisosDeLinea();
+    cargarLineas();
 } catch (e) {
     console.error(e);
 }

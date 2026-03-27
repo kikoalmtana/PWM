@@ -19,7 +19,7 @@
         "horarios": [
           {
             "sentido": "ida",
-            "tipo_dia": "laborable",
+            "tipo_dia": "Lunes a viernes",
             "salidas": [
               "05:30",
               "06:00",
@@ -100,7 +100,7 @@
           },
           {
             "sentido": "ida",
-            "tipo_dia": "festivo",
+            "tipo_dia": "Sábado, domingo y festivos",
             "salidas": [
               "05:30",
               "06:00",
@@ -166,7 +166,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "laborable",
+            "tipo_dia": "Lunes a viernes",
             "salidas": [
               "05:30",
               "06:00",
@@ -246,7 +246,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "festivo",
+            "tipo_dia": "Sábado, domingo y festivos",
             "salidas": [
               "05:30",
               "06:00",
@@ -370,7 +370,7 @@
         "horarios": [
           {
             "sentido": "ida",
-            "tipo_dia": "laborable",
+            "tipo_dia": "Lunes a Viernes",
             "salidas": [
               "06:00",
               "06:20",
@@ -483,7 +483,7 @@
           },
           {
             "sentido": "ida",
-            "tipo_dia": "sabado",
+            "tipo_dia": "Sábados",
             "salidas": [
               "06:40",
               "07:00",
@@ -563,7 +563,7 @@
           },
           {
             "sentido": "ida",
-            "tipo_dia": "domingo y festivo",
+            "tipo_dia": "Domingos y festivos",
             "salidas": [
               "07:25",
               "07:45",
@@ -636,7 +636,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "laborales",
+            "tipo_dia": "Lunes a Viernes",
             "salidas": [
               "06:00",
               "06:20",
@@ -751,7 +751,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "sabado",
+            "tipo_dia": "Sábados",
             "salidas": [
               "06:40",
               "07:00",
@@ -832,7 +832,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "domingo y festivo",
+            "tipo_dia": "Domingos y festivos",
             "salidas": [
               "07:10",
               "07:30",
@@ -982,7 +982,7 @@
         "horarios": [
           {
             "sentido": "ida",
-            "tipo_dia": "laborales",
+            "tipo_dia": "Lunes a Viernes",
             "salidas": [
               "06:30",
               "06:45",
@@ -1084,7 +1084,7 @@
           },
           {
             "sentido": "ida",
-            "tipo_dia": "sabados",
+            "tipo_dia": "Sábados",
             "salidas": [
               "07:15",
               "07:30",
@@ -1183,7 +1183,7 @@
           },
           {
             "sentido": "ida",
-            "tipo_dia": "domingo y festivo",
+            "tipo_dia": "Domingos y festivos",
             "salidas": [
               "07:20",
               "07:40",
@@ -1255,7 +1255,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "laborales",
+            "tipo_dia": "Lunes a Viernes",
             "salidas": [
               "06:30",
               "06:45",
@@ -1358,7 +1358,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "sabados",
+            "tipo_dia": "Sábados",
             "salidas": [
               "07:30",
               "07:45",
@@ -1455,7 +1455,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "domingo y festivo",
+            "tipo_dia": "Domingos y festivos",
             "salidas": [
               "07:30",
               "07:50",
@@ -1578,7 +1578,7 @@
         "horarios": [
           {
             "sentido": "ida",
-            "tipo_dia": "laborales",
+            "tipo_dia": "Lunes a Viernes",
             "salidas": [
               "06:10",
               "06:30",
@@ -1655,7 +1655,7 @@
           },
           {
             "sentido": "ida",
-            "tipo_dia": "sabado",
+            "tipo_dia": "Sábados",
             "salidas": [
               "07:15",
               "07:35",
@@ -1702,7 +1702,7 @@
           },
           {
             "sentido": "ida",
-            "tipo_dia": "domingo y festivo",
+            "tipo_dia": "Domingos y festivos",
             "salidas": [
               "07:15",
               "07:35",
@@ -1743,7 +1743,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "laborales",
+            "tipo_dia": "Lunes a Viernes",
             "salidas": [
               "06:10",
               "06:35",
@@ -1819,7 +1819,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "sabado",
+            "tipo_dia": "Sábados",
             "salidas": [
               "07:00",
               "07:25",
@@ -1866,7 +1866,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "domingo y festivo",
+            "tipo_dia": "Domingos y festivos",
             "salidas": [
               "07:00",
               "07:25",
@@ -1969,7 +1969,7 @@
         "horarios": [
           {
             "sentido": "ida",
-            "tipo_dia": "laborales",
+            "tipo_dia": "Lunes a Viernes",
             "salidas": [
               "06:40",
               "07:08",
@@ -2026,7 +2026,7 @@
           },
           {
             "sentido": "ida",
-            "tipo_dia": "sabado, domingo y festivo",
+            "tipo_dia": "Sábado, domingos y festivos",
             "salidas": [
               "07:10",
               "07:40",
@@ -2062,7 +2062,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "laborales",
+            "tipo_dia": "Lunes a viernes",
             "salidas": [
               "06:35",
               "07:06",
@@ -2121,7 +2121,7 @@
           },
           {
             "sentido": "vuelta",
-            "tipo_dia": "sabado, domingo y festivo",
+            "tipo_dia": "Sábado, domingos y festivos",
             "salidas": [
               "07:55",
               "08:25",

@@ -8,38 +8,26 @@ const getData = async (link) => {
 let noticias = await getData('http://localhost:3000/noticias');
 noticias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
-const noticiaMasReciente = noticias[0];
-noticias.shift();
+const params = new URLSearchParams(window.location.search);
+const noticiaId = params.get('id');
+const noticiaSeleccionada = noticias.find(noticia => String(noticia.id) === noticiaId);
 
-const primeraNoticia = document.getElementById('principal-new');
-const noticiasSecundarias = document.getElementById('aditional-news-section');
+noticias = noticias.filter(noticia => noticia.id !== noticiaId);
 
-const cargarPrimeraNoticia = (noticia) => {
+const cargarNoticiaSeleccionada = () => {
 
-    const img = document.createElement('img');
-    img.src = noticia.imagen;
-    img.className = 'principal';
+    const h1 = document.getElementById("new-title");
+    h1.textContent = noticiaSeleccionada.titulo;
 
-    primeraNoticia.appendChild(img);
+    const img = document.getElementById('new-img');
+    img.src = noticiaSeleccionada.imagen;
 
-    const a = document.createElement('a');
-    a.href = `../html/new.html?id=${noticia.id}`;
+    const content = document.getElementById('notice-content');
+    const p = document.createElement('p');
+    p.textContent = noticiaSeleccionada.contenido;
 
-    const article = document.createElement('article');
-
-    const titulo = document.createElement("h2");
-    titulo.textContent = noticia.titulo;
-
-    const descripcion = document.createElement("p");
-    descripcion.textContent = noticia.descripcion;
-
-    article.appendChild(titulo);
-    article.appendChild(descripcion);
-
-    a.appendChild(article);
-
-    primeraNoticia.appendChild(a);
-};
+    content.appendChild(p);
+}
 
 const cargarNoticiasAdicionales = () => {
 
@@ -61,8 +49,6 @@ const cargarNoticiasAdicionales = () => {
 
         const descripcion = template.querySelector('p');
         descripcion.textContent = noticias[contador].descripcion;
-
-        console.log("se supone que cambio")
     }
 };
 
@@ -77,7 +63,7 @@ async function init() {
 
     await Promise.all(promises);
 
-    cargarPrimeraNoticia(noticiaMasReciente);
+    cargarNoticiaSeleccionada()
     cargarNoticiasAdicionales()
 }
 

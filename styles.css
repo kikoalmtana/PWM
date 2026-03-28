@@ -679,6 +679,8 @@ main{
     img {
         width: 100%;
         max-height: 25rem;
+        object-fit: cover;
+        object-position: center;
     }
 
     article {
@@ -702,7 +704,9 @@ main{
 
     a > img {
         width: 100%;
-        height: auto;
+        max-height: 8rem;
+        object-fit: cover;
+        object-position: center;
     }
 
     h3 {
@@ -741,7 +745,7 @@ main{
         text-decoration: none;
     }
 
-    a + a{
+    article + article{
         border-left: 2px solid #4e4e4e;
         border-left-color: var(--font-color);
     }
@@ -769,7 +773,7 @@ main{
             justify-content: center;
             align-items: center;
 
-            a + a{
+            article + article{
                 border-left: none;
                 border-top: 2px solid #4e4e4e;
                 border-top-color: var(--font-color);
@@ -800,11 +804,13 @@ main{
             max-width: 80%;
             grid-template-columns: repeat(2, 1fr);
 
-            a:nth-child(3) {
+            article:nth-child(3) {
                 border-left: none;
+                border-top: 2px solid #4e4e4e;
+                border-top-color: var(--font-color);
             }
 
-            a:nth-child(3), a:nth-child(4) {
+            article:nth-child(4) {
                 border-top: 2px solid #4e4e4e;
                 border-top-color: var(--font-color);
             }
@@ -1035,7 +1041,7 @@ main{
 /* Notice page style (a single new)*/
 
 .single-new{
-    margin: auto;
+    margin: 0;
 
     .heading {
         background-color: var(--blue);
@@ -1048,8 +1054,12 @@ main{
 
     .new-cover {
         width: 100%;
-        max-width: 60rem;
-        height: auto;
+        max-width: 80rem;
+        max-height: 40rem;
+
+        object-fit: cover;
+        object-position: center;
+
         display: block;
         margin: 1rem auto;
     }
@@ -1058,16 +1068,20 @@ main{
         display: grid;
         grid-template-columns: 3fr 1fr;
 
-        margin: 2rem;
+        max-width: 80rem;
+        width: 100%;
+        margin: auto;
+        padding: 0 1rem;
 
         .notice {
-            text-align: left;
-            font-size: 1.2rem;
+            text-align: justify;
+            font-size: 1.3rem;
+
 
             color: var(--font-color);
-            line-height: 2rem;
+            line-height: 3rem;
 
-            margin: 0 2rem;
+            margin-right: 2rem;
 
         }
 
@@ -1078,7 +1092,6 @@ main{
             border-left-color: var(--font-color);
 
             padding: 0 0 0 2rem;
-
         }
     }
 

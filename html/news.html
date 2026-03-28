@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../img/logo/isotipo.svg">
     <title>Noticias</title>
-    <script src="../js/templateLoader.js"></script>
+    <script type="module" src="../js/news.js"></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -14,46 +14,19 @@
 
 <main class="news-main">
 
-    <section><h1 class="heading">HEADER</h1></section>
+    <section><h1 class="heading">NOTICIAS</h1></section>
 
-    <div class="first-new">
+    <div class="first-new" id="principal-new"></div>
 
-        <img src="../img/dummy.jpg" class="principal">
+    <section class="secondary-news" id="aditional-news-section">
 
-        <a href="./new.html"><article>
+        <article data-template="preview-new"></article>
 
+        <article data-template="preview-new"></article>
 
-            <h2>Heading</h2>
+        <article data-template="preview-new"></article>
 
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore
-            </p>
-
-        </article></a>
-
-    </div>
-
-    <section class="secondary-news">
-
-        <a href="./new.html">
-            <article data-template="preview-new"></article>
-        </a>
-
-        <a href="./new.html">
-            <article data-template="preview-new"></article>
-        </a>
-
-        <a href="./new.html">
-            <article data-template="preview-new"></article>
-        </a>
-
-        <a href="./new.html">
-            <article data-template="preview-new"></article>
-        </a>
+        <article data-template="preview-new"></article>
 
     </section>
 

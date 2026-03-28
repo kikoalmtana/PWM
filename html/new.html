@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../img/logo/isotipo.svg">
   <title>Noticias</title>
-  <script src="../js/templateLoader.js"></script>
+  <script type="module" src="../js/new.js"></script>
   <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -14,47 +14,16 @@
 
 <main class="single-new">
 
-  <section class="heading"><h1>HEADER</h1></section>
+  <h1 class="heading" id="new-title"></h1>
 
-  <img src="../img/dummy.jpg" alt="header image" class="new-cover">
+  <img src="../img/dummy.jpg" alt="header image" class="new-cover" id="new-img">
 
   <section class="new-content">
-    <div class="notice">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore
-      </p>
-    </div>
+    <div class="notice" id="notice-content"></div>
 
     <div class="another-news">
-      <a href="./new.html">
-        <article data-template="preview-new"></article>
-      </a>
-
-      <a href="./new.html">
-        <article data-template="preview-new"></article>
-      </a>
+      <article data-template="preview-new"></article>
+      <article data-template="preview-new"></article>
     </div>
   </section>
 

@@ -7,6 +7,7 @@
     <title>Register</title>
     <script src="../js/templateLoader.js"></script>
     <script src="../js/interactions.js" defer></script>
+    <script src="../js/formValidation.js" defer></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -15,21 +16,32 @@
   <aside data-template="aside"></aside>
   <main>
     <h1 class="login-header">Registrarse</h1>
-    <form class="suggestions" id="login-form" action="" method="post">
+    <form novalidate class="suggestions" id="login-form" action="" method="post">
         <label for="username">Nombre:</label>
-        <input type="text" id="username" name="username" placeholder="Nombre" required>
+        <input type="text" id="username" name="username" placeholder="Nombre de usuario" required
+               pattern="^(?=.*[A-Za-z]).+$" minlength="3" maxlength="50"
+               data-error-short="El nombre debe tener más de 3 caracteres"
+               data-error-pattern="El nombre debe contener alguna letra">
+        <small data-error-for="username"></small>
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" placeholder="usuario@gmail.com" required>
+        <input type="email" id="email" name="email" placeholder="usuario@gmail.com" required >
+        <small data-error-for="email"></small>
         <label for="password">Contraseña:</label>
         <div class="input-wrapper">
-            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required
+                   pattern="^(?=.*[A-Za-z])(?=.*\d).+$" minlength="4" maxlength="50"
+                   data-error-short="La contraseña debe tener más de 4 caracteres"
+                   data-error-pattern="La contraseña debe contener minimo una letra y un numero">
             <button type="button" id="toggle-btn"><img src="../img/eye-off.svg" alt=""></button>
         </div>
+        <small data-error-for="password"></small>
         <label for="confirm-password">Confirmar Contraseña:</label>
         <div class="input-wrapper">
-            <input type="password" id="confirm-password" name="password" placeholder="Contraseña" required>
+            <input type="password" id="confirm-password" name="password" placeholder="Contraseña" required
+                   data-match="password">
             <button type="button" id="toggle-btn-confirm"><img src="../img/eye-off.svg" alt=""></button>
         </div>
+        <small data-error-for="confirm-password"></small>
         <button type="submit">Registrarse</button>
     </form>
   </main>

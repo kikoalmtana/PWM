@@ -284,6 +284,11 @@ main{
 
 /* About Us styles*/
 
+.about-us{
+    min-width: 0;
+    width: 100%;
+}
+
 .heading{
     font-size: 50px;
     background-color: var(--blue);
@@ -294,34 +299,28 @@ main{
 .header-img{
     display: block;
     margin: auto;
-    width: 600px;
-    height: 250px;
-
-    @media(max-width: 768px) {
-        width: 80%;
-        height: 30%;
-    }
+    max-width: 600px;
+    width: 100%;
+    height: 100%;
 }
 
 .paragraph{
     margin: auto;
-    padding: 20px;
-    width: 600px;
+    padding: clamp(8px, 3vw, 20px);
+    max-width: 700px;
+    width: 100%;
+    box-sizing: border-box;
 
     color: var(--font-color);
     line-height: 2rem;
-    font-size: 1.2rem;
-
-    @media(max-width: 768px) {
-        font-size: 1rem;
-        justify-self: center;
-        width: 90%;
-    }
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    text-align: justify;
 }
 
 .socials{
     padding: 20px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
     justify-content: center;
     gap: 100px;
 
@@ -338,8 +337,7 @@ main{
     }
 
     @media (max-width: 768px) {
-        padding: 5px;
-        gap: 25px;
+        grid-template-columns: repeat(2, auto);
     }
 }
 
@@ -385,7 +383,8 @@ main{
         border: 1px solid var(--shadow);
         border-radius: 10px;
         outline: none;
-
+        max-width: 550px;
+        width: 100%;
         padding: 6px 12px;
 
         background-color: var(--light-yellow);
@@ -1064,10 +1063,6 @@ main{
 
         display: block;
         margin: 1rem auto;
-
-        @media (max-width: 678px) {
-            width: 80%;
-        }
     }
 
     .new-content {
@@ -1800,58 +1795,25 @@ form small{
 
         margin-bottom: 30px;
 
-        .card-column {
+        .card-colum{
+
 
             .card {
 
-                .horarios-dia {
+                p {
                     font-size: 18px;
                     font-weight: bold;
 
                 }
 
-                .horarios {
-                    width: 380px;
-                    font-size: 1.3rem;
-                }
+                img{
+                    width: 350px;
+                    height: 250px;
 
-                .horarios-chess {
-                    display: grid;
-                    grid-template-columns: repeat(7, 1fr);
-                    width: 380px;
-                    gap: 2px;
-                    margin-top: 4px;
                 }
-
-                .horarios-chess {
-                    display: grid;
-                    grid-template-columns: repeat(7, 1fr);
-                    width: 380px;
-                    gap: 0;
-                    margin-top: 4px;
-                }
-
-                .horarios-chess > p {
-                    padding: 7px 4px;
-                    text-align: center;
-                    margin: 0;
-                    font-size: 1.1rem;
-                    border-radius: 0;
-                }
-
-                .horarios-chess > p:nth-child(odd) {
-                    background-color: #ffdb91;
-                }
-
-                .horarios-chess > p:nth-child(even) {
-                    background-color: #ffb074;
-                }
-            }
-
-            .card + .card {
-                margin-top: 20px;
             }
         }
+
     }
 
     .cards-grid.active {
@@ -1896,7 +1858,7 @@ form small{
         padding: 60px;
 
         h1{
-            font-size: 50px;
+            font-size: clamp(1rem, 5vm, 1.5rem);
             margin-bottom: 30px;
         }
 
@@ -1918,18 +1880,21 @@ form small{
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            max-width: 350px;
+            width: 100%;
+            gap: 10px;
 
         }
 
         button{
             width: 150px;
-            padding: 10px;
+            padding: 7px;
             font-weight: bold;
         }
 
         .selector {
-            width: 200px;
+            max-width: 300px;
+            width: 100%;
             position: relative;
         }
 
@@ -1937,6 +1902,7 @@ form small{
             background: var(--light-yellow);
             border: 1px solid var(--orange);
             padding: 10px;
+            margin-bottom: 10px;
             cursor: pointer;
             border-radius: 15px;
         }
@@ -2148,111 +2114,4 @@ form small{
 
 ::-webkit-scrollbar-thumb {
     background: var(--orange);
-}
-
-/* media query para tablets */
-
-@media (min-width: 769px) and (max-width: 1024px) {
-
-    /* HERO */
-    .hero p {
-        width: 70%;
-        font-size: 1.3rem;
-    }
-
-    .hero .cards {
-        gap: 50px;
-    }
-
-    .hero .cards .card-content {
-        padding: 20px 12px;
-    }
-
-    /* MAIN BUTTONS */
-    .main-buttons {
-        width: 80%;
-        height: 22rem;
-        gap: 15px;
-    }
-
-    .main-buttons a {
-        font-size: 1.5rem;
-        gap: 2rem;
-    }
-
-    .main-buttons a img {
-        width: 100px;
-    }
-
-    /* PRINCIPAL NEW */
-    .principal-new {
-        gap: 2rem;
-        margin: 3rem 1rem;
-    }
-
-    .principal-new article {
-        font-size: 1.1rem;
-    }
-
-    .principal-new article p {
-        font-size: 1.1rem;
-    }
-
-    /* SECONDARY NEWS */
-    .secondary-news {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 85%;
-    }
-
-    /* STOPS */
-    .stops form input[type="text"] {
-        width: 70%;
-        font-size: 1.3rem;
-    }
-
-    .stops .stop-information-area {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .stops .stop-information-area .stop-info {
-        width: 85%;
-    }
-
-    /* SELECTION PAGE */
-    .selection-page main {
-        padding: 40px;
-    }
-
-    .selection-page main .content-wrapper {
-        width: 80%;
-    }
-
-    .selection-page main h1 {
-        font-size: 40px;
-    }
-
-    /* LOGIN PAGE */
-    .login-page {
-        flex-direction: row;
-    }
-
-    .login-page main form {
-        max-width: 350px;
-    }
-
-    /* USER FOOTER */
-    .user-footer {
-        gap: 100px;
-    }
-
-    /* LINE INFO */
-    .line-info-page .cards-grid {
-        gap: 40px;
-    }
-
-    .line-info-page .card img {
-        width: 280px;
-        height: auto;
-    }
 }

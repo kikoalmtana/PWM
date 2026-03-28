@@ -36,9 +36,10 @@
         </div>
 
         <!-- Siempre es visible -->
-        <input id="passCode" type="number" placeholder="Código de bono" required
-               maxlength="6" minlength="6"
-               data-error-short="Debe de tener 6 caracteres">
+        <input id="passCode" type="text" placeholder="Código de bono" required
+               maxlength="6" minlength="6" pattern="[0-9]*"
+               data-error-short="Debe de tener 6 caracteres"
+               data-error-pattern="Debe de ser código numérico">
         <small data-error-for="passCode"></small>
 
         <!-- Aparece que si la opción es con_dni -->

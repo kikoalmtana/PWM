@@ -6,11 +6,12 @@
     <link rel="icon" type="image/png" href="../img/logo/isotipo.svg">
     <title>Sobre nosotros</title>
     <script src="../js/templateLoader.js"></script>
+    <script src="../js/formValidation.js" defer></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <header data-template="header" ></header>
-    <main>
+    <main class="about-us">
         <h1 class="heading">HEADER</h1>
         <img class="header-img" src="../img/dummy.jpg" alt="Imagen corporativa">
         <p class="paragraph" >
@@ -60,14 +61,20 @@
         </div>
 
 
-        <form class="suggestions"  action="" method="post">
+        <form novalidate class="suggestions"  action="" method="post">
             <h2>Sugerencias</h2>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="name" placeholder="Tu nombre completo" required>
+            <input type="text" id="nombre" name="name" placeholder="Nombre" required
+                   minlength="3" maxlength="50" data-error-short="Minimo 3 caracteres">
+            <small data-error-for="nombre"></small>
             <label for="email">Email:</label>
-            <input type="text" id="email" name="affair" placeholder="tu@email.com" required>
+            <input type="email" id="email" name="email" placeholder="nombre@email.com" required
+                   data-error-pattern="Debe de ser un email valido">
+            <small data-error-for="email"></small>
             <label for="mensaje">Mensaje:</label>
-            <textarea name="mensaje" id="mensaje" cols="40" rows="5" required placeholder="Tu mensaje aqui..."></textarea>
+            <textarea name="mensaje" id="mensaje" cols="40" rows="5" required placeholder="Tu mensaje aqui..."
+                      minlength="30" data-error-short="El mensaje debe contener 30 caracteres como mínimo"></textarea>
+            <small data-error-for="mensaje"></small>
             <button type="submit">Enviar</button>
         </form>
     </main>

@@ -588,6 +588,7 @@ main{
 .principal-new {
     display: flex;
 
+
     max-width: 1250px;
     min-height: 350px;
     gap: 4rem;

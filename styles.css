@@ -80,11 +80,16 @@ main{
     }
 }
 
-.icon img{
-    width: 50px;
+.login-button {
     display: block;
-    /*Blue filter*/
-    filter: brightness(0) saturate(100%) invert(15%) sepia(54%) saturate(4677%) hue-rotate(205deg) brightness(99%) contrast(93%);
+    text-decoration: none;
+    color: var(--blue);
+    font-weight: bold;
+    font-size: 20px;
+
+    &:hover{
+        color: white;
+    }
 }
 
 .hamburger{
@@ -117,7 +122,7 @@ main{
     }
 
 
-    .icon{
+    .login-button{
         display: none;
     }
 

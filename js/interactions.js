@@ -64,18 +64,30 @@ function toggleOptions() {
     options.style.display = options.style.display === "block" ? "none" : "block";
 }
 
+// ─── IMÁGENES POR TIPO DE BONO ───────────────────────────────────────────────
+const IMAGENES_BONO = {
+    "Bono Guagua":            "../img/Bono_guagua.jpg",
+    "Bono Residente Canario": "../img/Tarjeta_BonoResidente.jpg",
+    "Tarjeta Guagua Joven":   "../img/Tarjeta_Wawa_Joven.png",
+    "Tarjeta Bono Oro":       "../img/Tarjeta_bono_oro.jpg",
+};
+
 function selectOption(element, tipo) {
     document.querySelector(".selected").textContent = element.textContent;
     document.getElementById("options").style.display = "none";
 
     const dniField = document.getElementById("dniField");
-
     if (tipo === "con_dni") {
         dniField.style.display = "inline-block";
-        dniField.removeAttribute("disabled"); // ✅ lo activa
+        dniField.removeAttribute("disabled");
     } else {
         dniField.style.display = "none";
-        dniField.setAttribute("disabled", "true"); // ✅ lo desactiva de la validación
+        dniField.setAttribute("disabled", "true");
+    }
+
+    const bonoImagen = document.getElementById("bonoImagen");
+    if (bonoImagen) {
+        bonoImagen.src = IMAGENES_BONO[element.textContent.trim()] || "../img/Tarjeta_Wawa_Joven.png";
     }
 }
 

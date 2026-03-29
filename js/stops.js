@@ -1,25 +1,80 @@
-// Declaración de variables
+const getData = async (link) => {
+    const response = await fetch(link).catch(err => console.error(err));
+    return response.json();
+};
 
-const input = document.getElementById("input");
-const lista = document.createElement("li");
-const boxArea = document.getElementById("guaguas-box");
-const actualizar = document.getElementById("update-box");
-const guardar = document.getElementById("save-stop");
-const mapa = document.getElementById("go-map");
+const paradas = await getData('http://localhost:3000/paradas');
 
-let paradas = []
+const input = document.getElementById('input');
+const guaguasBox = document.getElementById('guaguas-box');
+document.querySelector('.stop-info').innerHTML = '';
 
-async function cargarParadas() {
-    try {
-        const response = await fetch('http://localhost:3000/paradas');
-        const data = await response.json();
 
-        const paradas = data.map(item => ({
-            identificador: item.identificador_parada,
-            nombre: item.nombre_parada,
-            proxima_guauga: item.proxima_guauga
-        }));
-    } catch (e) {
-        console.error('Error al cargar paradas:', e);
+// ─── CREAR DESPLEGABLE ───────────────────────────────────────────────────────
+const dropdown = document.createElement('ul');
+dropdown.id = 'stops-dropdown';
+
+const wrapper = document.querySelector('.stops form div');
+wrapper.appendChild(dropdown);
+
+// ─── RENDERIZAR PARADA SELECCIONADA ─────────────────────────────────────────
+const renderParada = (parada) => {
+    guaguasBox.style.display = 'block';
+
+    const stopInfo = guaguasBox.querySelector('.stop-info');
+    stopInfo.innerHTML = `<h3>${parada.nombre_parada} <span class="stop-id">#${parada.identificador_parada}</span></h3>`;
+
+    parada.guaguas_en_camino.proxima_guagua.forEach(guagua => {
+        const div = document.createElement('div');
+        div.className = 'bus-from-stop';
+        div.innerHTML = `
+            <h4>${guagua.linea}</h4>
+            <h5>${guagua.destino}</h5>
+            <p>${guagua.llegada}</p>
+        `;
+        stopInfo.appendChild(div);
+    });
+};
+
+// ─── MOSTRAR SUGERENCIAS ─────────────────────────────────────────────────────
+const mostrarSugerencias = (query) => {
+    dropdown.innerHTML = '';
+
+    if (query === '') {
+        dropdown.style.display = 'none';
+        return;
     }
-}
+
+    const coincidencias = paradas.filter(p =>
+        p.nombre_parada.toLowerCase().includes(query.toLowerCase()) ||
+        p.identificador_parada.includes(query)
+    );
+
+    if (coincidencias.length === 0) {
+        dropdown.style.display = 'none';
+        return;
+    }
+
+    coincidencias.forEach(parada => {
+        const li = document.createElement('li');
+        li.textContent = `${parada.nombre_parada} (#${parada.identificador_parada})`;
+        li.addEventListener('click', () => {
+            input.value = parada.nombre_parada;
+            dropdown.style.display = 'none';
+            guaguasBox.style.display = 'none';
+            renderParada(parada);
+        });
+        dropdown.appendChild(li);
+    });
+
+    dropdown.style.display = 'block';
+};
+
+// ─── EVENTOS ─────────────────────────────────────────────────────────────────
+input.addEventListener('input', () => mostrarSugerencias(input.value.trim()));
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('form')) {
+        dropdown.style.display = 'none';
+    }
+});

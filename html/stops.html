@@ -21,7 +21,9 @@
   <p>Busca tu parada para obtener información sobre próximas guaguas</p>
 
   <form role="search">
-    <input required type="text" placeholder="Número o nombre de la parada " id="input">
+    <div class="search-wrapper">
+      <input required type="text" placeholder="Número o nombre de la parada" id="input">
+    </div>
   </form>
 
 
@@ -55,7 +57,7 @@
       </div>
     </div>
 
-    <div class="buttons-info-stops">
+    <div class="buttons-info-stops" style="align-self: flex-start; border: 1px solid red;">
       <a class="stop-button" href="" id="update-box">Actualizar tiempos</a>
       <a class="stop-button" href="" id="save-stop">Guardar en favoritos</a>
       <a class="stop-button" href="" id="go-map">Ver en el mapa</a>

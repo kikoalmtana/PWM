@@ -70,3 +70,21 @@ try {
 } catch (e) {
     console.error(e);
 }
+
+const searchInput = document.querySelector('form input');
+
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+    const anchors = listadoLineas.querySelectorAll('.line-selector');
+
+    anchors.forEach(anchor => {
+        const numero = anchor.querySelector('.line-number').textContent.toLowerCase();
+        const nombre = anchor.querySelector('.line-name').textContent.toLowerCase();
+
+        if (numero.includes(query) || nombre.includes(query)) {
+            anchor.style.display = "";
+        } else {
+            anchor.style.display = "none";
+        }
+    });
+});

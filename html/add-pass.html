@@ -6,6 +6,7 @@
     <link rel="icon" type="image/png" href="../img/logo/isotipo.svg">
     <title>Añadir bono</title>
     <script src="../js/templateLoader.js"></script>
+    <script src="../js/interactions.js" defer></script>
     <script src="../js/formValidation.js" defer></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
@@ -17,10 +18,9 @@
 
     <h1 class="login-header">Añade un Bono a tu cuenta</h1>
 
+    <img id="bonoImagen" src="../img/Tarjeta_Wawa_Joven.png" class="image-box" alt="">
 
-    <img src = "../img/Tarjeta_Wawa_Joven.png" class="image-box" alt = "">
-
-    <form novalidate class = "suggestions">
+    <form novalidate class="suggestions" id="addPassForm">
 
         <div class="selector">
             <div class="selected" onclick="toggleOptions()">
@@ -29,15 +29,16 @@
             <div class="options" id="options">
                 <div class="option" onclick="selectOption(this, 'basico')">Bono Guagua</div>
                 <div class="option" onclick="selectOption(this, 'con_dni')">Bono Residente Canario</div>
-                <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta Wawa Joven</div>
-                <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta bono oro</div>
+                <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta Guagua Joven</div>
+                <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta Bono Oro</div>
             </div>
         </div>
 
-        <input id="passCode" type="number" placeholder="Código de bono" required
-               maxlength="6" minlength="6"
-               data-error-short="Debe de tener 6 caracteres">
-        <small data-error-for="passCode"></small>
+        <input id="codigoField" type="text" placeholder="Código de bono" required
+               maxlength="6" minlength="6" pattern="[0-9]*"
+               data-error-short="Debe de tener 6 caracteres"
+               data-error-pattern="Debe de ser código numérico">
+        <small data-error-for="codigoField"></small>
 
         <input id="dniField" type="text" placeholder="DNI"
                pattern="^[0-9]{8}[A-Za-z]$" minlength="9" maxlength="9"
@@ -54,7 +55,4 @@
 <footer data-template="footer"></footer>
 
 </body>
-
-<script src="../js/interactions.js"></script>
-
 </html>

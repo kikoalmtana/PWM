@@ -6,7 +6,9 @@
       "viajes_realizados": 15,
       "propietario_bono": "Nereida Vega Benitez",
       "fecha_caducidad": "2026-05-14",
-      "saldo": null
+      "saldo": null,
+      "codigo_bono": "857732",
+      "dni": "11223344B"
     },
     {
       "id": 8,
@@ -14,7 +16,9 @@
       "viajes_realizados": 22,
       "propietario_bono": "Manuela Benítez Falcón",
       "fecha_caducidad": "2026-06-23",
-      "saldo": null
+      "saldo": null,
+      "codigo_bono": "123542",
+      "dni": "87654321X"
     },
     {
       "id": 10,
@@ -22,15 +26,19 @@
       "viajes_realizados": 32,
       "propietario_bono": "David Domínguez Rivero",
       "fecha_caducidad": "2026-04-10",
-      "saldo": null
+      "saldo": null,
+      "codigo_bono": "123564",
+      "dni": "12345678Z"
     },
     {
       "id": 11,
       "tipo_de_bono": "Bono Guagua",
       "viajes_realizados": 44,
-      "propietario_bono": "Juan Vega Soriano",
+      "propietario_bono": null,
       "fecha_caducidad": "2026-06-23",
-      "saldo": 3.84
+      "saldo": 3.84,
+      "codigo_bono": "044532",
+      "dni": null
     }
   ]
 }

@@ -21,7 +21,7 @@
 
 
 
-    <form novalidate class = "suggestions">
+    <form novalidate class="suggestions" id="addPassForm">
 
         <div class="selector">
             <div class="selected" onclick="toggleOptions()">
@@ -35,18 +35,17 @@
             </div>
         </div>
 
-        <!-- Siempre es visible -->
-        <input id="passCode" type="text" placeholder="Código de bono" required
+        <!-- Cambiado de passCode → codigoField -->
+        <input id="codigoField" type="text" placeholder="Código de bono" required
                maxlength="6" minlength="6" pattern="[0-9]*"
                data-error-short="Debe de tener 6 caracteres"
                data-error-pattern="Debe de ser código numérico">
-        <small data-error-for="passCode"></small>
+        <small data-error-for="codigoField"></small>
 
-        <!-- Aparece que si la opción es con_dni -->
-        <input id="dniField" type="text" placeholder="DNI" required
+        <input id="dniField" type="text" placeholder="DNI"
                pattern="^[0-9]{8}[A-Za-z]$" minlength="9" maxlength="9"
-                data-error-short="Debe de tener 9 caracteres"
-                data-error-pattern="El DNI debe tener 8 números y una letra"
+               data-error-short="Debe de tener 9 caracteres"
+               data-error-pattern="El DNI debe tener 8 números y una letra"
                data-validate-dni>
         <small data-error-for="dniField"></small>
 

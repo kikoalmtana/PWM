@@ -2,6 +2,13 @@ const form = document.querySelector('form');
 const inputs = [...form.querySelectorAll('input, textarea, select')];
 
 function validate(input) {
+    if (input.disabled) {
+        input.setCustomValidity("");
+        const small = document.querySelector(`[data-error-for="${input.id}"]`);
+        if (small) small.textContent = "";
+        return;
+    }
+
     input.setCustomValidity("");
     const v = input.validity;
 
@@ -47,6 +54,7 @@ function validateDNI(dni) {
 }
 
 inputs.forEach(input => input.addEventListener('blur', () => {
+    if (input.disabled) return;
     input.classList.add('touched');
     validate(input);
 }, { once: true }));
@@ -54,12 +62,13 @@ inputs.forEach(input => input.addEventListener('blur', () => {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    inputs.forEach(validate);
+    inputs.forEach(input => {
+        if (!input.disabled) validate(input);
+    });
 
     if (!form.checkValidity()) {
         return;
     }
 
     console.log("Formulario válido");
-
 });

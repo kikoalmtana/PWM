@@ -20,18 +20,14 @@ paradas en servicio, además de poder acceder a información sobre los bonos dis
 un apartado de noticias relevantes al servicio. Todos los usuarios registrados pueden acceder
 a la misma información pero de una forma más personalizada.
 
-## Lista de requisitos funcionales
 
-- Se debe poder acceder a información sobre líneas (horarios, paradas,...) desde la web
-- Se debe poder acceder a información sobre paradas (próximas Guaguas,...) desde la web
-- Debe existir un apartado de noticias para el usuario
-- Se debe poder acceder a información sobre bonos (saldo, viajes realizados...) desde la web
-- Debe existir la posibilidad de registrarse e iniciar sesión
-- Los usuarios registrados deben poder configurar su cuenta y ver información personalizada (sus bonos disponibles, ...)
-
-## Mockups y Storyboard
+## Mockups (para todos los dispositivos) y Storyboard
 En la carpeta /mockups existe un documento pdf con todos los mockups y diferentes storyboards.
-[Acceso al documento](./mockups/Mockups%20y%20Storyboard.pdf)
+[Acceso al documento](./mockups/Mockups%20y%20Storyboard.pdf).
+
+Se han creado diferentes mockups adaptados a las dimensiones de diferentes dispositivos, todos ellos se encuentran en la
+carpeta /mockups/responsive/, siguiendo el siguiente [enlace](https://github.com/kikoalmtana/PWM/tree/sprint-2/mockups/responsive).
+
 ## Páginas HTML
 
 En esta sección se listan las diferentes páginas implementadas en HTML a partir 
@@ -54,16 +50,65 @@ de los diferentes mockups realizados previamente
 
 Nota: index.html es la página principal del sitio web (homepage)
 
-## Templates
+## Aspectos responsive
 
-Para los diferentes elementos HTML que se repetían en diferentes páginas se ha optado por
-realizar diferentes templates, se localizan todos en el directorio /templates del proyecto
+Para todas las páginas HTML se han implementado mediante Media Queries los diferentes diseños elaborados con Figma y representados
+en los diferentes mockups para diseños responsive. 
 
+Un cambio que se realiza en todas las páginas es en el header, que se contrae de forma que se crea una vista limpia del header
+dejando sólamente el logo y un desplegable con todos los enlaces que se encontraban en él previamente. Además de eso, algunas páginas sufren cambios más significativos que otras:
 
-- **aside.html** ==> elemento decorativo para páginas con formularios 
-- **footer.html** ==> footer de casi todas las páginas del sitio web
-- **header.html** ==> header de casi todas las páginas del sitio web
-- **line-button.html** ==> botón de acceso a la información de una línea
-- **line-warnings.html** ==> tarjeta que contiene un aviso sobre una línea
-- **pass-info.html** ==> elemento que contiene una imagen e información sobre un bono
-- **preview-new.html** ==> elemento con una imagen, título y resumen de una noticia
+En general todas las páginas adaptan la disposición de sus elementos y el tamaño de sus textos a las dimensiones de la pantalla
+
+## Carga de templates
+
+Todas las páginas del proyecto utilizan carga de templates (como mínimo cargan el header y el footer del sitio web, que es igual
+para todas las páginas). La carga de templates se realiza utilizando el script /js/templateLoader.js
+
+## Carga de datos
+
+La carga de datos se realiza en los diferentes ficheros .js creados para cada página, donde se maneja la carga de los datos desde la API (usando un JSON-server)
+y la incrustación de los mismos en la página respetando los estilos aplicados en las mismas
+
+Las páginas que tienen carga de datos desde la API son:
+
+- Homepage (index.html)
+- Página de noticias (news.html)
+- Página de información sobre una noticia (new.html)
+- Página de líneas (lines.html)
+- Página con información de una línea (line-info.html)
+- Página de información de usuario (user-info.html)
+- Página de información de un bono (pass-info.html)
+
+## Validación de formularios
+
+Para la validación de formularios se utilizan tanto validaciones HTML5 como validaciones custom:
+
+Validaciones HTML5:
+
+- valueMissing (required)
+- tooShort (minlenght)
+- tooLong (maxlenght)
+- typeMismatch (type)
+- patternMismatch (pattern)
+
+Validaciones custom (funciones implementadas con JavaScript):
+
+- Validación de coincidencia entre campos
+- Validación de DNI
+
+## Ubicación del contenido JSON
+
+Para cargar los datos se ha implementado un fichero db.json el cual contiene toda la información a cargar, ordenada como una base de datos.
+Para cargar los datos se despliega un fake-server utilizando JSON server que escucha por el puerto 3000. La especificación y comando de lanzamiento
+del servidor se encuentra en el fichero package.json.
+
+Para lanzar servidor (teniendo instalado Node.js y pudiendo utilizar npm) se ejecuta el comando "npm run api" de forma que se despliega
+el contenido del JSON en un servidor local alojado en la direccion "http://localhost:3000/"
+
+El servidor cuenta con los siguientes endpoints:
+- http://localhost:3000/usuarios
+- http://localhost:3000/lineas
+- http://localhost:3000/paradas
+- http://localhost:3000/noticias
+- http://localhost:3000/avisos-de-linea

@@ -1,14 +1,15 @@
+const getData = async (link) => {
+    return await fetch(link)
+        .catch(error => console.error('Error fetching data:', error))
+        .then(response => response.json());
+}
+
+const USUARIOS = await getData('http://localhost:3000/usuarios');
+
 const form = document.querySelector('form');
 const inputs = [...form.querySelectorAll('input, textarea, select')];
 
 function validate(input) {
-    if (input.disabled) {
-        input.setCustomValidity("");
-        const small = document.querySelector(`[data-error-for="${input.id}"]`);
-        if (small) small.textContent = "";
-        return;
-    }
-
     input.setCustomValidity("");
     const v = input.validity;
 
@@ -54,21 +55,48 @@ function validateDNI(dni) {
 }
 
 inputs.forEach(input => input.addEventListener('blur', () => {
-    if (input.disabled) return;
     input.classList.add('touched');
     validate(input);
 }, { once: true }));
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
+async function loginUser(username, password) {
 
-    inputs.forEach(input => {
-        if (!input.disabled) validate(input);
-    });
+    try {
+        const usuario = USUARIOS.find(u => u.name === username && u.password === password);
 
-    if (!form.checkValidity()) {
-        return;
+        if (!usuario) {
+            showLoginError("Usuario o contraseña incorrectos");
+            return;
+        }
+
+        window.location.href = `./user-info.html?id=${usuario.id}`;
+
+    } catch (error) {
+        showLoginError("No se pudo conectar con el servidor. Inténtalo de nuevo.");
+        console.error(error);
+    }
+}
+
+function showLoginError(message) {
+    let errorBox = document.getElementById('login-error');
+
+    if (!errorBox) {
+        errorBox = document.createElement('p');
+        errorBox.id = 'login-error';
+        errorBox.style.color = 'red';
+        form.prepend(errorBox);
     }
 
-    console.log("Formulario válido");
+    errorBox.textContent = message;
+}
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    inputs.forEach(validate);
+    if (!form.checkValidity()) return;
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+
+    await loginUser(username, password);
 });

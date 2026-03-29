@@ -1,7 +1,8 @@
 const getData = async (link) => {
-    const response = await fetch(link).catch(err => console.error(err));
-    return response.json();
-};
+    return await fetch(link)
+        .catch(error => console.error('Error fetching data:', error))
+        .then(response => response.json());
+}
 
 const paradas = await getData('http://localhost:3000/paradas');
 
@@ -10,16 +11,15 @@ const guaguasBox = document.getElementById('guaguas-box');
 document.querySelector('.stop-info').innerHTML = '';
 
 
-// ─── CREAR DESPLEGABLE ───────────────────────────────────────────────────────
 const dropdown = document.createElement('ul');
 dropdown.id = 'stops-dropdown';
 
 const wrapper = document.querySelector('.stops form div');
 wrapper.appendChild(dropdown);
 
-// ─── RENDERIZAR PARADA SELECCIONADA ─────────────────────────────────────────
+
 const renderParada = (parada) => {
-    guaguasBox.style.display = 'block';
+    guaguasBox.style.display = 'flex';
 
     const stopInfo = guaguasBox.querySelector('.stop-info');
     stopInfo.innerHTML = `<h3>${parada.nombre_parada} <span class="stop-id">#${parada.identificador_parada}</span></h3>`;
@@ -36,7 +36,6 @@ const renderParada = (parada) => {
     });
 };
 
-// ─── MOSTRAR SUGERENCIAS ─────────────────────────────────────────────────────
 const mostrarSugerencias = (query) => {
     dropdown.innerHTML = '';
 
@@ -70,7 +69,6 @@ const mostrarSugerencias = (query) => {
     dropdown.style.display = 'block';
 };
 
-// ─── EVENTOS ─────────────────────────────────────────────────────────────────
 input.addEventListener('input', () => mostrarSugerencias(input.value.trim()));
 
 document.addEventListener('click', (e) => {

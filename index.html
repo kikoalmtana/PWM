@@ -92,10 +92,10 @@
       const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
       const usuario = await response.json();
 
-      const icon = document.querySelector('.icon');
-      if (icon) {
-        icon.href = './html/user-info.html';
-        icon.innerHTML = `<span style="font-weight:bold;color:var(--blue)">${usuario.name}</span>`;
+      const loginBtn = document.querySelector('.login-button');
+      if (loginBtn) {
+        loginBtn.textContent = usuario.name;
+        loginBtn.href = './html/user-info.html';
       }
 
       const userNav = document.querySelector('.user-nav');

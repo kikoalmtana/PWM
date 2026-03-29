@@ -1880,25 +1880,52 @@ form small{
 
         margin-bottom: 30px;
 
-        .card-colum{
+        .card-column {
+            .horarios-dia {
+                font-size: 18px;
+                font-weight: bold;
 
+            }
+            .horarios {
+                width: 380px;
+                font-size: 1.3rem;
+            }
 
-            .card {
+            .horarios-chess {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                width: 380px;
+                gap: 2px;
+                margin-top: 4px;
+            }
 
-                p {
-                    font-size: 18px;
-                    font-weight: bold;
+            .horarios-chess {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                width: 380px;
+                gap: 0;
+                margin-top: 4px;
+            }
 
-                }
+            .horarios-chess > p {
+                padding: 7px 4px;
+                text-align: center;
+                margin: 0;
+                font-size: 1.1rem;
+                border-radius: 0;
+            }
 
-                img{
-                    width: 350px;
-                    height: 250px;
+            .horarios-chess > p:nth-child(odd) {
+                background-color: #ffdb91;
+            }
 
-                }
+            .horarios-chess > p:nth-child(even) {
+                background-color: #ffb074;
             }
         }
-
+        .card + .card {
+            margin-top: 20px;
+        }
     }
 
     .cards-grid.active {
@@ -3034,30 +3061,80 @@ main{
 
 .stops {
 
-    form {
-        display: flex;
-
-        margin: 0 auto;
-        justify-content: center;
-    }
-
     .heading {
         background-color: var(--blue);
         color: var(--light-yellow)
     }
 
-    form input[type="text"] {
-        background: var(--light-yellow);
-        border: 3px solid var(--orange);
-        border-radius: 10px;
-        outline: none;
-        padding: 0.75rem 0.5rem;
-        font-size: 1.5rem;
+    .form-container {
+        form {
+            display: flex;
 
-        width: 40rem;
+            margin: 0 auto;
+            justify-content: center;
+        }
 
-        @media (max-width: 768px) {
-            width: 80%;
+        form input[type="text"] {
+            background: var(--light-yellow);
+            border: 3px solid var(--orange);
+            border-radius: 10px;
+            outline: none;
+            padding: 0.75rem 0.5rem;
+            font-size: 1.5rem;
+
+            width: 40rem;
+
+            @media (max-width: 768px) {
+                width: 80%;
+            }
+        }
+        .search-wrapper {
+            position: relative;
+            display: inline-block;
+
+            @media (max-width: 768px) {
+                width: 80%;
+            }
+        }
+
+        #stops-dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            z-index: 100;
+
+            list-style: none;
+            margin: 0;
+            padding: 0.4rem 0;
+
+            background: var(--light-yellow);
+            border: 3px solid var(--orange);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+            max-height: 18rem;
+            overflow-y: auto;
+
+            li {
+                padding: 0.65rem 1rem;
+                font-size: 1.1rem;
+                color: var(--font-color);
+                cursor: pointer;
+                border-radius: 6px;
+                margin: 0.2rem 0.4rem;
+                transition: background 0.15s ease, color 0.15s ease;
+
+                &:hover {
+                    background: var(--orange);
+                    color: var(--light-yellow);
+                }
+            }
+
+            li + li {
+                border-top: 1px solid color-mix(in srgb, var(--orange) 25%, transparent);
+            }
         }
     }
 

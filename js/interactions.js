@@ -7,16 +7,13 @@ function initLineInfo() {
 
             if (grid.classList.contains("active")) {
                 grid.style.height = grid.scrollHeight + "px";
-
                 requestAnimationFrame(() => {
                     grid.style.height = "0px";
                 });
-
                 grid.classList.remove("active");
             } else {
                 grid.classList.add("active");
                 grid.style.height = grid.scrollHeight + "px";
-
                 grid.addEventListener("transitionend", () => {
                     grid.style.height = "auto";
                 }, { once: true });
@@ -31,7 +28,6 @@ function initLineInfo() {
     });
 }
 
-// Manejo del botón de ocultar/ver contraseña
 function togglePassword(inputId, btnId) {
     const input = document.getElementById(inputId);
     const btn = document.getElementById(btnId);
@@ -58,13 +54,11 @@ if (toggleBtnConfirm) {
     });
 }
 
-// Funciones para el desplegable de selección de bono
 function toggleOptions() {
     const options = document.getElementById("options");
     options.style.display = options.style.display === "block" ? "none" : "block";
 }
 
-// ─── IMÁGENES POR TIPO DE BONO ───────────────────────────────────────────────
 const IMAGENES_BONO = {
     "Bono Guagua":            "../img/Bono_guagua.jpg",
     "Bono Residente Canario": "../img/Tarjeta_BonoResidente.jpg",
@@ -92,7 +86,6 @@ function selectOption(element, tipo) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector('form');
     const options = document.getElementById("options");
     if (options) options.style.display = "none";
 
@@ -100,9 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (dniField) dniField.setAttribute("disabled", "true");
 });
 
-
-
-// ─── SUBMIT DEL FORMULARIO ADD-PASS ──────────────────────────────────────────
 const addPassForm = document.getElementById("addPassForm");
 
 if (addPassForm) {
@@ -113,8 +103,6 @@ if (addPassForm) {
         const dniIntroducido    = document.getElementById("dniField").value.trim();
         const tipoSeleccionado  = document.querySelector(".selected").textContent.trim();
 
-
-        // Validar DNI manualmente si está visible
         const esConDni = document.getElementById("dniField").style.display !== "none";
         if (esConDni && dniIntroducido === "") {
             alert("Por favor, introduce tu DNI.");
@@ -126,7 +114,6 @@ if (addPassForm) {
             return;
         }
 
-
         let data;
         try {
             const res = await fetch("../json/bonos.json");
@@ -136,22 +123,55 @@ if (addPassForm) {
             return;
         }
 
-
         const bonoEncontrado = data.users.find(u => {
-            console.log("comparando:", u.codigo_bono, "===", codigoIntroducido, "|", u.tipo_de_bono, "===", tipoSeleccionado);
             const coincideCodigo = u.codigo_bono === codigoIntroducido;
             const coincideTipo   = u.tipo_de_bono.toLowerCase() === tipoSeleccionado.toLowerCase();
             const coincideDni    = esConDni ? u.dni === dniIntroducido : true;
             return coincideCodigo && coincideTipo && coincideDni;
         });
 
-
         if (!bonoEncontrado) {
             alert("No se encontró ningún bono con esos datos. Revisa el código o el DNI.");
             return;
         }
 
-        sessionStorage.setItem("bonoActivo", JSON.stringify(bonoEncontrado));
-        window.location.href = "pass-info.html";
+        const esAddPass = window.location.pathname.includes('add-pass');
+
+        if (esAddPass) {
+            const userId = sessionStorage.getItem('userId');
+            if (!userId) {
+                alert("No hay sesión iniciada.");
+                window.location.href = '../html/login.html';
+                return;
+            }
+
+            try {
+                const usuarioRes = await fetch(`http://localhost:3000/usuarios/${userId}`);
+                const usuario = await usuarioRes.json();
+
+                if (usuario.bonos.includes(bonoEncontrado.id)) {
+                    alert("Este bono ya está añadido a tu cuenta.");
+                    return;
+                }
+
+                const nuevosBonos = [...usuario.bonos, bonoEncontrado.id];
+
+                await fetch(`http://localhost:3000/usuarios/${userId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ bonos: nuevosBonos })
+                });
+
+                window.location.href = '../html/user-info.html';
+
+            } catch (err) {
+                alert("Error al guardar el bono. Inténtalo de nuevo.");
+                console.error(err);
+            }
+
+        } else {
+            sessionStorage.setItem("bonoActivo", JSON.stringify(bonoEncontrado));
+            window.location.href = "pass-info.html";
+        }
     });
 }

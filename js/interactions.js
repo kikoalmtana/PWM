@@ -75,6 +75,7 @@ function selectOption(element, tipo) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector('form');
     const options = document.getElementById("options");
     if (options) options.style.display = "none";
 });

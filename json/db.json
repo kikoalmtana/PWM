@@ -2,11 +2,13 @@
   "usuarios": [
     {
       "id": 2,
-      "name": "administrador"
+      "name": "Administrador",
+      "password": "admin12345"
     },
     {
       "id": 5,
-      "name": "prueba"
+      "name": "Prueba",
+      "password": "prueba12345"
     }
   ],
   "lineas": [

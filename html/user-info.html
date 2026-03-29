@@ -7,6 +7,7 @@
   <title>User information</title>
   <script src="../js/popUp.js" ></script>
   <script src="../js/templateLoader.js"></script>
+  <script type="module" src="../js/user-info.js" ></script>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -16,7 +17,6 @@
 <main class="user-profile">
   <h1>Tu perfil</h1>
   <div class="user-info">
-    <img src="../img/dummy.jpg" alt="photo">
     <div>
       <h3>Username</h3>
       <a href="../html/user-edit.html">
@@ -42,13 +42,20 @@
     </div>
   </div>
   <div class="user-footer">
-    <button>Cerrar sesión</button>
+    <button id="logout">Cerrar sesión</button>
     <button id="openPopup">Borrar cuenta</button>
   </div>
 
 </main>
 
 <footer data-template="footer"> </footer>
+
+<script>
+  document.getElementById('logout').addEventListener('click', () => {
+    sessionStorage.removeItem('userId');
+    window.location.href = '../html/login.html';
+  });
+</script>
 
 </body>
 </html>

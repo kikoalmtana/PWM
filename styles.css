@@ -233,6 +233,7 @@ main{
     text-align: justify;
     text-justify: inter-word;
     flex-shrink: 0;
+    line-height: 0.9rem;
 }
 
 .main-footer {

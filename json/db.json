@@ -3,12 +3,14 @@
     {
       "id": 2,
       "name": "Administrador",
-      "password": "admin12345"
+      "password": "admin12345",
+      "bonos": []
     },
     {
       "id": 5,
       "name": "Prueba",
-      "password": "prueba12345"
+      "password": "prueba12345",
+      "bonos": [7, 11]
     }
   ],
   "lineas": [

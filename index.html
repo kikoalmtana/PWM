@@ -35,9 +35,7 @@
     </ul>
   </nav>
 
-  <a class="icon" href="./html/login.html">
-    <img src="./img/user.svg" alt="user">
-  </a>
+  <a class="login-button" href="./html/login.html">Iniciar sesión</a>
 
 </header>
 
@@ -85,6 +83,32 @@
   </main>
 
   <footer data-template="footer"> </footer>
+
+<script type="module">
+  const userId = sessionStorage.getItem('userId');
+
+  if (userId) {
+    try {
+      const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
+      const usuario = await response.json();
+
+      const icon = document.querySelector('.icon');
+      if (icon) {
+        icon.href = './html/user-info.html';
+        icon.innerHTML = `<span style="font-weight:bold;color:var(--blue)">${usuario.name}</span>`;
+      }
+
+      const userNav = document.querySelector('.user-nav');
+      if (userNav) {
+        userNav.textContent = usuario.name;
+        userNav.href = './html/user-info.html';
+      }
+
+    } catch (error) {
+      console.error('Error cargando usuario:', error);
+    }
+  }
+</script>
 
 </body>
 </html>

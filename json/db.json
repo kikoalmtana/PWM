@@ -5,7 +5,8 @@
       "name": "Administrador",
       "password": "admin12345",
       "bonos": [
-        11
+        11,
+        10
       ]
     },
     {

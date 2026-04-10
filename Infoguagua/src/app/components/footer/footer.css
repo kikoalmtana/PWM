@@ -1,0 +1,27 @@
+.main-footer {
+  background-color: var(--orange);
+  display: flex;
+  flex-direction: column;
+  line-height: 1.7rem;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 16px var(--orange);
+}
+.imagen-footer {
+  width: 150px;
+  padding: 20px 20px 20px 20px;
+}
+.content-footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  p {
+    color: var(--blue);
+    margin: 0 50px;
+  }
+}
+.copy{
+  color: rgba(255, 255, 255, 0.35);
+  margin: 10px 50px;
+}

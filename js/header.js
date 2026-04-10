@@ -1,4 +1,4 @@
-const userId = sessionStorage.getItem('userId');
+    const userId = sessionStorage.getItem('userId');
 
 if (userId) {
     const getData = async (link) => {

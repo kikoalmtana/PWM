@@ -1,6 +1,6 @@
 <header class="header">
-  <a class="logo" href="../index.html">
-    <img src="../img/logo/imagotipo-horizontal-azul.svg" alt="logo image">
+  <a class="logo" routerLink="../index.html">
+    <img src="../assets/logo/imagotipo-horizontal-azul.svg" alt="logo image">
   </a>
 
   <input type="checkbox" id="menu-toggle" hidden>
@@ -11,16 +11,16 @@
   </label>
   <nav>
     <ul class="navbar">
-      <li><a href="../html/lines.html">Lineas</a></li>
-      <li><a href="../html/stops.html">Paradas</a></li>
-      <li><a href="../html/news.html">Noticias</a></li>
-      <li><a href="../html/select-pass.html">Bonos</a></li>
-      <li><a href="../html/about-us.html">Sobre Nosotros</a></li>
-      <li><a class="user-nav" href="../html/login.html">Tu Perfil</a></li>
+      <li><a routerLink="/lines">Lineas</a></li>
+      <li><a routerLink="/stops">Paradas</a></li>
+      <li><a routerLink="/news">Noticias</a></li>
+      <li><a routerLink="/select-pass">Bonos</a></li>
+      <li><a routerLink="/about-us">Sobre Nosotros</a></li>
+      <li><a routerLink="user-nav" href="/login">Tu Perfil</a></li>
     </ul>
   </nav>
 
-  <a class="login-button" href="../html/login.html">Iniciar sesión</a>
+  <a class="login-button" href="/login">Iniciar sesión</a>
 
 </header>
 <script type="module" src="../js/header.js"></script>

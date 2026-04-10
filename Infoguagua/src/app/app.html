@@ -1,10 +1,40 @@
 
+<body>
+  <header>
+    <app-header />
+  </header>
+  <main class="main">
 
-<main class="main">
-  <app-header />
-  <app-pass-info />
-</main>
+    <div class="hero">
+      <h1>
+        Bienvenido a
+        <span>InfoGuagua</span>
+      </h1>
+      <p>
+        Rutas, horarios y paradas en tiempo real. <br>
+        Viaja sin sorpresas con el transporte público de tu ciudad.
+      </p>
+      <div class="cards">
+        <div class="card-content">
+          <div class="card-num">47</div>
+          <div class="card-text">lineas activas</div>
+        </div>
+        <div class="card-content">
+          <div class="card-num">180</div>
+          <div class="card-text">paradas <br> en la ciudad</div>
+        </div>
+        <div class="card-content">
+          <div class="card-num">40</div>
+          <div class="card-text">años de <br> experiencia</div>
+        </div>
+      </div>
+    </div>
 
+  </main>
 
+  <footer>
+    <app-footer />
+  </footer>
+</body>
 
 <router-outlet />

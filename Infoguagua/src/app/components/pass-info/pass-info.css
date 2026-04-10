@@ -1,0 +1,43 @@
+.info-pass {
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-pass{
+  width: 198px;
+  height: 128px;
+  margin: 10px;
+}
+
+.button-pass{
+  height: 40px;
+  width: 50px;
+  margin: 10px;
+  padding-top: 5px;
+  background-color: var(--orange);
+  box-shadow: 3px 1px 10px var(--shadow);
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+
+  &:hover{
+    transform: scale(1.1);
+    background-color: orangered;
+  }
+
+}
+
+.container-pass{
+  display: flex;
+  gap: 30px;
+}
+
+.text{
+  color: var(--font-color);
+
+  font-size: 1.15rem;
+  text-align: justify;
+  text-justify: inter-word;
+  flex-shrink: 0;
+}

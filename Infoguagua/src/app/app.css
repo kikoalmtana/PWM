@@ -1,0 +1,69 @@
+.hero{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 0;
+  padding: 100px 0;
+  background-image: linear-gradient(to bottom, var(--shadow), transparent);
+
+
+  h1{
+    margin: 10px;
+    font-size: clamp(3rem, 10vw, 4.5rem);
+    span{
+      color: var(--blue);
+    }
+    animation: fadeUp 0.5s ease both;
+  }
+
+  p{
+    width: 50%;
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 50px;
+    animation: fadeUp 1s ease both;
+
+    .card-content{
+      background-color: white;
+      border-radius: 10px ;
+      box-shadow: 0 4px 12px lightgray;
+      display: flex;
+      gap: 20px;
+      padding: 25px 15px;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s ease;
+      .card-num{
+        font-size: xx-large;
+        font-weight: bold;
+        color: var(--blue);
+      }
+
+      .card-text{
+        font-size: 1.1rem;
+      }
+
+      &:hover{
+        transform: scale(1.09);
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .cards{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}

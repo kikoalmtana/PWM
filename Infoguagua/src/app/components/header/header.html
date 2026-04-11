@@ -1,6 +1,6 @@
 <header class="header">
-  <a class="logo" routerLink="../index.html">
-    <img src="../assets/logo/imagotipo-horizontal-azul.svg" alt="logo image">
+  <a class="logo" routerLink="">
+    <img src="assets/logo/imagotipo-horizontal-azul.svg" alt="logo image">
   </a>
 
   <input type="checkbox" id="menu-toggle" hidden>
@@ -16,11 +16,11 @@
       <li><a routerLink="/news">Noticias</a></li>
       <li><a routerLink="/select-pass">Bonos</a></li>
       <li><a routerLink="/about-us">Sobre Nosotros</a></li>
-      <li><a routerLink="user-nav" href="/login">Tu Perfil</a></li>
+      <li><a id="user-nav" routerLink="/login">Tu Perfil</a></li>
     </ul>
   </nav>
 
-  <a class="login-button" href="/login">Iniciar sesión</a>
+  <a class="login-button" routerLink="/login">Iniciar sesión</a>
 
 </header>
 <script type="module" src="../js/header.js"></script>

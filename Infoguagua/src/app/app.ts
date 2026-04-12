@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { HeaderComponent } from './components/header/header';
 import {FooterComponent} from './components/footer/footer';
 
@@ -9,4 +9,20 @@ import {FooterComponent} from './components/footer/footer';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {}
+
+export class App {
+  showHeader = true;
+  showFooter = true;
+
+  private noLayoutRoutes = ['/login', '/register'];
+
+  constructor(private router: Router) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const hide = this.noLayoutRoutes.includes(event.url);
+        this.showHeader = !hide;
+        this.showFooter = !hide;
+      }
+    });
+  }
+}

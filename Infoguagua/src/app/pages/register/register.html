@@ -4,7 +4,7 @@
 
 </aside>
 <main>
-  <h1>Iniciar Sesión</h1>
+  <h1 class="login-header">Registrarse</h1>
   <form novalidate class="suggestions" id="login-form" action="" method="post">
     <label for="username">Nombre:</label>
     <input type="text" id="username" name="username" placeholder="Nombre de usuario" required
@@ -12,6 +12,9 @@
            data-error-short="El nombre debe tener más de 3 caracteres"
            data-error-pattern="El nombre debe contener alguna letra">
     <small data-error-for="username"></small>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="usuario@gmail.com" required >
+    <small data-error-for="email"></small>
     <label for="password">Contraseña:</label>
     <div class="input-wrapper">
       <input type="password" id="password" name="password" placeholder="Contraseña" required
@@ -21,13 +24,14 @@
       <button type="button" id="toggle-btn"><img src="assets/eye-off.svg" alt=""></button>
     </div>
     <small data-error-for="password"></small>
-    <button type="submit">Iniciar Sesión</button>
+    <label for="confirm-password">Confirmar Contraseña:</label>
+    <div class="input-wrapper">
+      <input type="password" id="confirm-password" name="password" placeholder="Contraseña" required
+             data-match="password">
+      <button type="button" id="toggle-btn-confirm"><img src="assets/eye-off.svg" alt=""></button>
+    </div>
+    <small data-error-for="confirm-password"></small>
+    <button type="submit">Registrarse</button>
   </form>
-  <app-popup-form #popup/>
-  <div class="form-footer">
-    <a href="#" (click)="popup.open(); $event.preventDefault(); log()">He olvidado mi contraseña</a>
-    <a routerLink="/register">¿No tienes cuenta? Regístrate</a>
-  </div>
 </main>
-
 </body>

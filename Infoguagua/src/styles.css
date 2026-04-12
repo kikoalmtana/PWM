@@ -36,7 +36,9 @@ main{
   gap: 10px;
 }
 
-.suggestions {
+.suggestions{
+  display: flex;
+  flex-direction: column;
   max-width: 600px;
   gap: 5px;
   margin: 20px auto;
@@ -46,9 +48,19 @@ main{
   border-radius: 1rem;
   padding: 2rem;
 
+  h2 {
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--orange);
+  }
+
+  label {
+    text-transform: uppercase;
+    color: var(--font-color);
+  }
 
   input{
-    width: 100%;
+    width: 50%;
     height: 30px;
 
     padding: 0 12px;
@@ -60,6 +72,23 @@ main{
     background-color: var(--light-yellow);
     color: var(--font-color);
 
+  }
+
+  textarea{
+    border: 1px solid var(--shadow);
+    border-radius: 10px;
+    outline: none;
+    max-width: 550px;
+    width: 100%;
+    padding: 6px 12px;
+
+    background-color: var(--light-yellow);
+    color: var(--font-color);
+  }
+
+  input:focus, textarea:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 10px var(--shadow);
   }
 
   button{
@@ -87,6 +116,8 @@ main{
     }
   }
 }
+
+
 
 ::-webkit-scrollbar-track {
   background: transparent;

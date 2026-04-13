@@ -1,0 +1,26 @@
+
+<main>
+
+<app-heading
+  [texto]="'NOTICIAS'"
+/>
+
+<app-principal-new
+  [link]="noticiaPrincipal.link"
+  [portada]="noticiaPrincipal.portada"
+  [titulo]="noticiaPrincipal.titulo"
+  [descripcion]="noticiaPrincipal.descripcion"
+/>
+
+<section class="secondary-news" id="aditional-news-section">
+  <article *ngFor="let noticia of noticias">
+    <app-preview-new
+      [link]="noticia.link"
+      [portada]="noticia.portada"
+      [encabezado]="noticia.encabezado"
+      [descripcion]="noticia.descripcion"
+    />
+  </article>
+</section>
+
+</main>

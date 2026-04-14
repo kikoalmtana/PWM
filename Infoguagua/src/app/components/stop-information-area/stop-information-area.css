@@ -1,0 +1,88 @@
+.stop-information-area{
+  display: flex;
+  justify-content: center;
+  margin: 2rem 4rem 2rem 4rem;
+  gap: 2rem;
+  align-items: flex-start;
+
+  .stop-info{
+    flex: 1;
+    border: 3px solid var(--orange);
+    border-radius: 15px;
+    padding: 1rem;
+
+    max-width: 40rem;
+  }
+
+  h3 {
+    background: var(--orange);
+    color: var(--light-yellow);
+    border: 1px solid var(--orange);
+
+    text-align: center;
+
+    border-radius: 5px;
+
+    padding: 0.5rem 3rem;
+
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .bus-from-stop {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+
+    h4 {
+      background: var(--blue);
+      color: var(--light-yellow);
+      border: 1px solid var(--blue);
+      border-radius: 5px;
+
+      padding: 0.5rem;
+    }
+
+    p {
+      margin-left: auto;
+      text-align: right;
+    }
+  }
+
+  .bus-from-stop + .bus-from-stop {
+    border-top: 2px solid var(--blue);
+  }
+
+  .buttons-info-stops {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    margin-left: 20px;
+    align-self: flex-start;
+
+    a {
+      width: 10rem;
+      height: 2rem;
+
+      background: var(--blue);
+      color: var(--light-yellow);
+      border: 1px solid var(--blue);
+      text-decoration: none;
+      text-align: center;
+      justify-content: center;
+      font-weight: bold;
+
+      border-radius: 5px;
+
+      padding: 0.5rem 3rem;
+    }
+  }
+  .stop-button:hover {
+    background: var(--orange);
+    color: var(--blue);
+    border-color: var(--orange);
+  }
+}

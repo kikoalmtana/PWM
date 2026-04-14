@@ -1,0 +1,18 @@
+<div class="stop-information-area" id="guaguas-box">
+  <div class="stop-info">
+    <h3>{{ nombreParada }}</h3>
+    <app-bus-arrival
+      *ngFor="let bus of buses"
+      [numero]="bus.numero"
+      [destino]="bus.destino"
+      [tiempo]="bus.tiempo"
+    />
+  </div>
+
+  <div class="buttons-info-stops">
+    <a class="stop-button" href="" id="update-box">Actualizar tiempos</a>
+    <a class="stop-button" href="" id="save-stop">Guardar en favoritos</a>
+    <a class="stop-button" href="" id="go-map">Ver en el mapa</a>
+  </div>
+
+</div>

@@ -1,0 +1,44 @@
+<body class="selection-page">
+
+<app-aside/>
+
+<main>
+
+  <h1>SELECCIONAR BONO</h1>
+
+
+
+  <form novalidate class="suggestions" id="addPassForm">
+
+    <div class="selector">
+      <div class="selected" onclick="toggleOptions()">
+        Selecciona un bono
+      </div>
+      <div class="options" id="options">
+        <div class="option" onclick="selectOption(this, 'basico')">Bono Guagua</div>
+        <div class="option" onclick="selectOption(this, 'con_dni')">Bono Residente Canario</div>
+        <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta Wawa Joven</div>
+        <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta bono oro</div>
+      </div>
+    </div>
+
+    <!-- Cambiado de passCode → codigoField -->
+    <input id="codigoField" type="text" placeholder="Código de bono" required
+           maxlength="6" minlength="6" pattern="[0-9]*"
+           data-error-short="Debe de tener 6 caracteres"
+           data-error-pattern="Debe de ser código numérico">
+    <small data-error-for="codigoField"></small>
+
+    <input id="dniField" type="text" placeholder="DNI"
+           pattern="^[0-9]{8}[A-Za-z]$" minlength="9" maxlength="9"
+           data-error-short="Debe de tener 9 caracteres"
+           data-error-pattern="El DNI debe tener 8 números y una letra"
+           data-validate-dni>
+    <small data-error-for="dniField"></small>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+</main>
+
+</body>

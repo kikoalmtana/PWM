@@ -7,6 +7,10 @@ import { Register } from './pages/register/register';
 import { News } from './pages/news/news';
 import {UserInfo} from './pages/user-info/user-info';
 import {UserEdit} from './pages/user-edit/user-edit';
+import { Stops } from './pages/stops/stops';
+import { AboutUs } from './pages/about-us/about-us';
+import { SelectPass } from './pages/select-pass/select-pass';
+import { AddPass } from './pages/add-pass/add-pass';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -17,4 +21,10 @@ export const routes: Routes = [
   { path: 'news', component: News },
   { path: 'user-info', component: UserInfo },
   { path: 'user-edit', component: UserEdit },
+  { path: 'news', component: News },
+  { path: 'stops', component: Stops },
+  { path: 'about-us', component: AboutUs },
+  { path: 'stops', component: Stops },
+  { path: 'select-pass', component: SelectPass },
+  { path: 'add-pass', component: AddPass },
 ];

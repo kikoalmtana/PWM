@@ -1,0 +1,20 @@
+<main class="stops">
+
+  <app-heading
+    [texto]="'INFORMACIÓN SOBRE PARADAS'"
+  />
+
+  <p>Busca tu parada para obtener información sobre próximas guaguas</p>
+
+  <form role="search">
+    <div class="search-wrapper">
+      <input required type="text" placeholder="Número o nombre de la parada" id="input">
+    </div>
+  </form>
+
+  <app-stop-information-area
+    [nombreParada]="paradas[0].nombre"
+    [buses]="paradas[0].buses"
+  />
+
+</main>

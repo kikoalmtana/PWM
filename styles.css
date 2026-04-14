@@ -3853,43 +3853,7 @@ form small{
     }
 }
 
-.lines-page{
 
-    h1{
-        font-size: 50px;
-    }
-
-    .lines-list{
-        a {
-            text-decoration: none;
-            justify-self: center;
-            padding: 10px 30px 10px 30px;
-            max-width: 900px;
-            display: flex;
-            transition: all 0.2s ease;
-
-
-            &:hover {
-                color: var(--orange);
-                transform: scale(1.09);
-
-            }
-        }
-    }
-
-    .warnings {
-        display: flex;
-        justify-content: center;
-        margin: 30px;
-        gap: 25px;
-
-        @media (max-width: 767px) {
-            flex-direction: column;
-            justify-self: center;
-        }
-    }
-
-}
 
 /* User edition styles */
 

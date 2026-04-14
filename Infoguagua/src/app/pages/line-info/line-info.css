@@ -1,0 +1,107 @@
+.line-info-page {
+  animation: fadeUp 0.75s ease both;
+
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: var(--blue);
+    color: var(--light-yellow);
+    padding: 20px 80px;
+    margin: 5px 50px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  h2::after {
+    content: " ▼";
+  }
+
+  h2.active::after {
+    content: " ▲";
+  }
+
+  h3 {
+    background-color: var(--orange);
+    color: var(--light-yellow);
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    width: 350px;
+  }
+
+  .cards-grid {
+    display: flex;
+    gap: 90px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+
+    transition: height 0.5s ease, opacity 0.4s ease;
+
+    margin-bottom: 30px;
+
+    .card-column {
+      .horarios-dia {
+        font-size: 18px;
+        font-weight: bold;
+
+      }
+      .horarios {
+        width: 380px;
+        font-size: 1.3rem;
+      }
+
+      .horarios-chess {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        width: 380px;
+        gap: 2px;
+        margin-top: 4px;
+      }
+
+      .horarios-chess {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        width: 380px;
+        gap: 0;
+        margin-top: 4px;
+      }
+
+      .horarios-chess > p {
+        padding: 7px 4px;
+        text-align: center;
+        margin: 0;
+        font-size: 1.1rem;
+        border-radius: 0;
+      }
+
+      .horarios-chess > p:nth-child(odd) {
+        background-color: #ffdb91;
+      }
+
+      .horarios-chess > p:nth-child(even) {
+        background-color: #ffb074;
+      }
+    }
+    .card + .card {
+      margin-top: 20px;
+    }
+  }
+
+  .cards-grid.active {
+    opacity: 1;
+  }
+
+
+  .map-placeholder {
+    padding: 20px;
+    height: 450px;
+    width: 550px;
+    display: block;
+    margin: 0 auto;
+  }
+}

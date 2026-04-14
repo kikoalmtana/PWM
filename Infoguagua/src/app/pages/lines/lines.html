@@ -1,1 +1,31 @@
-<p>lines works!</p>
+<main class="lines-page">
+
+  <section class="heading">
+    <h1>LÍNEAS</h1>
+  </section>
+
+  <div class="stops">
+    <form role="search">
+      <input required type="text" placeholder="Número o nombre de la parada ">
+    </form>
+  </div>
+
+  <div class = "warnings-container">
+  <app-lines-warnings/>
+  <app-lines-warnings/>
+  <app-lines-warnings/>
+  </div>
+
+
+  <a class="line-selector" routerLink="/line-info">
+    <div class="line-number">01</div>
+    <div class="line-name">Tamaraceite - Alcaravaneras</div>
+    <div class="line-icon"></div>
+  </a>
+
+  <section class="lines-list" id="listado-lineas"></section>
+
+</main>
+
+
+

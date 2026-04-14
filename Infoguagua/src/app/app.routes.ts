@@ -7,6 +7,7 @@ import { Register } from './pages/register/register';
 import { News } from './pages/news/news';
 import { Stops } from './pages/stops/stops';
 import { SelectPass } from './pages/select-pass/select-pass';
+import { AddPass } from './pages/add-pass/add-pass';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -17,4 +18,5 @@ export const routes: Routes = [
   { path: 'news', component: News },
   { path: 'stops', component: Stops },
   { path: 'select-pass', component: SelectPass },
+  { path: 'add-pass', component: AddPass },
 ];

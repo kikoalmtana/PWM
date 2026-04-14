@@ -5,6 +5,7 @@ import { LineInfo } from './pages/line-info/line-info';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { News } from './pages/news/news';
+import { Stops } from './pages/stops/stops';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'line-info', component: LineInfo },
   { path: 'login', component: Login },
   { path: 'register', component: Register },
-  { path: 'news', component: News }
+  { path: 'news', component: News },
+  { path: 'stops', component: Stops }
 ];

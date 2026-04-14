@@ -1,0 +1,23 @@
+<main class="user-profile">
+  <h1>Tu perfil</h1>
+  <div class="user-info">
+    <div>
+      <h3>Username</h3>
+      <a routerLink="/user-edit">
+        <img src="assets/edit.svg" alt="Edit account access">
+      </a>
+    </div>
+  </div>
+  <div class="user-pass">
+    <app-pass-info/>
+    <article class="add-pass">
+      <a class="añadir" >AÑADIR</a>
+      <a class="plus" routerLink="/add-pass"><img src="assets/plus.svg" alt="add new pass"></a>
+    </article>
+  </div>
+  <app-popup-confirm #popup/>
+  <div class="user-footer">
+    <button id="logout">Cerrar sesión</button>
+    <button (click)="popup.open()" >Borrar cuenta</button>
+  </div>
+</main>

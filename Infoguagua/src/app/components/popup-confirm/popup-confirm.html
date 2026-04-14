@@ -1,1 +1,22 @@
-<p>popup-confirm works!</p>
+@if (isOpen) {
+  <div class="overlay" (click)="onOverlayClick($event)">
+    <div class="popup">
+      <div class="popup-header">
+        <h3>¿Estás seguro?</h3>
+        <button (click)="close()"><img src="assets/x.svg" alt="cross"></button>
+      </div>
+      @if (!showSuccess) {
+        <p>Con esta acción borrarás todos tus datos de forma permanentemente.</p>
+        <div class="buttons">
+          <button (click)="onOverlayClick($event)">Cancelar</button>
+          <button (click)="delete()">Borrar cuenta</button>
+        </div>
+      }
+      @if (showSuccess) {
+        <p id="successMsg">✓ Cuenta eliminada correctamente.</p>
+      }
+
+    </div>
+  </div>
+}
+

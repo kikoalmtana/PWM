@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { LinesService } from '../../services/lines';
 import { CommonModule } from '@angular/common';
@@ -6,6 +6,7 @@ import { Linea, Sentido, TipoDia } from '../../models/lines.model';
 
 @Component({
   selector: 'app-curd-lines',
+  encapsulation: ViewEncapsulation.Emulated,
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './curd-lines.html',
@@ -23,13 +24,16 @@ export class LinesComponent {
     numero: [null, [Validators.required]],
     primera_salida: ['', Validators.required],
     segunda_salida: ['', Validators.required],
-    // Array de objetos de tipo Horario
+
     horariosArray: this.fb.array([]),
-    paradas_ida: this.fb.array([this.fb.control('', Validators.required)])
+
+    paradas_ida: this.fb.array([this.fb.control('', Validators.required)]),
+    paradas_vuelta: this.fb.array([this.fb.control('', Validators.required)])
   });
 
   get horarios() { return this.lineaForm.get('horariosArray') as FormArray; }
   get paradasIda() { return this.lineaForm.get('paradas_ida') as FormArray; }
+  get paradasVuelta() { return this.lineaForm.get('paradas_vuelta') as FormArray; }
 
   agregarHorario() {
     const horarioGroup = this.fb.group({
@@ -42,8 +46,15 @@ export class LinesComponent {
 
   eliminarHorario(index: number) { this.horarios.removeAt(index); }
 
-  agregarParada() { this.paradasIda.push(this.fb.control('', Validators.required)); }
-  eliminarParada(index: number) { this.paradasIda.removeAt(index); }
+  agregarParada(sentido: 'ida' | 'vuelta') {
+    const control = sentido === 'ida' ? this.paradasIda : this.paradasVuelta;
+    control.push(this.fb.control('', Validators.required));
+  }
+
+  eliminarParada(sentido: 'ida' | 'vuelta', index: number) {
+    const control = sentido === 'ida' ? this.paradasIda : this.paradasVuelta;
+    control.removeAt(index);
+  }
 
   async guardar() {
     if (this.lineaForm.invalid) return;
@@ -63,7 +74,8 @@ export class LinesComponent {
       },
       paradas: {
         paradas: [
-          { sentido: 'ida', lista_de_paradas: formVal.paradas_ida as string[] }
+          { sentido: 'ida', lista_de_paradas: formVal.paradas_ida as string[] },
+          { sentido: 'vuelta', lista_de_paradas: formVal.paradas_vuelta as string[] }
         ]
       }
     };

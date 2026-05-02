@@ -68,4 +68,45 @@
     </div>
 
   </form>
+  <div class="row g-4 mb-4">
+
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="text-primary fw-bold mb-0"><i class="bi bi-arrow-right-circle me-2"></i>Paradas Ida</h6>
+        <button type="button" (click)="agregarParada('ida')" class="btn btn-sm btn-outline-secondary py-0">+ Añadir</button>
+      </div>
+      <div formArrayName="paradas_ida" class="border p-2 rounded bg-white" style="max-height: 250px; overflow-y: auto;">
+        @for (p of paradasIda.controls; track $index) {
+          <div class="input-group mb-2">
+            <span class="input-group-text p-1 text-muted" style="font-size: 0.7rem;">{{$index + 1}}</span>
+            <input [formControlName]="$index" class="form-control form-control-sm" placeholder="Nombre parada...">
+            <button type="button" (click)="eliminarParada('ida', $index)" class="btn btn-outline-danger btn-sm">
+              <i class="bi bi-x"></i>
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="text-success fw-bold mb-0"><i class="bi bi-arrow-left-circle me-2"></i>Paradas Vuelta</h6>
+        <button type="button" (click)="agregarParada('vuelta')" class="btn btn-sm btn-outline-secondary py-0">+ Añadir</button>
+      </div>
+      <div formArrayName="paradas_vuelta" class="border p-2 rounded bg-white" style="max-height: 250px; overflow-y: auto;">
+        @for (p of paradasVuelta.controls; track $index) {
+          <div class="input-group mb-2">
+            <span class="input-group-text p-1 text-muted" style="font-size: 0.7rem;">{{$index + 1}}</span>
+            <input [formControlName]="$index" class="form-control form-control-sm" placeholder="Nombre parada...">
+            <button type="button" (click)="eliminarParada('vuelta', $index)" class="btn btn-outline-danger btn-sm">
+              <i class="bi bi-x"></i>
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
 </div>
+
+

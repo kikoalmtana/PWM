@@ -1,6 +1,6 @@
 // Tipos auxiliares
-type Sentido = "ida" | "vuelta";
-type TipoDia = "Lunes a viernes" | "Sábado, domingo y festivos" |
+export type Sentido = "ida" | "vuelta";
+export type TipoDia = "Lunes a viernes" | "Sábado, domingo y festivos" |
                "Sábados" | "Domingos y festívos";
 
 interface Horario {

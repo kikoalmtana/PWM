@@ -1,5 +1,5 @@
 type Bono = "Bono Residente Canario" | "Tarjeta Guagua Joven" |
-            "Tarjeta Bono Oro" | "Bono Guagua";
+            "Tarjeta Bono Oro" | "Bono Guagua" | "";
 
 export interface Pass {
   id?: string,
@@ -7,7 +7,7 @@ export interface Pass {
   viajesRealizados: number,
   idUsuario: string,
   caducidad: string,
-  saldo: number | "N/A",
+  saldo: string | "N/A",
   codigo: string,
   dni: string
 }

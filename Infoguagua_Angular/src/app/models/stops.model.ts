@@ -12,5 +12,5 @@ export interface Parada {
   id?: string,
   idParada: string,
   nombreParada: string,
-  siguientesGuaguas: guaguasEnCamino
+  siguientesGuaguas: guaguasEnCamino[]
 }

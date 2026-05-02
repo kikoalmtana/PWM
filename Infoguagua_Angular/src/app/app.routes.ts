@@ -12,6 +12,7 @@ import { AboutUs } from './pages/about-us/about-us';
 import { SelectPass } from './pages/select-pass/select-pass';
 import { AddPass } from './pages/add-pass/add-pass';
 import {AuthGuard} from '@angular/fire/auth-guard';
+import { AdministratorPage } from './pages/administrator-page/administrator-page';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -28,4 +29,5 @@ export const routes: Routes = [
   { path: 'stops', component: Stops },
   { path: 'select-pass', component: SelectPass },
   { path: 'add-pass', component: AddPass },
+  { path: 'administrator-page', component: AdministratorPage },
 ];

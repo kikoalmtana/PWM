@@ -1,0 +1,130 @@
+<div class="card shadow-sm border-0 mt-4">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+    <h5 class="mb-0">
+      <i class="bi bi-signpost-2 me-2"></i>
+      {{ stop().id ? 'Editar Parada' : 'Nueva Parada' }}
+    </h5>
+  </div>
+
+  <form #stopForm="ngForm" (ngSubmit)="saveStop(); stopForm.resetForm()" class="card-body p-4">
+
+    <div class="d-flex align-items-center mb-3">
+      <h6 class="mb-0 text-primary fw-bold">
+        <i class="bi bi-info-circle me-2"></i>Información de la Parada
+      </h6>
+      <hr class="flex-grow-1 ms-3 opacity-25">
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-4">
+        <label class="form-label fw-semibold text-secondary small">Identificador de Parada</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-hash"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            name="identificador_parada"
+            [(ngModel)]="stopData.identificador_parada"
+            placeholder="Ej: PAR-001"
+            required>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <label class="form-label fw-semibold text-secondary small">Nombre de la Parada</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-geo-alt"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            name="nombre_parada"
+            [(ngModel)]="stopData.nombre_parada"
+            placeholder="Ej: Intercambiador de Guanarteme"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center mb-3">
+      <h6 class="mb-0 text-primary fw-bold">
+        <i class="bi bi-bus-front me-2"></i>Guaguas en Camino
+      </h6>
+      <hr class="flex-grow-1 ms-3 opacity-25">
+      <button type="button" class="btn btn-sm btn-outline-primary ms-2" (click)="agregarGuagua()">
+        <i class="bi bi-plus-circle me-1"></i>Añadir Guagua
+      </button>
+    </div>
+
+    @for (g of stopData.guaguas_en_camino.proxima_guagua; track $index) {
+      <div class="row g-2 mb-2 align-items-end p-3 border rounded bg-light-subtle shadow-sm">
+
+        <div class="col-md-3">
+          <label class="small text-muted d-block mb-1 fw-bold text-uppercase">Línea</label>
+          <div class="input-group input-group-sm">
+            <span class="input-group-text bg-light"><i class="bi bi-hash"></i></span>
+            <input
+              type="number"
+              class="form-control"
+              [name]="'linea_' + $index"
+              [(ngModel)]="g.linea"
+              placeholder="Ej: 1"
+              required>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <label class="small text-muted d-block mb-1 fw-bold text-uppercase">Destino</label>
+          <div class="input-group input-group-sm">
+            <span class="input-group-text bg-light"><i class="bi bi-flag"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              [name]="'destino_' + $index"
+              [(ngModel)]="g.destino"
+              placeholder="Ej: Las Palmas Centro"
+              required>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <label class="small text-muted d-block mb-1 fw-bold text-uppercase">Llegada</label>
+          <div class="input-group input-group-sm">
+            <span class="input-group-text bg-light"><i class="bi bi-clock"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              [name]="'llegada_' + $index"
+              [(ngModel)]="g.llegada"
+              placeholder="Ej: 5 min"
+              required>
+          </div>
+        </div>
+
+        <div class="col-md-1 text-center">
+          <button type="button" class="btn btn-outline-danger btn-sm border-0" (click)="eliminarGuagua($index)">
+            <i class="bi bi-trash3 fs-5"></i>
+          </button>
+        </div>
+
+      </div>
+    }
+
+    @if (stopData.guaguas_en_camino.proxima_guagua.length === 0) {
+      <div class="text-center py-3 text-muted small border rounded bg-light-subtle">
+        <i class="bi bi-bus-front me-2 opacity-50"></i>
+        No hay guaguas añadidas. Pulsa <strong>Añadir Guagua</strong> para comenzar.
+      </div>
+    }
+
+    <div class="d-flex justify-content-end gap-2 pt-3 border-top mt-4">
+      <button type="button" class="btn btn-light border px-4" (click)="resetForm(); stopForm.resetForm()">
+        <i class="bi bi-eraser me-2"></i>Limpiar
+      </button>
+      <button type="submit" class="btn btn-primary px-4 shadow-sm" [disabled]="!stopForm.valid">
+        <i class="bi bi-cloud-arrow-up me-2"></i>
+        {{ stop().id ? 'Actualizar Parada' : 'Guardar Parada' }}
+      </button>
+    </div>
+
+  </form>
+</div>

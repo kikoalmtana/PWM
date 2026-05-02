@@ -4,11 +4,16 @@
 <main>
   <h1>Iniciar Sesión</h1>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="suggestions" id="login-form" action="" method="post">
-    <label for="username">Nombre:</label>
-    <input type="text" id="username" name="username" placeholder="Nombre de usuario"
-           formControlName="username">
-    @if (username?.touched && username?.hasError('required')) {
-      <small>Campo obligatorio</small>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="usuario@ejemplo.com"
+           formControlName="email">
+    @if (email?.invalid && email?.touched) {
+      @if (email?.hasError('required')) {
+        <small>Campo obligatorio</small>
+      }
+      @else if (email?.hasError('email')) {
+        <small>Formato de email incorrecto</small>
+      }
     }
     <label for="password">Contraseña:</label>
     <div class="input-wrapper">

@@ -16,8 +16,9 @@ export class Login {
   form: FormGroup;
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      username: ['', [
-        Validators.required
+      email: ['', [
+        Validators.required,
+        Validators.email
       ]],
       password: ['', [
         Validators.required
@@ -33,6 +34,6 @@ export class Login {
     }
   }
 
-  get username() { return this.form.get('username'); }
+  get email() { return this.form.get('email'); }
   get password() { return this.form.get('password'); }
 }

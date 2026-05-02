@@ -11,6 +11,7 @@ import { Stops } from './pages/stops/stops';
 import { AboutUs } from './pages/about-us/about-us';
 import { SelectPass } from './pages/select-pass/select-pass';
 import { AddPass } from './pages/add-pass/add-pass';
+import {AuthGuard} from '@angular/fire/auth-guard';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -19,7 +20,7 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'register', component: Register },
   { path: 'news', component: News },
-  { path: 'user-info', component: UserInfo },
+  { path: 'user-info', component: UserInfo, canActivate: [AuthGuard] },
   { path: 'user-edit', component: UserEdit },
   { path: 'news', component: News },
   { path: 'stops', component: Stops },

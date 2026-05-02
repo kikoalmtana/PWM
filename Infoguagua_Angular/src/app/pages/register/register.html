@@ -69,7 +69,12 @@
     @if (confirmPassword?.touched && form.hasError('passwordMismatch')) {
       <small>Las contraseñas no coinciden</small>
     }
-    <button type="submit" [disabled]="form.invalid">Registrarse</button>
+    <button type="submit" [disabled]="isLoading">
+      {{ isLoading ? 'Cargando...' : 'Registrarse' }}
+    </button>
+    @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+    }
   </form>
 </main>
 </body>

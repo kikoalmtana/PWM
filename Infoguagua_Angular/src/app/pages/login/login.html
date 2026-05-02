@@ -27,7 +27,12 @@
     @if (password?.touched && password?.hasError('required')) {
       <small>Campo obligatorio</small>
     }
-    <button type="submit" [disabled]="form.invalid">Iniciar Sesión</button>
+    <button type="submit" [disabled]="isLoading">
+      {{ isLoading ? 'Cargando...' : 'Iniciar sesión' }}
+    </button>
+    @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+    }
   </form>
   <app-popup-form #popup/>
   <div class="form-footer">

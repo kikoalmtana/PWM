@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors, FormGroup} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 function passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
   const password = control.get('password');
   const confirmPassword = control.get('confirmPassword');
 
-  if(password && confirmPassword && password.value !== confirmPassword.value) {
+  if (password && confirmPassword && password.value !== confirmPassword.value) {
     return { passwordMismatch: true };
   }
   return null;
@@ -17,13 +19,19 @@ function passwordMatchValidator(control: AbstractControl): ValidationErrors | nu
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
-
 export class Register {
   showPassword = false;
   showPasswordConfirm = false;
+  errorMessage = '';
+  isLoading = false;
 
   form: FormGroup;
-  constructor(private fb: FormBuilder) {
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       username: ['', [
         Validators.required,
@@ -45,15 +53,37 @@ export class Register {
     }, { validators: passwordMatchValidator });
   }
 
+  togglePassword() { this.showPassword = !this.showPassword; }
+  togglePasswordConfirm() { this.showPasswordConfirm = !this.showPasswordConfirm; }
 
+  async onSubmit() {
+    if (this.form.invalid) return;
 
-  togglePassword(){ this.showPassword = !this.showPassword; }
-  togglePasswordConfirm(){ this.showPasswordConfirm = !this.showPasswordConfirm; }
+    this.isLoading = true;
+    this.errorMessage = '';
 
-  onSubmit() {
-    if(this.form.valid) {
-      console.log("Formulario valido");
+    try {
+      await this.authService.register(
+        this.email?.value,
+        this.password?.value,
+        this.username?.value
+      );
+      this.router.navigate(['/user-info']);
+    } catch (e: any) {
+      this.errorMessage = this.getErrorMessage(e.code);
+    } finally {
+      this.isLoading = false;
     }
+  }
+
+  private getErrorMessage(code: string): string {
+    const messages: Record<string, string> = {
+      'auth/email-already-in-use': 'Este email ya está registrado',
+      'auth/invalid-email': 'Email inválido',
+      'auth/weak-password': 'La contraseña es demasiado débil',
+      'auth/network-request-failed': 'Error de red, inténtalo de nuevo',
+    };
+    return messages[code] ?? 'Error al registrarse';
   }
 
   get username() { return this.form.get('username'); }

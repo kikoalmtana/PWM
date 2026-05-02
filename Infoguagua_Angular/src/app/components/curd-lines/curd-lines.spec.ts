@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CURDLines } from './curd-lines';
+import { LinesComponent } from './curd-lines';
 
 describe('CURDLines', () => {
-  let component: CURDLines;
-  let fixture: ComponentFixture<CURDLines>;
+  let component: LinesComponent;
+  let fixture: ComponentFixture<LinesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CURDLines]
+      imports: [LinesComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CURDLines);
+    fixture = TestBed.createComponent(LinesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

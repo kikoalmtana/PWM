@@ -57,30 +57,49 @@ export class LinesComponent {
   }
 
   async guardar() {
-    if (this.lineaForm.invalid) return;
+    // 1. Verificación manual por si el [disabled] falla
+    if (this.lineaForm.invalid) {
+      console.warn("Formulario inválido:", this.lineaForm.value);
+      this.lineaForm.markAllAsTouched(); // Resalta los campos rojos
+      return;
+    }
 
-    const formVal = this.lineaForm.value;
+    // 2. Extraer valores con tipos seguros
+    const formVal = this.lineaForm.getRawValue();
 
-    const nuevaLinea: Linea = {
-      numero: formVal.numero!,
-      primera_salida: formVal.primera_salida!,
-      segunda_salida: formVal.segunda_salida!,
-      horarios: {
-        horarios: (formVal.horariosArray as any[]).map(h => ({
-          sentido: h.sentido,
-          tipo_dia: h.tipo_dia,
-          salidas: h.salidas.split(',').map((s: string) => s.trim())
-        }))
-      },
-      paradas: {
-        paradas: [
-          { sentido: 'ida', lista_de_paradas: formVal.paradas_ida as string[] },
-          { sentido: 'vuelta', lista_de_paradas: formVal.paradas_vuelta as string[] }
-        ]
-      }
-    };
+    try {
+      const nuevaLinea: Linea = {
+        numero: formVal.numero!,
+        primera_salida: formVal.primera_salida!,
+        segunda_salida: formVal.segunda_salida!,
+        horarios: {
+          // Manejo seguro de horarios (evita errores si el array está vacío)
+          horarios: (formVal.horariosArray || []).map((h: any) => ({
+            sentido: h.sentido,
+            tipo_dia: h.tipo_dia,
+            // Validamos que h.salidas exista antes de hacer el split
+            salidas: h.salidas ? h.salidas.split(',').map((s: string) => s.trim()) : []
+          }))
+        },
+        paradas: {
+          paradas: [
+            { sentido: 'ida', lista_de_paradas: formVal.paradas_ida as string[] },
+            { sentido: 'vuelta', lista_de_paradas: formVal.paradas_vuelta as string[] }
+          ]
+        }
+      };
 
-    await this.lineaService.addLinea(nuevaLinea);
-    this.lineaForm.reset();
+      console.log('Enviando a Firebase/Service:', nuevaLinea);
+      await this.lineaService.addLinea(nuevaLinea);
+
+      // 3. Resetear y limpiar estados de error
+      this.lineaForm.reset();
+      this.horarios.clear(); // Limpia los bloques de horarios añadidos
+      alert('¡Línea guardada con éxito!');
+
+    } catch (error) {
+      console.error('Error al guardar:', error);
+      alert('Hubo un error al guardar la línea.');
+    }
   }
 }

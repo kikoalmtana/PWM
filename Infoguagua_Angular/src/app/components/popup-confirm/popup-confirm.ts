@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-popup-confirm',
@@ -7,6 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './popup-confirm.css',
 })
 export class PopupConfirm {
+  private authService = inject(AuthService);
+  private router = inject(Router);
   isOpen = false;
   showSuccess = false;
 
@@ -26,7 +30,9 @@ export class PopupConfirm {
     }
   }
 
-  delete() {
+  async delete() {
     this.showSuccess = true;
+    await this.authService.deleteAccount();
+    this.router.navigate(['/login']);
   }
 }

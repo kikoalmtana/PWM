@@ -1,13 +1,14 @@
 import {inject, Injectable} from '@angular/core';
 import {
   Auth,
-  createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword, deleteUser,
   signInWithEmailAndPassword,
   signOut,
   user
 } from '@angular/fire/auth';
 import {UserModel} from '../models/user.model';
-import {doc, Firestore, setDoc} from '@angular/fire/firestore';
+import {doc, Firestore, setDoc, docData, deleteDoc} from '@angular/fire/firestore';
+import { Observable, of, switchMap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -15,6 +16,14 @@ export class AuthService {
   private firestore = inject(Firestore);
 
   currentUser$ = user(this.auth);
+
+  currentUserProfile$: Observable<UserModel | null> = this.currentUser$.pipe(
+    switchMap(user => {
+      if (!user) return of(null);
+      return docData(doc(this.firestore, 'users', user.uid)) as Observable<UserModel>;
+    })
+  );
+
 
   async register(email: string, password: string, name: string) {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
@@ -30,11 +39,21 @@ export class AuthService {
     return credential;
   }
 
-  login(email: string, password: string) {
-    return signInWithEmailAndPassword(this.auth, email, password);
+  async login(email: string, password: string) {
+    return await signInWithEmailAndPassword(this.auth, email, password);
   }
 
-  logout() {
-    return signOut(this.auth);
+  async logout() {
+    return await signOut(this.auth);
+  }
+
+  async deleteAccount() {
+    const currentUser = this.auth.currentUser;
+    if (!currentUser) return;
+
+    const uid = currentUser.uid;
+
+    await deleteUser(currentUser);
+    await deleteDoc(doc(this.firestore, 'users', uid));
   }
 }

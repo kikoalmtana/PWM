@@ -70,6 +70,8 @@ export class Register {
       );
       this.router.navigate(['/user-info']);
     } catch (e: any) {
+      console.error('Error code:', e.code);
+      console.error('Error message:', e.message);
       this.errorMessage = this.getErrorMessage(e.code);
     } finally {
       this.isLoading = false;

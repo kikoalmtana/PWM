@@ -16,12 +16,24 @@
       <li><a routerLink="/news">Noticias</a></li>
       <li><a routerLink="/select-pass">Bonos</a></li>
       <li><a routerLink="/about-us">Sobre Nosotros</a></li>
-      <li><a routerLink="/user-info">user</a></li>
-      <li><a id="user-nav" routerLink="/login">Tu Perfil</a></li>
+
+      @if (authService.currentUserProfile$ | async; as user) {
+        @if (user.role === 'admin') {
+          <li><a routerLink="/administrator-page">Administración</a></li>
+        }
+      }
+
+      @if (authService.currentUserProfile$ | async) {
+        <li><a class="user-nav" routerLink="/user-info">Tu Perfil</a></li>
+      } @else {
+        <li><a class="user-nav" routerLink="/login">Tu Perfil</a></li>
+      }
     </ul>
   </nav>
 
-  <a class="login-button" routerLink="/login">Iniciar sesión</a>
-
+  @if (authService.currentUserProfile$ | async; as user) {
+    <a class="login-button" routerLink="/user-info">{{ user.displayName }}</a>
+  } @else {
+    <a class="login-button" routerLink="/login">Iniciar sesión</a>
+  }
 </header>
-<script type="module" src="../js/header.js"></script>

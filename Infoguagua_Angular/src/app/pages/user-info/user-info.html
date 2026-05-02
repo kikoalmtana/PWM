@@ -17,7 +17,7 @@
   </div>
   <app-popup-confirm #popup/>
   <div class="user-footer">
-    <button id="logout">Cerrar sesión</button>
+    <button id="logout" (click)="onLogout()">Cerrar sesión</button>
     <button (click)="popup.open()" >Borrar cuenta</button>
   </div>
 </main>

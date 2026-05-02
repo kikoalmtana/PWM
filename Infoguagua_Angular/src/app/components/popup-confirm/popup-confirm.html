@@ -8,7 +8,7 @@
       @if (!showSuccess) {
         <p>Con esta acción borrarás todos tus datos de forma permanentemente.</p>
         <div class="buttons">
-          <button (click)="onOverlayClick($event)">Cancelar</button>
+          <button id="closePopup" (click)="onOverlayClick($event)">Cancelar</button>
           <button (click)="delete()">Borrar cuenta</button>
         </div>
       }

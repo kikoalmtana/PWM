@@ -3,4 +3,5 @@ export interface UserModel {
   email: string;
   displayName?: string;
   role?: 'admin' | 'user';
+  bonosIds?: string[];
 }

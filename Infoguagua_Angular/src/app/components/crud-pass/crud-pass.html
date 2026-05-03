@@ -39,25 +39,12 @@
     </div>
 
     <div class="d-flex align-items-center mb-3">
-      <h6 class="mb-0 text-primary fw-bold"><i class="bi bi-person-circle me-2"></i>Asignación y Acceso</h6>
+      <h6 class="mb-0 text-primary fw-bold"><i class="bi bi-bar-chart-line me-2"></i>Estado y Vigencia</h6>
       <hr class="flex-grow-1 ms-3 opacity-25">
     </div>
 
     <div class="row g-3 mb-4">
-      <div class="col-md-6">
-        <label class="form-label fw-semibold text-secondary small">Asignar a Usuario</label>
-        <div class="input-group">
-          <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
-          <select class="form-select" name="idUsuario" [(ngModel)]="pass.idUsuario" required>
-            <option value="" disabled>Seleccione el correo del usuario...</option>
-            @for (user of users(); track user.uid) {
-              <option [value]="user.uid">{{ user.email }}</option>
-            }
-          </select>
-        </div>
-      </div>
-
-      <div class="col-md-6">
+      <div class="col-md-4">
         <label class="form-label fw-semibold text-secondary small">Código del Bono</label>
         <div class="input-group">
           <span class="input-group-text bg-light"><i class="bi bi-upc-scan"></i></span>
@@ -65,14 +52,7 @@
                  placeholder="Ej: 857732" required>
         </div>
       </div>
-    </div>
 
-    <div class="d-flex align-items-center mb-3">
-      <h6 class="mb-0 text-primary fw-bold"><i class="bi bi-bar-chart-line me-2"></i>Estado y Vigencia</h6>
-      <hr class="flex-grow-1 ms-3 opacity-25">
-    </div>
-
-    <div class="row g-3 mb-4">
       <div class="col-md-4">
         <label class="form-label fw-semibold text-secondary small">Viajes Realizados</label>
         <div class="input-group">

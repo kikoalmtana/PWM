@@ -1,42 +1,68 @@
-<body class="bonus-page">
-<header data-template="header"></header>
+<main class="bonus-page">
 
-<main>
+  <h1>Añade un Bono a tu cuenta</h1>
 
-  <h1 class="login-header">Añade un Bono a tu cuenta</h1>
+  <img src="assets/Tarjeta_Wawa_Joven.png" class="image-box" alt="Imagen del bono" style="display:block; margin: 0 auto;">
 
-  <img id="bonoImagen" src="assets/Tarjeta_Wawa_Joven.png" class="image-box" alt="">
-
-  <form novalidate class="suggestions" id="addPassForm">
+  <form class="suggestions" (ngSubmit)="onSubmit()" [formGroup]="form" novalidate>
 
     <div class="selector">
-      <div class="selected" onclick="toggleOptions()">
-        Selecciona un bono
+      <div class="selected" (click)="toggleDropdown()">
+        {{ bonoSeleccionado ?? 'Selecciona un bono' }}
       </div>
-      <div class="options" id="options">
-        <div class="option" onclick="selectOption(this, 'basico')">Bono Guagua</div>
-        <div class="option" onclick="selectOption(this, 'con_dni')">Bono Residente Canario</div>
-        <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta Guagua Joven</div>
-        <div class="option" onclick="selectOption(this, 'con_dni')">Tarjeta Bono Oro</div>
-      </div>
+      @if (dropdownAbierto) {
+        <div class="options" style="display:block;">
+          @for (bono of bonos; track bono) {
+            <div class="option" (click)="seleccionarBono(bono)">{{ bono }}</div>
+          }
+        </div>
+      }
     </div>
 
-    <input id="codigoField" type="text" placeholder="Código de bono" required
-           maxlength="6" minlength="6" pattern="[0-9]*"
-           data-error-short="Debe de tener 6 caracteres"
-           data-error-pattern="Debe de ser código numérico">
-    <small data-error-for="codigoField"></small>
+    @if (error) {
+      <small style="color: red;">{{ error }}</small>
+    }
 
-    <input id="dniField" type="text" placeholder="DNI"
-           pattern="^[0-9]{8}[A-Za-z]$" minlength="9" maxlength="9"
-           data-error-short="Debe de tener 9 caracteres"
-           data-error-pattern="El DNI debe tener 8 números y una letra"
-           data-validate-dni>
-    <small data-error-for="dniField"></small>
+    <input
+      formControlName="codigo"
+      type="text"
+      placeholder="Código de bono"
+      maxlength="6"
+    >
+    @if (form.get('codigo')?.touched && form.get('codigo')?.errors) {
+      <small style="color:red;">
+        @if (form.get('codigo')?.errors?.['minlength'] || form.get('codigo')?.errors?.['maxlength']) {
+          Debe tener 6 caracteres
+        } @else if (form.get('codigo')?.errors?.['pattern']) {
+          Debe ser un código numérico
+        } @else {
+          Campo obligatorio
+        }
+      </small>
+    }
+
+    @if (requiereDni) {
+      <input
+        formControlName="dni"
+        type="text"
+        placeholder="DNI"
+        maxlength="9"
+      >
+      @if (form.get('dni')?.touched && form.get('dni')?.errors) {
+        <small style="color:red;">
+          @if (form.get('dni')?.errors?.['minlength'] || form.get('dni')?.errors?.['maxlength']) {
+            Debe tener 9 caracteres
+          } @else if (form.get('dni')?.errors?.['pattern']) {
+            El DNI debe tener 8 números y una letra
+          } @else {
+            Campo obligatorio
+          }
+        </small>
+      }
+    }
 
     <button type="submit">Enviar</button>
+
   </form>
 
 </main>
-
-</body>

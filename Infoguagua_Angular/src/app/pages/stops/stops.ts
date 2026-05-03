@@ -1,51 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Heading } from '../../components/heading/heading';
 import { StopInformationArea } from '../../components/stop-information-area/stop-information-area';
+import { StopsService } from '../../services/stops';
+import { Stop } from '../../models/stops.model';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-stops',
   standalone: true,
-  imports: [Heading, StopInformationArea],
+  imports: [Heading, StopInformationArea, CommonModule, FormsModule],
   templateUrl: './stops.html',
   styleUrl: './stops.css',
 })
 export class Stops {
+  private stopsService = inject(StopsService);
 
-  paradas = [
-    {
-      nombre: 'Juan Manuel Durán González (El Corte Inglés)',
-      buses: [
-        { numero: '2',  destino: 'Guiniguada', tiempo: '4 min.' },
-        { numero: '2',  destino: 'Guiniguada', tiempo: '16 min.' },
-        { numero: '26', destino: 'Campus',     tiempo: '20 min.' },
-      ]
-    },
-    {
-      nombre: 'Alfredo L. Jones, 1',
-      buses: [
-        { numero: '2', destino: 'Puerto', tiempo: '2 min.' },
-        { numero: '1', destino: 'Puerto', tiempo: '6 min.' },
-        { numero: '2', destino: 'Puerto', tiempo: '13 min.' },
-        { numero: '1', destino: 'Puerto', tiempo: '19 min.' },
-        { numero: '2', destino: 'Puerto', tiempo: '21 min.' },
-      ]
-    },
-    {
-      nombre: 'Rafael Cabrera (San Telmo)',
-      buses: [
-        { numero: '17', destino: 'Auditorio', tiempo: '2 min.' },
-        { numero: '12', destino: 'Puerto',    tiempo: '8 min.' },
-        { numero: '12', destino: 'Puerto',    tiempo: '13 min.' },
-        { numero: '1',  destino: 'Puerto',    tiempo: '17 min.' },
-      ]
-    },
-    {
-      nombre: 'Mesa y López (Madera y Corcho)',
-      buses: [
-        { numero: '17', destino: 'Auditorio', tiempo: '4 min.' },
-        { numero: '26', destino: 'Campus',    tiempo: '6 min.' },
-        { numero: '26', destino: 'Campus',    tiempo: '27 min.' },
-      ]
-    },
-  ];
+  paradas = toSignal(this.stopsService.getStops(), { initialValue: [] as Stop[] });
+
+  searchTerm = '';
+
+  get paradasFiltradas(): Stop[] {
+    const term = this.searchTerm.trim().toLowerCase();
+    if (!term) return this.paradas();
+    return this.paradas().filter(p =>
+      p.nombre_parada.toLowerCase().includes(term) ||
+      p.identificador_parada.toLowerCase().includes(term)
+    );
+  }
+
+  getBuses(parada: Stop): { numero: string; destino: string; tiempo: string }[] {
+    return (parada.guaguas_en_camino?.proxima_guagua ?? []).map(g => ({
+      numero: g.linea.toString(),
+      destino: g.destino,
+      tiempo: g.llegada,
+    }));
+  }
 }

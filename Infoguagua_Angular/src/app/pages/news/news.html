@@ -1,26 +1,35 @@
-
 <main>
 
-<app-heading
-  [texto]="'NOTICIAS'"
-/>
+  <app-heading [texto]="'NOTICIAS'" />
 
-<app-principal-new
-  [link]="noticiaPrincipal.link"
-  [portada]="noticiaPrincipal.portada"
-  [titulo]="noticiaPrincipal.titulo"
-  [descripcion]="noticiaPrincipal.descripcion"
-/>
+  @if (noticias().length === 0) {
+    <p style="text-align:center; padding: 2rem;">Cargando noticias...</p>
+  }
 
-<section class="secondary-news" id="aditional-news-section">
-  <article *ngFor="let noticia of noticias">
-    <app-preview-new
-      [link]="noticia.link"
-      [portada]="noticia.portada"
-      [encabezado]="noticia.encabezado"
-      [descripcion]="noticia.descripcion"
-    />
-  </article>
-</section>
+  @if (noticiaPrincipal) {
+    <a [routerLink]="['/new']" [queryParams]="{ id: noticiaPrincipal.id }">
+      <app-principal-new
+        [portada]="noticiaPrincipal.image"
+        [titulo]="noticiaPrincipal.title"
+        [descripcion]="noticiaPrincipal.description"
+        [link]="''"
+      />
+    </a>
+  }
+
+  <section class="secondary-news" id="aditional-news-section">
+    @for (noticia of noticiasSecundarias; track noticia.id) {
+      <article>
+        <a [routerLink]="['/new']" [queryParams]="{ id: noticia.id }">
+          <app-preview-new
+            [portada]="noticia.image"
+            [encabezado]="noticia.title"
+            [descripcion]="noticia.description"
+            [link]="''"
+          />
+        </a>
+      </article>
+    }
+  </section>
 
 </main>

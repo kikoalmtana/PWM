@@ -1,0 +1,123 @@
+.single-new {
+  animation: fadeUp 0.5s ease both;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+
+  p {
+    margin: auto;
+    padding: clamp(8px, 3vw, 20px);
+    max-width: 700px;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--font-color);
+    line-height: 2rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    text-align: justify;
+  }
+
+  .heading {
+    font-size: 50px;
+    background-color: var(--blue);
+    color: var(--light-yellow);
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .new-cover {
+    width: 100%;
+    max-width: 80rem;
+    max-height: 40rem;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  .new-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    max-width: 80rem;
+    width: 100%;
+    margin: auto;
+
+    .notice {
+      text-align: justify;
+      font-size: 1.3rem;
+      color: var(--font-color);
+      line-height: 3rem;
+      margin-right: 2rem;
+    }
+
+    .another-news {
+      align-content: center;
+      justify-self: center;
+      border-left: 2px solid var(--font-color);
+      padding: 0 0 0 2rem;
+    }
+  }
+}
+
+.another-news a:nth-child(1) article {
+  border-bottom: 2px solid var(--font-color);
+}
+
+.preview-noticia {
+  font-family: system-ui;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  img {
+    width: 100%;
+    max-height: 8rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--orange);
+  }
+
+  p {
+    color: var(--font-color);
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
+
+  &:hover {
+    background-color: var(--shadow);
+  }
+}
+
+@media (max-width: 768px) {
+  .single-new .new-content {
+    grid-template-columns: 1fr;
+    margin: 1rem;
+  }
+
+  .single-new .another-news {
+    border: none;
+    padding: 0;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .single-new .another-news a {
+    width: 100%;
+    max-width: 30rem;
+  }
+}

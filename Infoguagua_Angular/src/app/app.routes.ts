@@ -5,6 +5,7 @@ import { LineInfo } from './pages/line-info/line-info';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { News } from './pages/news/news';
+import { NewDetail } from './pages/new/new';
 import { UserEdit } from './pages/user-edit/user-edit';
 import { UserInfo } from './pages/user-info/user-info';
 import { Stops } from './pages/stops/stops';
@@ -28,4 +29,5 @@ export const routes: Routes = [
   { path: 'select-pass', component: SelectPass },
   { path: 'add-pass', component: AddPass },
   { path: 'administrator-page', component: AdministratorPage },
+  { path: 'new', component: NewDetail },
 ];

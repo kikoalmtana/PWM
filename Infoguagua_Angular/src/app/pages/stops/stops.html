@@ -1,20 +1,34 @@
 <main class="stops">
 
-  <app-heading
-    [texto]="'INFORMACIÓN SOBRE PARADAS'"
-  />
+  <app-heading [texto]="'INFORMACIÓN SOBRE PARADAS'" />
 
   <p>Busca tu parada para obtener información sobre próximas guaguas</p>
 
   <form role="search">
     <div class="search-wrapper">
-      <input required type="text" placeholder="Número o nombre de la parada" id="input">
+      <input
+        type="text"
+        placeholder="Número o nombre de la parada"
+        id="input"
+        [(ngModel)]="searchTerm"
+        name="search"
+      >
     </div>
   </form>
 
-  <app-stop-information-area
-    [nombreParada]="paradas[0].nombre"
-    [buses]="paradas[0].buses"
-  />
+  @if (paradas().length === 0) {
+    <p style="text-align:center; padding: 2rem;">Cargando paradas...</p>
+  }
+
+  @for (parada of paradasFiltradas; track parada.id) {
+    <app-stop-information-area
+      [nombreParada]="parada.nombre_parada"
+      [buses]="getBuses(parada)"
+    />
+  }
+
+  @if (paradas().length > 0 && paradasFiltradas.length === 0) {
+    <p style="text-align:center; padding: 2rem;">No se encontraron paradas con ese criterio.</p>
+  }
 
 </main>

@@ -1,50 +1,32 @@
-import { Component } from '@angular/core';
-import { PreviewNew } from '../../components/preview-new/preview-new'
-import { NgFor } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { PreviewNew } from '../../components/preview-new/preview-new';
 import { Heading } from '../../components/heading/heading';
-import {PrincipalNew} from '../../components/principal-new/principal-new';
+import { PrincipalNew } from '../../components/principal-new/principal-new';
+import { NewService } from '../../services/news';
+import { New } from '../../models/new.model';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [PreviewNew, NgFor, Heading, PrincipalNew],
+  imports: [PreviewNew, Heading, PrincipalNew, CommonModule, RouterLink],  // añade RouterLink aquí
   templateUrl: './news.html',
   styleUrl: './news.css',
 })
 
 export class News {
+  private newsService = inject(NewService);
 
-  noticiaPrincipal = {
-    link: '',
-    portada: 'assets/noticias/noticia1.jpg',
-    titulo: "Acuerdo entre Guaguas Municipales y el SUG evita la huelga de guaguas",
-    descripcion: "Se alcanza un principio de acuerdo tras varios días de negociación."
-  };
+  noticias = toSignal(this.newsService.getNews(), { initialValue: [] as New[] });
 
-  noticias = [
-    {
-      link: '',
-      portada: 'assets/noticias/noticia2.png',
-      encabezado: "Guaguas Municipales cierra 2025 con un récord histórico de más de 56,5 millones de viajeros",
-      descripcion: "Guaguas Municipales bate todos sus registros anteriores con un crecimiento del 60% respecto a 2022.",
-    },
-    {
-      link: '',
-      portada: 'assets/noticias/noticia3.jpg',
-      encabezado: "Guaguas Municipales incorpora 24 nuevos vehículos",
-      descripcion: "La empresa suma 24 autobuses de 12 metros a su red bajo la campaña 'Siéntate como en casa'",
-    },
-    {
-      link: '',
-      portada: 'assets/noticias/noticia4.jpeg',
-      encabezado: "Guaguas Municipales presenta su presupuesto para 2026 de 16,2 millones ",
-      descripcion: "Se aprueba un ambicioso plan de inversiones que incluye la compra de 22 nuevos vehículos y el avance del proyecto MetroGuagua",
-    },
-    {
-      link: '',
-      portada: 'assets/noticias/noticia5.jpg',
-      encabezado: "Cinco nuevas líneas nocturnas para el Carnaval 2026 'Las Vegas'",
-      descripcion: "La empresa municipal habilita un dispositivo especial con más de veinte vehículos y medio centenar de profesionales",
-    }
-  ];
+  get noticiaPrincipal(): New | null {
+    const all = this.noticias();
+    return all.length > 0 ? all[0] : null;
+  }
+
+  get noticiasSecundarias(): New[] {
+    return this.noticias().slice(1);
+  }
 }

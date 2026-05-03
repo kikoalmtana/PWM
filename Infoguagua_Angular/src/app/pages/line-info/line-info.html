@@ -1,28 +1,57 @@
 <main>
-  <header data-template="header"></header>
 
-  <div class="line-selector" id="header-linea"></div>
+  @if (!linea()) {
+    <p style="text-align:center; padding: 3rem;">Cargando línea...</p>
+  }
 
-  <div class="line-info-page">
+  @if (linea(); as l) {
 
-    <h2>Horarios</h2>
-
-    <div class="cards-grid" id="seccion-horarios">
-
+    <div class="line-selector" id="header-linea">
+      <div class="line-number">{{ l.numero }}</div>
+      <div class="line-name">{{ l.primera_salida }} - {{ l.segunda_salida }}</div>
     </div>
 
-    <h2>Paradas</h2>
+    <div class="line-info-page">
 
-    <div class="cards-grid" id="seccion-lineas">
+      <!-- HORARIOS -->
+      <h2 [class.active]="isOpen('horarios')" (click)="toggle('horarios')">Horarios</h2>
+
+      <div class="cards-grid" [class.active]="isOpen('horarios')" [style.height]="isOpen('horarios') ? 'auto' : '0'">
+        @for (horario of l.horarios.horarios; track $index) {
+          <div class="card-column">
+            <h3>{{ horario.sentido | titlecase }} — {{ horario.tipo_dia }}</h3>
+            <p class="horarios-dia">Salidas:</p>
+            <div class="horarios-chess">
+              @for (salida of horario.salidas; track $index) {
+                <p>{{ salida }}</p>
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- PARADAS -->
+      <h2 [class.active]="isOpen('paradas')" (click)="toggle('paradas')">Paradas</h2>
+
+      <div class="cards-grid" [class.active]="isOpen('paradas')" [style.height]="isOpen('paradas') ? 'auto' : '0'">
+        @for (grupo of l.paradas.paradas; track $index) {
+          <div class="card-column">
+            <h3>{{ grupo.sentido | titlecase }}</h3>
+            @for (parada of grupo.lista_de_paradas; track $index) {
+              <p class="horarios">{{ $index + 1 }}. {{ parada }}</p>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- MAPA -->
+      <h2 [class.active]="isOpen('mapa')" (click)="toggle('mapa')">Mapa</h2>
+
+      <div class="cards-grid" [class.active]="isOpen('mapa')" [style.height]="isOpen('mapa') ? 'auto' : '0'">
+        <img src="/assets/dummy.jpg" alt="Mapa de la línea" class="map-placeholder">
+      </div>
 
     </div>
+  }
 
-
-    <h2>Mapa</h2>
-
-    <div class="cards-grid">
-      <img src="/assets/dummy.jpg" alt="photo" class="map-placeholder">
-    </div>
-  </div>
 </main>
-

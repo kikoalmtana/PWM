@@ -2,7 +2,9 @@
   <h1>Tu perfil</h1>
   <div class="user-info">
     <div>
-      <h3>Username</h3>
+      @if (authService.currentUserProfile$ | async; as user) {
+        <h3>{{ user.displayName }}</h3>
+      }
       <a routerLink="/user-edit">
         <img src="assets/edit.svg" alt="Edit account access">
       </a>

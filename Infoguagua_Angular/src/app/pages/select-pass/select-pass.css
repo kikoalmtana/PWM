@@ -81,7 +81,6 @@
     }
 
     .options {
-      display: none;
       position: absolute;
       width: 100%;
       border: 1px solid var(--orange);
@@ -98,6 +97,10 @@
     .option:hover {
       background: #f0f0f0;
       border-radius: 15px;
+    }
+
+    .error{
+      color: red;
     }
 
   }

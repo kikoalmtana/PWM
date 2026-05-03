@@ -94,6 +94,13 @@ form small{
   display: block;
 }
 
+.error{
+  color: red;
+  font-size: 1.1rem;
+  align-self: center;
+  margin: 0;
+}
+
 @media (max-width: 768px){
   .login-page{
     display: flex;

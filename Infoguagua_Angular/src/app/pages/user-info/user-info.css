@@ -79,6 +79,7 @@
     margin: 30px 20px;
     font-size: xx-large;
     transition: transform 0.2s ease;
+    cursor: pointer;
 
     &:hover{
       color: var(--orange);

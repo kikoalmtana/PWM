@@ -17,7 +17,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrl: './user-info.css',
 })
 export class UserInfo {
-  private authService = inject(AuthService);
+  authService = inject(AuthService);
   private userService = inject(UserService);
   private passService = inject(PassService);
   private router = inject(Router);

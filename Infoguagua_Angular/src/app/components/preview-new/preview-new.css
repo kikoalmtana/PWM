@@ -1,0 +1,33 @@
+.preview-noticia{
+  font-family: system-ui;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a > img {
+    width: 100%;
+    max-height: 8rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--orange);
+  }
+
+  p {
+    color: var(--font-color);
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
+
+  &:hover {
+    background-color: var(--shadow);
+  }
+}

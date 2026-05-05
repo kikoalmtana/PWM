@@ -1,0 +1,105 @@
+import {Component, inject, ViewEncapsulation} from '@angular/core';
+import { FormBuilder, Validators, ReactiveFormsModule, FormArray } from '@angular/forms';
+import { LinesService } from '../../services/lines';
+import { CommonModule } from '@angular/common';
+import { Linea, Sentido, TipoDia } from '../../models/lines.model';
+
+@Component({
+  selector: 'app-curd-lines',
+  encapsulation: ViewEncapsulation.Emulated,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './curd-lines.html',
+  styleUrl: './curd-lines.css',
+})
+
+export class LinesComponent {
+  private fb = inject(FormBuilder);
+  private lineaService = inject(LinesService);
+
+  tiposDias: TipoDia[] = ["Lunes a viernes", "Sábado, domingo y festivos", "Sábados", "Domingos y festívos"];
+  sentidos: Sentido[] = ["ida", "vuelta"];
+
+  public lineaForm = this.fb.group({
+    numero: [null, [Validators.required]],
+    primera_salida: ['', Validators.required],
+    segunda_salida: ['', Validators.required],
+
+    horariosArray: this.fb.array([]),
+
+    paradas_ida: this.fb.array([this.fb.control('', Validators.required)]),
+    paradas_vuelta: this.fb.array([this.fb.control('', Validators.required)])
+  });
+
+  get horarios() { return this.lineaForm.get('horariosArray') as FormArray; }
+  get paradasIda() { return this.lineaForm.get('paradas_ida') as FormArray; }
+  get paradasVuelta() { return this.lineaForm.get('paradas_vuelta') as FormArray; }
+
+  agregarHorario() {
+    const horarioGroup = this.fb.group({
+      sentido: ['ida', Validators.required],
+      tipo_dia: ['Lunes a viernes', Validators.required],
+      salidas: ['', Validators.required]
+    });
+    this.horarios.push(horarioGroup);
+  }
+
+  eliminarHorario(index: number) { this.horarios.removeAt(index); }
+
+  agregarParada(sentido: 'ida' | 'vuelta') {
+    const control = sentido === 'ida' ? this.paradasIda : this.paradasVuelta;
+    control.push(this.fb.control('', Validators.required));
+  }
+
+  eliminarParada(sentido: 'ida' | 'vuelta', index: number) {
+    const control = sentido === 'ida' ? this.paradasIda : this.paradasVuelta;
+    control.removeAt(index);
+  }
+
+  async guardar() {
+    // 1. Verificación manual por si el [disabled] falla
+    if (this.lineaForm.invalid) {
+      console.warn("Formulario inválido:", this.lineaForm.value);
+      this.lineaForm.markAllAsTouched(); // Resalta los campos rojos
+      return;
+    }
+
+    // 2. Extraer valores con tipos seguros
+    const formVal = this.lineaForm.getRawValue();
+
+    try {
+      const nuevaLinea: Linea = {
+        numero: formVal.numero!,
+        primera_salida: formVal.primera_salida!,
+        segunda_salida: formVal.segunda_salida!,
+        horarios: {
+          // Manejo seguro de horarios (evita errores si el array está vacío)
+          horarios: (formVal.horariosArray || []).map((h: any) => ({
+            sentido: h.sentido,
+            tipo_dia: h.tipo_dia,
+            // Validamos que h.salidas exista antes de hacer el split
+            salidas: h.salidas ? h.salidas.split(',').map((s: string) => s.trim()) : []
+          }))
+        },
+        paradas: {
+          paradas: [
+            { sentido: 'ida', lista_de_paradas: formVal.paradas_ida as string[] },
+            { sentido: 'vuelta', lista_de_paradas: formVal.paradas_vuelta as string[] }
+          ]
+        }
+      };
+
+      console.log('Enviando a Firebase/Service:', nuevaLinea);
+      await this.lineaService.addLinea(nuevaLinea);
+
+      // 3. Resetear y limpiar estados de error
+      this.lineaForm.reset();
+      this.horarios.clear(); // Limpia los bloques de horarios añadidos
+      alert('¡Línea guardada con éxito!');
+
+    } catch (error) {
+      console.error('Error al guardar:', error);
+      alert('Hubo un error al guardar la línea.');
+    }
+  }
+}

@@ -1,0 +1,129 @@
+<div class="card shadow-sm border-0 mt-4">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+    <h5 class="mb-0">
+      <i class="bi bi-bus-front me-2"></i>Añadir nueva línea
+    </h5>
+  </div>
+
+  <form [formGroup]="lineaForm" (ngSubmit)="guardar()" class="card-body p-4">
+
+    <div class="d-flex align-items-center mb-3">
+      <h6 class="mb-0 text-primary fw-bold"><i class="bi bi-info-circle me-2"></i>Información de la Ruta</h6>
+      <hr class="flex-grow-1 ms-3 opacity-25">
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-3">
+        <label class="form-label fw-semibold text-secondary small">Número de Línea</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-hash"></i></span>
+          <input type="number" formControlName="numero" class="form-control" placeholder="Ej: 01">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-semibold text-secondary small">Origen (Cabecera)</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-geo-alt"></i></span>
+          <input type="text" formControlName="primera_salida" class="form-control" placeholder="Parada inicial">
+        </div>
+      </div>
+      <div class="col-md-5">
+        <label class="form-label fw-semibold text-secondary small">Destino (Terminal)</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-flag"></i></span>
+          <input type="text" formControlName="segunda_salida" class="form-control" placeholder="Parada final">
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <div class="d-flex align-items-center mb-3">
+        <h6 class="mb-0 text-primary fw-bold"><i class="bi bi-clock-history me-2"></i>Configuración de Horarios</h6>
+        <hr class="flex-grow-1 ms-3 opacity-25">
+        <button type="button" (click)="agregarHorario()" class="btn btn-sm btn-outline-primary ms-2">
+          <i class="bi bi-plus-circle me-1"></i>Añadir Bloque
+        </button>
+      </div>
+
+      <div formArrayName="horariosArray">
+        @for (h of horarios.controls; track $index) {
+          <div [formGroupName]="$index" class="row g-2 mb-2 align-items-end p-3 border rounded bg-light-subtle shadow-sm">
+            <div class="col-md-3">
+              <label class="small text-muted d-block mb-1 fw-bold text-uppercase">Sentido</label>
+              <select formControlName="sentido" class="form-select form-select-sm">
+                @for (s of sentidos; track s) { <option [value]="s">{{s | titlecase}}</option> }
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="small text-muted d-block mb-1 fw-bold text-uppercase">Tipo de Día</label>
+              <select formControlName="tipo_dia" class="form-select form-select-sm">
+                @for (td of tiposDias; track td) { <option [value]="td">{{td}}</option> }
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="small text-muted d-block mb-1 fw-bold text-uppercase">Salidas (Separadas por coma)</label>
+              <input formControlName="salidas" class="form-control form-control-sm" placeholder="08:00, 08:30...">
+            </div>
+            <div class="col-md-1 text-center">
+              <button type="button" (click)="eliminarHorario($index)" class="btn btn-outline-danger btn-sm border-0">
+                <i class="bi bi-trash3 fs-5"></i>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm bg-light">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center py-2 border-bottom">
+            <h6 class="text-primary fw-bold mb-0 small"><i class="bi bi-arrow-right-circle me-2"></i>ITINERARIO IDA</h6>
+            <button type="button" (click)="agregarParada('ida')" class="btn btn-xs btn-primary py-0 px-2" style="font-size: 0.75rem;">+ Añadir</button>
+          </div>
+          <div class="card-body p-3" formArrayName="paradas_ida" style="max-height: 300px; overflow-y: auto;">
+            @for (p of paradasIda.controls; track $index) {
+              <div class="input-group input-group-sm mb-2 shadow-xs">
+                <span class="input-group-text bg-primary text-white border-primary" style="min-width: 35px;">{{$index + 1}}</span>
+                <input [formControlName]="$index" class="form-control border-primary-subtle" placeholder="Nombre de la parada">
+                <button type="button" (click)="eliminarParada('ida', $index)" class="btn btn-outline-danger bg-white">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm bg-light">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center py-2 border-bottom">
+            <h6 class="text-success fw-bold mb-0 small"><i class="bi bi-arrow-left-circle me-2"></i>ITINERARIO VUELTA</h6>
+            <button type="button" (click)="agregarParada('vuelta')" class="btn btn-xs btn-success py-0 px-2" style="font-size: 0.75rem;">+ Añadir</button>
+          </div>
+          <div class="card-body p-3" formArrayName="paradas_vuelta" style="max-height: 300px; overflow-y: auto;">
+            @for (p of paradasVuelta.controls; track $index) {
+              <div class="input-group input-group-sm mb-2 shadow-xs">
+                <span class="input-group-text bg-success text-white border-success" style="min-width: 35px;">{{$index + 1}}</span>
+                <input [formControlName]="$index" class="form-control border-success-subtle" placeholder="Nombre de la parada">
+                <button type="button" (click)="eliminarParada('vuelta', $index)" class="btn btn-outline-danger bg-white">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2 pt-3 border-top mt-4">
+      <button type="button" class="btn btn-light border px-4" (click)="lineaForm.reset()">
+        <i class="bi bi-eraser me-2"></i>Limpiar
+      </button>
+      <button type="submit" class="btn btn-primary px-4 shadow-sm" [disabled]="lineaForm.invalid">
+        <i class="bi bi-cloud-arrow-up me-2"></i>Guardar Línea Completa
+      </button>
+    </div>
+
+  </form>
+</div>

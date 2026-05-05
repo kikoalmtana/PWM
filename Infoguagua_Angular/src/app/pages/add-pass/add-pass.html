@@ -1,0 +1,54 @@
+<body class="bonus-page">
+
+<main>
+
+  <h1 class="login-header">Añade un Bono a tu cuenta</h1>
+
+  <img id="bonoImagen" src="assets/Tarjeta_Wawa_Joven.png" class="image-box" alt="">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="suggestions">
+
+    <div class="selector" [class.open]="isDropdownOpen">
+      <div class="selected" (click)="toggleDropdown()" [class.placeholder]="!selectedBono">
+        {{ selectedBono ? selectedBono.label : 'Selecciona un bono' }}
+        <span class="arrow">{{ isDropdownOpen ? '▴' : '▾' }}</span>
+      </div>
+
+      @if (isDropdownOpen) {
+        <div class="options">
+          @for (b of bonos; track b.value) {
+            <div class="option" (click)="selectBono(b)" [class.active]="selectedBono?.value === b.value">
+              {{ b.label }}
+            </div>
+          }
+        </div>
+      }
+
+      @if (bono.invalid && bono.touched) {
+        <small class="error">Selecciona un tipo de bono</small>
+      }
+    </div>
+
+    <input formControlName="codigo" type="text" placeholder="Código de bono" maxlength="6" inputmode="numeric"
+      [class.invalid]="codigo.invalid && codigo.touched">
+
+    @if (codigo.invalid && codigo.touched) {
+      <small class="error">{{ getCodigoError() }}</small>
+    }
+
+    @if (requiresDni) {
+      <input formControlName="dni" type="text" placeholder="DNI" maxlength="9"
+        [class.invalid]="dni.invalid && dni.touched">
+
+      @if (dni.invalid && dni.touched) {
+        <small class="error">{{ getDniError() }}</small>
+      }
+    }
+
+    <button type="submit">Enviar</button>
+
+  </form>
+
+</main>
+
+</body>

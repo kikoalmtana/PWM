@@ -1,0 +1,144 @@
+<div class="card shadow-sm border-0 mt-4">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+    <h5 class="mb-0">
+      <i class="bi bi-newspaper me-2"></i>
+      {{ isEditing() ? 'Editar Noticia' : 'Nueva Noticia' }}
+    </h5>
+  </div>
+
+  <form #newsForm="ngForm" (ngSubmit)="onSubmit(newsForm)" class="card-body p-4">
+
+    <!-- SECCIÓN 1: Información Principal -->
+    <div class="d-flex align-items-center mb-3">
+      <h6 class="mb-0 text-primary fw-bold">
+        <i class="bi bi-info-circle me-2"></i>Información Principal
+      </h6>
+      <hr class="flex-grow-1 ms-3 opacity-25">
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary small">Título</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-fonts"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            name="title"
+            [(ngModel)]="newData.title"
+            placeholder="Ej: Nueva ruta hacia el norte"
+            required>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label fw-semibold text-secondary small">Autor</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            name="author"
+            [(ngModel)]="newData.author"
+            placeholder="Ej: Juan García"
+            required>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label fw-semibold text-secondary small">Fecha de Publicación</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-calendar-event"></i></span>
+          <input
+            type="date"
+            class="form-control"
+            name="date"
+            [(ngModel)]="newData.date"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2: Contenido -->
+    <div class="d-flex align-items-center mb-3">
+      <h6 class="mb-0 text-primary fw-bold">
+        <i class="bi bi-file-text me-2"></i>Contenido
+      </h6>
+      <hr class="flex-grow-1 ms-3 opacity-25">
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-12">
+        <label class="form-label fw-semibold text-secondary small">Descripción Corta</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-text-paragraph"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            [(ngModel)]="newData.description"
+            placeholder="Resumen breve de la noticia"
+            required>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label fw-semibold text-secondary small">Contenido Completo</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light align-items-start pt-2"><i class="bi bi-justify"></i></span>
+          <textarea
+            class="form-control"
+            name="content"
+            [(ngModel)]="newData.content"
+            placeholder="Desarrolla aquí el contenido completo de la noticia..."
+            rows="5"
+            required></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 3: Multimedia -->
+    <div class="d-flex align-items-center mb-3">
+      <h6 class="mb-0 text-primary fw-bold">
+        <i class="bi bi-image me-2"></i>Multimedia
+      </h6>
+      <hr class="flex-grow-1 ms-3 opacity-25">
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-12">
+        <label class="form-label fw-semibold text-secondary small">URL de la Imagen</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-link-45deg"></i></span>
+          <input
+            type="url"
+            class="form-control"
+            name="image"
+            [(ngModel)]="newData.image"
+            placeholder="https://ejemplo.com/imagen.jpg">
+        </div>
+      </div>
+
+      @if (newData.image) {
+        <div class="col-12">
+          <div class="border rounded p-2 bg-light-subtle text-center" style="max-height: 200px; overflow: hidden;">
+            <img [src]="newData.image" alt="Vista previa" class="img-fluid rounded" style="max-height: 180px; object-fit: cover;">
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- BOTONES -->
+    <div class="d-flex justify-content-end gap-2 pt-3 border-top mt-4">
+      <button type="button" class="btn btn-light border px-4" (click)="cancelEdit(newsForm)">
+        <i class="bi bi-eraser me-2"></i>
+        {{ isEditing() ? 'Cancelar' : 'Limpiar' }}
+      </button>
+      <button type="submit" class="btn btn-primary px-4 shadow-sm" [disabled]="!newsForm.valid">
+        <i class="bi bi-cloud-arrow-up me-2"></i>
+        {{ isEditing() ? 'Actualizar Noticia' : 'Publicar Noticia' }}
+      </button>
+    </div>
+
+  </form>
+</div>

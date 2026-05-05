@@ -1,0 +1,164 @@
+.user-profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1{
+    text-align: center;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.5s ease both;
+  }
+}
+
+.user-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+
+
+  img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    &:hover{
+      filter: invert(68%) sepia(75%) saturate(3496%) hue-rotate(353deg) brightness(99%) contrast(107%);
+    }
+
+  }
+
+  div{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    h3{
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+
+
+  a img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+  }
+}
+
+.user-pass{
+  margin: 20px;
+  min-width: 50%;
+}
+
+.add-pass{
+  border-top: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25%;
+  flex-wrap: wrap;
+
+  .plus{
+    display: none;
+  }
+
+  a{
+    text-decoration: none;
+    justify-self: center;
+    color: var(--blue);
+    font-weight: bold;
+    margin: 30px 20px;
+    font-size: xx-large;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+
+    &:hover{
+      color: var(--orange);
+      transform: scale(1.05);
+    }
+
+  }
+}
+
+.user-footer{
+  display: flex;
+  gap: 200px;
+  margin: 50px;
+
+  button{
+
+    padding: 10px 25px;
+
+    margin-top: 1rem;
+    align-self: center;
+
+    outline: none;
+    border: none;
+    border-radius: 10px;
+
+    color: var(--font-color);
+    background-color: var(--orange);
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    &:hover, &:focus{
+      transition: 0.2s;
+      color: var(--light-yellow);
+      background: var(--blue);
+      transform: scale(1.05);
+    }
+  }
+
+  button:nth-child(2){
+    color: white;
+    background-color: red;
+  }
+}
+
+@media (max-width: 768px){
+
+  .info-pass{
+    .container-pass{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+    }
+    .button-pass{
+      margin-top: auto;
+    }
+  }
+
+  .plus{
+    display: flex !important;
+    img{
+      filter: brightness(0) saturate(100%) invert(15%) sepia(54%) saturate(4677%) hue-rotate(205deg) brightness(99%) contrast(93%);
+      width: 100px;
+      height: auto;
+      transition: all 0.2s ease;
+      &:hover{
+        filter: invert(68%) sepia(75%) saturate(3496%) hue-rotate(353deg) brightness(99%) contrast(107%);
+        transform: scale(1.10);
+      }
+    }
+  }
+  .añadir{
+    display: none;
+  }
+
+  .user-footer{
+    flex-direction: column;
+    gap: 40px;
+  }
+}

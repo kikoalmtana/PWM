@@ -1,0 +1,42 @@
+<main class="lines-page">
+
+  <section class="heading">
+    <h1>LÍNEAS</h1>
+  </section>
+
+  <div class="stops">
+    <form role="search">
+      <input
+        type="text"
+        placeholder="Número o nombre de la línea"
+        [(ngModel)]="searchTerm"
+        name="search"
+      >
+    </form>
+  </div>
+
+  <div class="warnings-container">
+    <app-lines-warnings/>
+  </div>
+
+  <section class="lines-list" id="listado-lineas">
+
+    @if (lineas().length === 0) {
+      <p style="text-align:center; padding: 2rem;">Cargando líneas...</p>
+    }
+
+    @for (linea of lineasFiltradas; track linea.id) {
+      <a class="line-selector" [routerLink]="['/line-info']" [queryParams]="{ id: linea.id }">
+        <div class="line-number">{{ linea.numero }}</div>
+        <div class="line-name">{{ linea.primera_salida }} - {{ linea.segunda_salida }}</div>
+        <div class="line-icon"></div>
+      </a>
+    }
+
+    @if (lineas().length > 0 && lineasFiltradas.length === 0) {
+      <p style="text-align:center; padding: 2rem;">No se encontraron líneas con ese criterio.</p>
+    }
+
+  </section>
+
+</main>

@@ -1,0 +1,32 @@
+<main class="user-profile">
+  <h1>Tu perfil</h1>
+  <div class="user-info">
+    <div>
+      @if (authService.currentUserProfile$ | async; as user) {
+        <h3>{{ user.displayName }}</h3>
+      }
+      <a routerLink="/user-edit">
+        <img src="assets/edit.svg" alt="Edit account access">
+      </a>
+    </div>
+  </div>
+
+  <div class="user-pass">
+    @for (bono of bonos(); track bono.id) {
+      <app-pass-info [pass]="bono" (eliminar)="eliminarBono($event)" />
+    }
+    @if (bonos().length === 0) {
+      <p style="text-align:center; color: var(--font-color);">No tienes bonos añadidos.</p>
+    }
+    <article class="add-pass">
+      <a class="añadir" routerLink="/add-pass">AÑADIR</a>
+      <a class="plus" routerLink="/add-pass"><img src="assets/plus.svg" alt="add new pass"></a>
+    </article>
+  </div>
+
+  <app-popup-confirm #popup/>
+  <div class="user-footer">
+    <button id="logout" (click)="onLogout()">Cerrar sesión</button>
+    <button (click)="popup.open()">Borrar cuenta</button>
+  </div>
+</main>

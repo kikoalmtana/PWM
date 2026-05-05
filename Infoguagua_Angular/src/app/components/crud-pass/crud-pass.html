@@ -1,0 +1,95 @@
+<div class="card shadow-sm border-0 mt-4">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+    <h5 class="mb-0">
+      <i class="bi bi-credit-card-2-front me-2"></i>
+      {{ pass.id ? 'Editar Bono' : 'Registrar nuevo bono' }}
+    </h5>
+  </div>
+
+  <form #passForm="ngForm" (ngSubmit)="onSubmit(passForm)" class="card-body p-4">
+
+    <div class="d-flex align-items-center mb-3">
+      <h6 class="mb-0 text-primary fw-bold"><i class="bi bi-info-circle me-2"></i>Información del Bono</h6>
+      <hr class="flex-grow-1 ms-3 opacity-25">
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary small">Tipo de Bono</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-tag"></i></span>
+          <select class="form-select" name="tipoBono" [(ngModel)]="pass.tipoBono" required>
+            <option value="" disabled>Seleccione un tipo...</option>
+            <option value="Tarjeta Guagua Joven">Tarjeta Guagua Joven</option>
+            <option value="Bono Residente Canario">Bono Residente Canario</option>
+            <option value="Tarjeta Bono Oro">Tarjeta Bono Oro</option>
+            <option value="Bono Guagua">Bono Guagua</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary small">DNI del Titular</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-person-vcard"></i></span>
+          <input type="text" class="form-control" name="dni" [(ngModel)]="pass.dni"
+                 placeholder="Ej: 11223344B" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center mb-3">
+      <h6 class="mb-0 text-primary fw-bold"><i class="bi bi-bar-chart-line me-2"></i>Estado y Vigencia</h6>
+      <hr class="flex-grow-1 ms-3 opacity-25">
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-4">
+        <label class="form-label fw-semibold text-secondary small">Código del Bono</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-upc-scan"></i></span>
+          <input type="text" class="form-control" name="codigo" [(ngModel)]="pass.codigo"
+                 placeholder="Ej: 857732" required>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label fw-semibold text-secondary small">Viajes Realizados</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-signpost-split"></i></span>
+          <input type="number" class="form-control" name="viajesRealizados"
+                 [(ngModel)]="pass.viajesRealizados" min="0" placeholder="0">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label fw-semibold text-secondary small">Fecha de Caducidad</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-calendar-event"></i></span>
+          <input type="date" class="form-control" name="caducidad"
+                 [(ngModel)]="pass.caducidad" required>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label fw-semibold text-secondary small">Saldo (si aplica)</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light"><i class="bi bi-coin"></i></span>
+          <input type="text" class="form-control" name="saldo"
+                 [(ngModel)]="pass.saldo" placeholder="Ej: 12.50 €">
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2 pt-3 border-top mt-4">
+      <button type="button" class="btn btn-light border px-4" (click)="passForm.resetForm()">
+        <i class="bi bi-eraser me-2"></i>Limpiar
+      </button>
+      <button type="submit" class="btn btn-primary px-4 shadow-sm" [disabled]="!passForm.valid">
+        <i class="bi bi-cloud-arrow-up me-2"></i>
+        {{ pass.id ? 'Actualizar Bono' : 'Registrar Bono' }}
+      </button>
+    </div>
+
+  </form>
+</div>

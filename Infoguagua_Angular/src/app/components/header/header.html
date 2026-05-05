@@ -1,0 +1,39 @@
+<header class="header">
+  <a class="logo" routerLink="">
+    <img src="assets/logo/imagotipo-horizontal-azul.svg" alt="logo image">
+  </a>
+
+  <input type="checkbox" id="menu-toggle" hidden>
+  <label for="menu-toggle" class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <nav>
+    <ul class="navbar">
+      <li><a routerLink="/lines">Lineas</a></li>
+      <li><a routerLink="/stops">Paradas</a></li>
+      <li><a routerLink="/news">Noticias</a></li>
+      <li><a routerLink="/select-pass">Bonos</a></li>
+      <li><a routerLink="/about-us">Sobre Nosotros</a></li>
+
+      @if (authService.currentUserProfile$ | async; as user) {
+        @if (user.role === 'admin') {
+          <li><a routerLink="/administrator-page">Administración</a></li>
+        }
+      }
+
+      @if (authService.currentUserProfile$ | async) {
+        <li><a class="user-nav" routerLink="/user-info">Tu Perfil</a></li>
+      } @else {
+        <li><a class="user-nav" routerLink="/login">Tu Perfil</a></li>
+      }
+    </ul>
+  </nav>
+
+  @if (authService.currentUserProfile$ | async; as user) {
+    <a class="login-button" routerLink="/user-info">{{ user.displayName }}</a>
+  } @else {
+    <a class="login-button" routerLink="/login">Iniciar sesión</a>
+  }
+</header>

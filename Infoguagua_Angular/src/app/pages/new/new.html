@@ -1,0 +1,34 @@
+<main class="single-new">
+
+  @if (!noticia()) {
+    <p style="text-align:center; padding: 3rem;">Cargando noticia...</p>
+  }
+
+  @if (noticia(); as n) {
+
+    <h1 class="heading">{{ n.title }}</h1>
+
+    <img [src]="n.image" [alt]="n.title" class="new-cover">
+
+    <section class="new-content">
+
+      <div class="notice">
+        <p>{{ n.content }}</p>
+      </div>
+
+      <div class="another-news">
+        @for (otra of otrasNoticias(); track otra.id) {
+          <a [routerLink]="['/new']" [queryParams]="{ id: otra.id }">
+            <article class="preview-noticia">
+              <img [src]="otra.image" [alt]="otra.title">
+              <h3>{{ otra.title }}</h3>
+              <p>{{ otra.description }}</p>
+            </article>
+          </a>
+        }
+      </div>
+
+    </section>
+  }
+
+</main>

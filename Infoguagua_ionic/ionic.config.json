@@ -1,0 +1,7 @@
+{
+  "name": "Infoguagua_ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

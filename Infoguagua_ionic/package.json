@@ -29,7 +29,7 @@
   },
 
   "dependencies": {
-<<<<<<< Updated upstream
+
     "@angular/animations": "^20.0.0",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
@@ -39,18 +39,7 @@
     "@angular/platform-browser": "^20.0.0",
     "@angular/platform-browser-dynamic": "^20.0.0",
     "@angular/router": "^20.0.0",
-=======
-    "@angular/animations": "^20.3.0",
-    "@angular/common": "^20.3.0",
-    "@angular/compiler": "^20.3.0",
-    "@angular/core": "^20.3.0",
-    "@angular/fire": "^20.0.1",
-    "@angular/forms": "^20.3.0",
-    "@angular/platform-browser": "^20.3.0",
-    "@angular/platform-browser-dynamic": "^20.3.0",
-    "@angular/router": "^20.3.0",
 
->>>>>>> Stashed changes
     "@capacitor/app": "8.1.0",
     "@capacitor/core": "8.3.1",
     "@capacitor/haptics": "8.0.2",
@@ -58,13 +47,9 @@
     "@capacitor/status-bar": "8.0.2",
 
     "@ionic/angular": "^8.0.0",
-<<<<<<< Updated upstream
-    "firebase": "^12.13.0",
-=======
 
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
->>>>>>> Stashed changes
     "ionicons": "^7.0.0",
 
     "rxjs": "~7.8.0",

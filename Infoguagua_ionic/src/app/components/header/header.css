@@ -1,0 +1,133 @@
+.header{
+  display: flex;
+  align-items: center;
+  background-color: var(--orange);
+  padding: 10px 20px;
+  box-shadow: 0 2px 10px var(--orange);
+  color: var(--blue);
+  z-index: 100;
+  position: relative;
+
+  .logo {
+    margin-right: 60px;
+    img {
+      width: 166px;
+      display: block;
+    }
+  }
+
+  nav{
+    margin-right: auto;
+  }
+}
+
+.navbar{
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  padding: 0;
+}
+
+.user-nav{
+  display: none;
+}
+
+.navbar li a{
+  text-decoration: none;
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 20px;
+
+  &:hover{
+    color: white;
+  }
+}
+
+.login-button {
+  display: block;
+  text-decoration: none;
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 20px;
+
+  &:hover{
+    color: white;
+  }
+}
+
+.hamburger{
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: auto;
+
+  span{
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+}
+
+#menu-toggle {
+  display: none;
+}
+
+/*pixeles suficientes para que el nav no cambie*/
+@media (max-width: 928px) {
+
+  .hamburger {
+    display: flex;
+    order: 2;
+  }
+
+
+  .login-button{
+    display: none;
+  }
+
+  .user-nav{
+    display: flex;
+  }
+
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 60px; left: 0; right: 0;
+    flex-direction: column;
+    background: #d97200;
+    padding: 8px 0 16px;
+    box-shadow: 0 8px 24px lightgray;
+    z-index: 100;
+    list-style: none;
+    gap: 0;
+  }
+
+  #menu-toggle:checked ~ nav .navbar {
+    display: flex;
+    animation: fadeDown 0.25s ease both;
+  }
+
+  .navbar li a {
+    display: block;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .navbar li:last-child a { border-bottom: none; }
+
+  /* Animación X */
+  #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0; transform: scaleX(0);
+  }
+  #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+}

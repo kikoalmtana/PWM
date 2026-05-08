@@ -1,20 +1,28 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>InfoGuagua</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content fullscreen>
+  <div class="hero">
+    <h1>
+      Bienvenido a
+      <span>InfoGuagua</span>
+    </h1>
+    <p>
+      Rutas, horarios y paradas en tiempo real. <br>
+      Viaja sin sorpresas con el transporte público de tu ciudad.
+    </p>
+  </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="main-buttons">
+    <ion-button 
+      expand="full" 
+      class="line-button" 
+      routerLink="/lines"
+      shape="round">
+      <span>Líneas</span>
+    </ion-button>
   </div>
 </ion-content>

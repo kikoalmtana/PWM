@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="linea()">Línea {{ linea()?.numero }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (!linea()) {
+    <ion-spinner name="crescent"></ion-spinner>
+    <ion-text class="ion-text-center">
+      <p>Cargando línea...</p>
+    </ion-text>
+  }
+
+  @if (linea(); as l) {
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ l.numero }}</ion-card-title>
+        <ion-card-subtitle>{{ l.primera_salida }} - {{ l.segunda_salida }}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-list>
+      <!-- HORARIOS -->
+      <ion-item button (click)="toggle('horarios')">
+        <ion-label>Horarios</ion-label>
+        <ion-icon [name]="isOpen('horarios') ? 'chevron-up' : 'chevron-down'" slot="end"></ion-icon>
+      </ion-item>
+      <div *ngIf="isOpen('horarios')" class="ion-padding">
+        @for (horario of l.horarios.horarios; track $index) {
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{ horario.sentido | titlecase }} — {{ horario.tipo_dia }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>Salidas:</p>
+              <div class="horarios-grid">
+                @for (salida of horario.salidas; track $index) {
+                  <ion-chip>{{ salida }}</ion-chip>
+                }
+              </div>
+            </ion-card-content>
+          </ion-card>
+        }
+      </div>
+
+      <!-- PARADAS -->
+      <ion-item button (click)="toggle('paradas')">
+        <ion-label>Paradas</ion-label>
+        <ion-icon [name]="isOpen('paradas') ? 'chevron-up' : 'chevron-down'" slot="end"></ion-icon>
+      </ion-item>
+      <div *ngIf="isOpen('paradas')" class="ion-padding">
+        @for (grupo of l.paradas.paradas; track $index) {
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{ grupo.sentido | titlecase }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              @for (parada of grupo.lista_de_paradas; track $index) {
+                <p>{{ $index + 1 }}. {{ parada }}</p>
+              }
+            </ion-card-content>
+          </ion-card>
+        }
+      </div>
+
+      <!-- MAPA -->
+      <ion-item button (click)="toggle('mapa')">
+        <ion-label>Mapa</ion-label>
+        <ion-icon [name]="isOpen('mapa') ? 'chevron-up' : 'chevron-down'" slot="end"></ion-icon>
+      </ion-item>
+      <div *ngIf="isOpen('mapa')" class="ion-padding">
+        <ion-card>
+          <ion-card-content class="ion-text-center">
+            <img src="/assets/dummy.jpg" alt="Mapa de la línea" class="map-placeholder">
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-list>
+  }
+</ion-content>

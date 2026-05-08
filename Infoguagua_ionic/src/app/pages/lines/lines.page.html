@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>LÍNEAS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    placeholder="Número o nombre de la línea"
+    name="search"
+    class="ion-margin-bottom">
+  </ion-searchbar>
+
+  <ion-list>
+    @if (lineas().length === 0) {
+      <ion-item>
+        <ion-label class="ion-text-center">
+          <p>Cargando líneas...</p>
+        </ion-label>
+      </ion-item>
+    }
+
+    @for (linea of lineasFiltradas; track linea.id) {
+      <ion-item [routerLink]="['/line-info']" [queryParams]="{ id: linea.id }">
+        <ion-label>
+          <h2>{{ linea.numero }}</h2>
+          <p>{{ linea.primera_salida }} - {{ linea.segunda_salida }}</p>
+        </ion-label>
+        <ion-icon name="chevron-forward" slot="end"></ion-icon>
+      </ion-item>
+    }
+
+    @if (lineas().length > 0 && lineasFiltradas.length === 0) {
+      <ion-item>
+        <ion-label class="ion-text-center">
+          <p>No se encontraron líneas con ese criterio.</p>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
+</ion-content>

@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="suggestions" id="login-form">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="username"></ion-input>
+    </ion-item>
+    @if (username?.invalid && username?.touched) {
+      @if (username?.hasError('required')) {
+        <ion-text color="danger"><small>Campo obligatorio</small></ion-text>
+      } @else if (username?.hasError('minlength')) {
+        <ion-text color="danger"><small>El nombre debe tener más de 3 caracteres</small></ion-text>
+      } @else if (username?.hasError('pattern')) {
+        <ion-text color="danger"><small>El nombre debe contener mínimo una letra</small></ion-text>
+      } @else if (username?.hasError('maxlength')) {
+        <ion-text color="danger"><small>El nombre es demasiado largo</small></ion-text>
+      }
+    }
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    @if (email?.invalid && email?.touched) {
+      @if (email?.hasError('required')) {
+        <ion-text color="danger"><small>Campo obligatorio</small></ion-text>
+      } @else if (email?.hasError('email')) {
+        <ion-text color="danger"><small>Formato de email incorrecto</small></ion-text>
+      }
+    }
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="password"></ion-input>
+      <ion-button fill="clear" slot="end" (click)="togglePassword()">
+        <ion-icon [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
+      </ion-button>
+    </ion-item>
+    @if (password?.invalid && password?.touched) {
+      @if (password?.hasError('required')) {
+        <ion-text color="danger"><small>Campo obligatorio</small></ion-text>
+      } @else if (password?.hasError('minlength')) {
+        <ion-text color="danger"><small>La contraseña debe tener más de 4 caracteres</small></ion-text>
+      } @else if (password?.hasError('pattern')) {
+        <ion-text color="danger"><small>La contraseña debe contener mínimo una letra y un número</small></ion-text>
+      } @else if (password?.hasError('maxlength')) {
+        <ion-text color="danger"><small>La contraseña es demasiado larga</small></ion-text>
+      }
+    }
+
+    <ion-item>
+      <ion-label position="floating">Confirmar Contraseña</ion-label>
+      <ion-input [type]="showPasswordConfirm ? 'text' : 'password'" formControlName="confirmPassword"></ion-input>
+      <ion-button fill="clear" slot="end" (click)="togglePasswordConfirm()">
+        <ion-icon [name]="showPasswordConfirm ? 'eye-off' : 'eye'"></ion-icon>
+      </ion-button>
+    </ion-item>
+    @if (confirmPassword?.touched && form.hasError('passwordMismatch')) {
+      <ion-text color="danger"><small>Las contraseñas no coinciden</small></ion-text>
+    }
+
+    <ion-button expand="block" type="submit" [disabled]="isLoading" class="ion-margin-top">
+      <ion-spinner *ngIf="isLoading" slot="start"></ion-spinner>
+      {{ isLoading ? 'Cargando...' : 'Registrarse' }}
+    </ion-button>
+
+    @if (errorMessage) {
+      <ion-text color="danger">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
+    }
+
+    <ion-button fill="clear" expand="block" routerLink="/login" class="ion-margin-top">
+      ¿Ya tienes cuenta? Inicia sesión
+    </ion-button>
+  </form>
+</ion-content>

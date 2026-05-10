@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [RouterLink, AsyncPipe],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrl: './header.scss'
 })
 export class HeaderComponent {
   authService = inject(AuthService);

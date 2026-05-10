@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from '../components/header/header';
 import { 
   IonHeader, 
   IonToolbar, 
@@ -18,6 +19,7 @@ import {
   styleUrls: ['home.page.scss'],
   imports: [
     RouterModule,
+    HeaderComponent,
     IonHeader, 
     IonToolbar, 
     IonTitle, 

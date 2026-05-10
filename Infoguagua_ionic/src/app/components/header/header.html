@@ -12,10 +12,7 @@
   <nav>
     <ul class="navbar">
       <li><a routerLink="/lines">Lineas</a></li>
-      <li><a routerLink="/stops">Paradas</a></li>
-      <li><a routerLink="/news">Noticias</a></li>
-      <li><a routerLink="/select-pass">Bonos</a></li>
-      <li><a routerLink="/about-us">Sobre Nosotros</a></li>
+      <li><a routerLink="/favorites">Favoritos</a></li>
 
       @if (authService.currentUserProfile$ | async; as user) {
         @if (user.role === 'admin') {

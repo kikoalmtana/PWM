@@ -71,7 +71,7 @@ export class RegisterPage {
         this.password?.value,
         this.username?.value
       );
-      this.router.navigate(['/user-info']);
+      this.router.navigate(['/favorites']);
     } catch (e: any) {
       console.error('Error code:', e.code);
       console.error('Error message:', e.message);

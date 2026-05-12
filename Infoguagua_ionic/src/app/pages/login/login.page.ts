@@ -48,7 +48,7 @@ export class LoginPage {
         this.email?.value,
         this.password?.value
       );
-      this.router.navigate(['/user-info']);
+      this.router.navigate(['/favorites']);
     } catch (e: any) {
       this.errorMessage = this.getErrorMessage(e.code);
     } finally {

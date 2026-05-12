@@ -26,11 +26,11 @@ export class AuthService {
 
 
   async register(email: string, password: string, name: string) {
-    const credential = await createUserWithEmailAndPassword(this.auth, email, password);
+    const credential = await createUserWithEmailAndPassword(this.auth, email.trim().toLowerCase(), password);
 
     const userDoc: UserModel = {
       uid: credential.user.uid,
-      email: credential.user.email!,
+      email: credential.user.email!.toLowerCase(),
       displayName: name,
       role: 'user',
     };
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   async login(email: string, password: string) {
-    return await signInWithEmailAndPassword(this.auth, email, password);
+    return await signInWithEmailAndPassword(this.auth, email.trim().toLowerCase(), password);
   }
 
   async logout() {

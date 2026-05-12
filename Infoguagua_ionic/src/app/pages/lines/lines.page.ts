@@ -6,11 +6,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { HeaderComponent } from '../../components/header/header';
+import { Heading } from '../../components/heading/heading';
 
 @Component({
   selector: 'app-lines',
   standalone: true,
-  imports: [IonicModule, CommonModule, RouterLink, FormsModule],
+  imports: [IonicModule, CommonModule, RouterLink, FormsModule, HeaderComponent, Heading],
   templateUrl: './lines.page.html',
   styleUrl: './lines.page.scss',
 })

@@ -53,12 +53,13 @@ ion-content {
 }
 
 .main-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   padding: 1.5rem;
   width: 100%;
   box-sizing: border-box;
+  align-items: center;
 
   ion-button {
     --background: #{$orange};
@@ -68,6 +69,8 @@ ion-content {
     min-height: 100px;
     display: flex;
     flex-direction: column;
+    max-width: 40rem;
+    width: 100%;
     gap: 0.5rem;
 
     img {

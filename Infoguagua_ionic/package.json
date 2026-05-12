@@ -47,7 +47,7 @@
     "@capacitor/status-bar": "8.0.2",
 
     "@ionic/angular": "^8.0.0",
-
+    "firebase": "^12.13.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "ionicons": "^7.0.0",

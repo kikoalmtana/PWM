@@ -21,6 +21,10 @@ export const routes: Routes = [
     path: 'line-info',
     loadComponent: () => import('./pages/line-info/line-info.page').then((m) => m.LineInfoPage),
   },
+    {
+    path: 'favorites',
+    loadComponent: () => import('./pages/favorites/favorites.page').then((m) => m.FavoritesPage),
+  },
   {
     path: '',
     redirectTo: 'home',

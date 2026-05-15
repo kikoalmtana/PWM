@@ -1,12 +1,39 @@
+/* line-info.page.scss */
+
+:host {
+  --blue: #094c9d;
+  --orange: #fe8906;
+  --light-yellow: #fff9f2;
+}
+
+/* ─── ANIMATION ──────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── PAGE WRAPPER ───────────────────────────────────────────── */
+ion-content.line-info-page {
+  --background: #f4f4f4;
+  animation: fadeUp 0.75s ease both;
+}
+
+/* ─── LINE SELECTOR CARD ─────────────────────────────────────── */
 .line-selector {
   animation: fadeUp 0.5s ease both;
   display: flex;
   align-items: center;
   padding: 20px 30px;
-  width: 80%;
+  width: 85%;
   max-width: 900px;
-  margin: 60px auto;
-  font-size: 25px;
+  margin: 32px auto;
+  font-size: 22px;
   background-color: white;
   color: var(--blue);
   border-radius: 15px;
@@ -15,107 +42,96 @@
   .line-number {
     background: var(--orange);
     color: var(--light-yellow);
-    padding: 15px 45px;
+    padding: 12px 36px;
     font-weight: bold;
-    border-radius: 15px;
+    border-radius: 12px;
+    white-space: nowrap;
   }
 
   .line-name {
     flex: 1;
     margin-left: 20px;
     font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .line-icon {
+    width: 50px;
+    height: 30px;
+    background: var(--orange);
+    border-radius: 15px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 }
 
-.line-info-page {
-  animation: fadeUp 0.75s ease both;
+/* ─── SECTION HEADERS (accordion triggers) ───────────────────── */
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: var(--blue);
+  color: var(--light-yellow);
+  padding: 18px 40px;
+  margin: 6px 24px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
 
-  h2 {
-    font-size: 18px;
-    font-weight: bold;
-    background-color: var(--blue);
-    color: var(--light-yellow);
-    padding: 20px 80px;
-    margin: 5px 50px;
-    border-radius: 15px;
-    box-sizing: border-box;
-    cursor: pointer;
-  }
-
-  h2::after {
+  &::after {
     content: " ▼";
+    float: right;
   }
 
-  h2.active::after {
-    content: " ▲";
-  }
+  &.active {
+    background-color: darken(#1a3a5c, 6%);
 
-  h3 {
-    background-color: var(--orange);
-    color: var(--light-yellow);
-    padding: 5px 10px;
-    font-size: 20px;
-    border-radius: 5px;
-    width: 350px;
-  }
-
-  .cards-grid {
-    display: flex;
-    gap: 90px;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: height 0.5s ease, opacity 0.4s ease;
-    margin-bottom: 30px;
-
-    .card-column {
-      .horarios-dia {
-        font-size: 18px;
-        font-weight: bold;
-      }
-
-      .horarios {
-        width: 380px;
-        font-size: 1.3rem;
-      }
-
-      .horarios-chess {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        width: 380px;
-        gap: 0;
-        margin-top: 4px;
-      }
-
-      .horarios-chess > p {
-        padding: 7px 4px;
-        text-align: center;
-        margin: 0;
-        font-size: 1.1rem;
-        border-radius: 0;
-      }
-
-      .horarios-chess > p:nth-child(odd) {
-        background-color: #ffdb91;
-      }
-
-      .horarios-chess > p:nth-child(even) {
-        background-color: #ffb074;
-      }
+    &::after {
+      content: " ▲";
     }
   }
+}
 
-  .cards-grid.active {
+/* ─── SUBSECTION HEADING ─────────────────────────────────────── */
+h3 {
+  background-color: var(--orange);
+  color: var(--light-yellow);
+  padding: 6px 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  width: fit-content;
+  max-width: 340px;
+  margin-bottom: 8px;
+}
+
+/* ─── ACCORDION GRID ─────────────────────────────────────────── */
+.cards-grid {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  /* collapsed state */
+  max-height: 0;
+  overflow: hidden;         // nunca cambiar a visible
+  opacity: 0;
+  margin-bottom: 0;
+  padding: 0 16px;
+
+  transition:
+    max-height 0.5s ease,
+    opacity 0.4s ease,
+    margin-bottom 0.3s ease,
+    padding 0.3s ease;
+
+  /* expanded state */
+  &.active {
+    max-height: 3000px;     // valor mayor que cualquier contenido posible
     opacity: 1;
-  }
-
-  .map-placeholder {
-    padding: 20px;
-    height: 450px;
-    width: 550px;
-    display: block;
-    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 20px 16px;
   }
 }

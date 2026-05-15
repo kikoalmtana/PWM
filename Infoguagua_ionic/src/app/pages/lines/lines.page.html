@@ -13,31 +13,25 @@
     class="ion-margin-bottom">
   </ion-searchbar>
 
-  <ion-list>
-    @if (lineas().length === 0) {
-      <ion-item>
-        <ion-label class="ion-text-center">
-          <p>Cargando líneas...</p>
-        </ion-label>
-      </ion-item>
-    }
+  @if (lineas().length === 0) {
+    <ion-spinner name="crescent"></ion-spinner>
+    <ion-text class="ion-text-center">
+      <p>Cargando líneas...</p>
+    </ion-text>
+  }
 
-    @for (linea of lineasFiltradas; track linea.id) {
-      <ion-item [routerLink]="['/line-info']" [queryParams]="{ id: linea.id }">
-        <ion-label>
-          <h2>{{ linea.numero }}</h2>
-          <p>{{ linea.primera_salida }} - {{ linea.segunda_salida }}</p>
-        </ion-label>
-        <ion-icon name="chevron-forward" slot="end"></ion-icon>
-      </ion-item>
-    }
+  @for (linea of lineasFiltradas; track linea.id) {
+    <div class="line-selector" [routerLink]="['/line-info']" [queryParams]="{ id: linea.id }">
+      <div class="line-number">{{ linea.numero }}</div>
+      <div class="line-name">{{ linea.primera_salida }} - {{ linea.segunda_salida }}</div>
+      <div class="line-icon"></div>
+    </div>
+  }
 
-    @if (lineas().length > 0 && lineasFiltradas.length === 0) {
-      <ion-item>
-        <ion-label class="ion-text-center">
-          <p>No se encontraron líneas con ese criterio.</p>
-        </ion-label>
-      </ion-item>
-    }
-  </ion-list>
+  @if (lineas().length > 0 && lineasFiltradas.length === 0) {
+    <ion-text class="ion-text-center">
+      <p>No se encontraron líneas con ese criterio.</p>
+    </ion-text>
+  }
+
 </ion-content>

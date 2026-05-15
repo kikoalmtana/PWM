@@ -6,11 +6,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Firestore, doc, docData } from '@angular/fire/firestore';
 import { Linea } from '../../models/lines.model';
 import { IonicModule } from '@ionic/angular';
+import { HeaderComponent } from 'src/app/components/header/header';
 
 @Component({
   selector: 'app-line-info',
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, HeaderComponent],
   templateUrl: './line-info.page.html',
   styleUrl: './line-info.page.scss',
 })

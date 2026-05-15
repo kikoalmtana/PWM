@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LinesService } from '../../services/lines';
+import { LinesService } from '../../services/lines.service';
 import { Linea } from '../../models/lines.model';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
@@ -26,7 +26,7 @@ export class LinesPage {
   get lineasFiltradas(): Linea[] {
     const term = this.searchTerm.trim().toLowerCase();
     if (!term) return this.lineas();
-    return this.lineas().filter(l =>
+    return this.lineas().filter((l: Linea) =>
       l.numero.toString().includes(term) ||
       l.primera_salida.toLowerCase().includes(term) ||
       l.segunda_salida.toLowerCase().includes(term)

@@ -38,7 +38,7 @@
 
     <ion-button expand="block" type="submit" [disabled]="isLoading" class="ion-margin-top">
       <ion-spinner *ngIf="isLoading" slot="start"></ion-spinner>
-      {{ isLoading ? 'Cargando...' : 'Iniciar sesión' }}
+      {{ isLoading ? '' : 'Iniciar sesión' }}
     </ion-button>
 
     @if (errorMessage) {

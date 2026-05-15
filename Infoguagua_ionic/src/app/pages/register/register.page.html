@@ -66,7 +66,7 @@
 
     <ion-button expand="block" type="submit" [disabled]="isLoading" class="ion-margin-top">
       <ion-spinner *ngIf="isLoading" slot="start"></ion-spinner>
-      {{ isLoading ? 'Cargando...' : 'Registrarse' }}
+      {{ isLoading ? '' : 'Registrarse' }}
     </ion-button>
 
     @if (errorMessage) {

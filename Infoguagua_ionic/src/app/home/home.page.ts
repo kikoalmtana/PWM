@@ -20,15 +20,9 @@ import {
   imports: [
     RouterModule,
     HeaderComponent,
-    IonHeader, 
-    IonToolbar, 
-    IonTitle, 
+    IonHeader,
     IonContent,
-    IonButton,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent
+    IonButton
   ],
 })
 export class HomePage {

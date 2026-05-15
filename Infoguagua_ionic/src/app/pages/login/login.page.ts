@@ -38,6 +38,7 @@ export class LoginPage {
   togglePassword(){ this.showPassword = !this.showPassword; }
 
   async onSubmit() {
+    console.log("HOLAHOLAHOLA");
     if (this.form.invalid) return;
 
     this.isLoading = true;

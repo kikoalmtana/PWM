@@ -15,7 +15,16 @@
     <div class="line-selector">
       <div class="line-number">{{ l.numero }}</div>
       <div class="line-name">{{ l.primera_salida }} - {{ l.segunda_salida }}</div>
-      <div class="line-icon"></div>
+      <ion-button
+        class="line-icon favorite-button"
+        [class.favorite-active]="isFavorite()"
+        [disabled]="favoriteLoading()"
+        fill="clear"
+        type="button"
+        [attr.aria-label]="isFavorite() ? 'Quitar de favoritos' : 'Anadir a favoritos'"
+        (click)="toggleFavorite($event, l)">
+        <ion-icon [name]="isFavorite() ? 'heart' : 'heart-outline'"></ion-icon>
+      </ion-button>
     </div>
 
     <!-- HORARIOS SECTION -->

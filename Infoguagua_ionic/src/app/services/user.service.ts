@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, Injector, inject, runInInjectionContext } from '@angular/core';
 import { Firestore, collection, collectionData, doc, updateDoc, arrayUnion, arrayRemove, docData } from '@angular/fire/firestore';
 import { UserModel } from '../models/user.model';
 import { Observable } from 'rxjs';
@@ -7,15 +7,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
+  private injector = inject(Injector);
   private firestore = inject(Firestore);
-  private users = collection(this.firestore, 'users');
 
   getUsers(): Observable<UserModel[]> {
-    return collectionData(this.users, { idField: 'uid' }) as Observable<UserModel[]>;
+    return runInInjectionContext(this.injector, () => {
+      const users = collection(this.firestore, 'users');
+      return collectionData(users, { idField: 'uid' }) as Observable<UserModel[]>;
+    });
   }
 
   getUserProfile(uid: string): Observable<UserModel> {
-    return docData(doc(this.firestore, 'users', uid)) as Observable<UserModel>;
+    return runInInjectionContext(this.injector, () =>
+      docData(doc(this.firestore, 'users', uid)) as Observable<UserModel>
+    );
   }
 
   async addBonoToUser(uid: string, bonoId: string) {

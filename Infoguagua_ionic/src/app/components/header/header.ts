@@ -1,6 +1,6 @@
 // header.ts
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 
@@ -13,4 +13,23 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent {
   authService = inject(AuthService);
+  private router = inject(Router);
+
+  isAccountMenuOpen = false;
+
+  toggleAccountMenu(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isAccountMenuOpen = !this.isAccountMenuOpen;
+  }
+
+  closeAccountMenu() {
+    this.isAccountMenuOpen = false;
+  }
+
+  async logout() {
+    await this.authService.logout();
+    this.closeAccountMenu();
+    await this.router.navigate(['/home']);
+  }
 }

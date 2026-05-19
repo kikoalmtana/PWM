@@ -29,7 +29,19 @@
   </nav>
 
   @if (authService.currentUserProfile$ | async; as user) {
-    <a class="login-button" routerLink="/user-info">{{ user.displayName }}</a>
+    <div class="account-area">
+      <button class="login-button account-button" type="button" (click)="toggleAccountMenu($event)">
+        {{ user.displayName }}
+      </button>
+
+      @if (isAccountMenuOpen) {
+        <div class="account-backdrop" (click)="closeAccountMenu()"></div>
+        <div class="account-popup" role="dialog" aria-label="Opciones de cuenta">
+          <p class="account-name">{{ user.displayName }}</p>
+          <button class="logout-button" type="button" (click)="logout()">Cerrar sesion</button>
+        </div>
+      }
+    </div>
   } @else {
     <a class="login-button" routerLink="/login">Iniciar sesión</a>
   }

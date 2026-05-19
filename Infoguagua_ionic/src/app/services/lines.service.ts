@@ -1,5 +1,5 @@
-import { Injectable, inject } from '@angular/core';
-import { Firestore, collection, collectionData, addDoc, doc, deleteDoc, updateDoc } from '@angular/fire/firestore';
+import { Injectable, Injector, inject, runInInjectionContext } from '@angular/core';
+import { Firestore, collection, collectionData, addDoc, doc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Linea } from '../models/lines.model';
 
@@ -7,12 +7,15 @@ import { Linea } from '../models/lines.model';
   providedIn: 'root'
 })
 export class LinesService {
+  private injector = inject(Injector);
   private firestore = inject(Firestore);
   private collectionName = 'lineas';
 
   getLineas(): Observable<Linea[]> {
-    const ref = collection(this.firestore, this.collectionName);
-    return collectionData(ref, { idField: 'id' }) as Observable<Linea[]>;
+    return runInInjectionContext(this.injector, () => {
+      const ref = collection(this.firestore, this.collectionName);
+      return collectionData(ref, { idField: 'id' }) as Observable<Linea[]>;
+    });
   }
 
   addLinea(linea: Linea) {

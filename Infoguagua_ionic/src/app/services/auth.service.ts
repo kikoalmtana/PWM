@@ -1,4 +1,4 @@
-import {inject, Injectable} from '@angular/core';
+import {Injector, inject, Injectable, runInInjectionContext} from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword, deleteUser,
@@ -12,6 +12,7 @@ import { Observable, of, switchMap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  private injector = inject(Injector);
   private auth = inject(Auth);
   private firestore = inject(Firestore);
 
@@ -20,7 +21,9 @@ export class AuthService {
   currentUserProfile$: Observable<UserModel | null> = this.currentUser$.pipe(
     switchMap(user => {
       if (!user) return of(null);
-      return docData(doc(this.firestore, 'users', user.uid)) as Observable<UserModel>;
+      return runInInjectionContext(this.injector, () =>
+        docData(doc(this.firestore, 'users', user.uid)) as Observable<UserModel>
+      );
     })
   );
 

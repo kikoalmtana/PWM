@@ -1,0 +1,119 @@
+:host {
+  --blue: #094c9d;
+  --orange: #fe8906;
+  --light-yellow: #fff9f2;
+  display: block;
+}
+
+ion-content.favorites-page {
+  --background: #f4f4f4;
+}
+
+.favorites-list {
+  padding: 0 1rem 2rem;
+}
+
+.line-selector {
+  width: min(900px, 100%);
+  max-width: 900px;
+  margin: 32px auto;
+  --background: #ffffff;
+  --border-radius: 15px;
+  --inner-padding-end: 24px;
+  --min-height: 92px;
+  --padding-start: 30px;
+  --ripple-color: var(--orange);
+  color: var(--blue);
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px lightgray;
+  overflow: hidden;
+}
+
+.line-number {
+  background: var(--orange);
+  color: var(--light-yellow);
+  padding: 12px 36px;
+  font-weight: bold;
+  border-radius: 12px;
+  min-width: 96px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.line-name {
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  white-space: normal;
+}
+
+.line-icon {
+  width: 50px;
+  height: 30px;
+  background: var(--orange);
+  border-radius: 15px;
+  flex: 0 0 auto;
+}
+
+.favorite-button {
+  --background: var(--orange);
+  --background-hover: var(--orange);
+  --background-activated: var(--orange);
+  --border-radius: 15px;
+  --color: var(--light-yellow);
+  --padding-bottom: 0;
+  --padding-end: 0;
+  --padding-start: 0;
+  --padding-top: 0;
+  width: 50px;
+  height: 30px;
+  margin: 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+
+  ion-icon {
+    font-size: 20px;
+  }
+
+  &.favorite-active {
+    --background: var(--blue);
+    --background-hover: var(--blue);
+    --background-activated: var(--blue);
+    background: var(--blue);
+    filter: saturate(1.2);
+    transform: scale(1.08);
+  }
+
+  &[disabled] {
+    opacity: 0.75;
+  }
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .line-selector {
+    --inner-padding-end: 16px;
+    --min-height: 82px;
+    --padding-start: 16px;
+    margin: 20px auto;
+  }
+
+  .line-number {
+    min-width: 72px;
+    padding: 10px 18px;
+  }
+
+  .line-name {
+    margin-left: 12px;
+    font-size: 0.95rem;
+  }
+}

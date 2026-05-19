@@ -2,10 +2,48 @@
   <app-header></app-header>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">favorites</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="favorites-page">
+  <app-heading texto="FAVORITOS"></app-heading>
+
+  @if (isLoading) {
+    <div class="feedback">
+      <ion-spinner name="crescent"></ion-spinner>
+      <ion-text>
+        <p>Cargando favoritos...</p>
+      </ion-text>
+    </div>
+  } @else {
+    @if (favorites.length === 0) {
+      <ion-text class="feedback">
+        <p>No tienes lineas favoritas.</p>
+      </ion-text>
+    }
+
+    <section class="favorites-list">
+      @for (linea of favorites; track linea.id) {
+        <ion-item
+          class="line-selector"
+          button
+          detail="false"
+          lines="none"
+          [routerLink]="['/line-info']"
+          [queryParams]="{ id: linea.id }">
+          <div class="line-number" slot="start">{{ linea.numero }}</div>
+          <ion-label class="line-name">
+            {{ linea.primera_salida }} - {{ linea.segunda_salida }}
+          </ion-label>
+          <ion-button
+            class="line-icon favorite-button favorite-active"
+            [disabled]="isFavoriteLoading(linea)"
+            fill="clear"
+            slot="end"
+            type="button"
+            aria-label="Quitar de favoritos"
+            (click)="toggleFavorite($event, linea)">
+            <ion-icon name="heart"></ion-icon>
+          </ion-button>
+        </ion-item>
+      }
+    </section>
+  }
 </ion-content>

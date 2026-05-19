@@ -2,36 +2,63 @@
   <app-header></app-header>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" class="lines-page">
+  <app-heading texto="LINEAS"></app-heading>
 
-  <app-heading texto="Lineas"></app-heading>
+  <section class="search-area">
+    <ion-searchbar
+      [(ngModel)]="searchTerm"
+      placeholder="Numero o nombre de la linea"
+      name="search"
+      animated="true"
+      show-clear-button="focus">
+    </ion-searchbar>
+  </section>
 
-  <ion-searchbar
-    [(ngModel)]="searchTerm"
-    placeholder="Número o nombre de la línea"
-    name="search"
-    class="ion-margin-bottom">
-  </ion-searchbar>
+  <section class="warnings-container">
+    <app-lines-warnings />
+  </section>
 
-  @if (lineas().length === 0) {
-    <ion-spinner name="crescent"></ion-spinner>
-    <ion-text class="ion-text-center">
-      <p>Cargando líneas...</p>
-    </ion-text>
-  }
+  <section class="lines-list" id="listado-lineas">
+    @if (lineas().length === 0) {
+      <div class="feedback">
+        <ion-spinner name="crescent"></ion-spinner>
+        <ion-text>
+          <p>Cargando lineas...</p>
+        </ion-text>
+      </div>
+    }
 
-  @for (linea of lineasFiltradas; track linea.id) {
-    <div class="line-selector" [routerLink]="['/line-info']" [queryParams]="{ id: linea.id }">
-      <div class="line-number">{{ linea.numero }}</div>
-      <div class="line-name">{{ linea.primera_salida }} - {{ linea.segunda_salida }}</div>
-      <div class="line-icon"></div>
-    </div>
-  }
+    @for (linea of lineasFiltradas; track linea.id) {
+      <ion-item
+        class="line-selector"
+        button
+        detail="false"
+        lines="none"
+        [routerLink]="['/line-info']"
+        [queryParams]="{ id: linea.id }">
+        <div class="line-number" slot="start">{{ linea.numero }}</div>
+        <ion-label class="line-name">
+          {{ linea.primera_salida }} - {{ linea.segunda_salida }}
+        </ion-label>
+        <ion-button
+          class="line-icon favorite-button"
+          [class.favorite-active]="isFavorite(linea)"
+          [disabled]="isFavoriteLoading(linea)"
+          fill="clear"
+          slot="end"
+          type="button"
+          [attr.aria-label]="isFavorite(linea) ? 'Quitar de favoritos' : 'Anadir a favoritos'"
+          (click)="toggleFavorite($event, linea)">
+          <ion-icon [name]="isFavorite(linea) ? 'heart' : 'heart-outline'"></ion-icon>
+        </ion-button>
+      </ion-item>
+    }
 
-  @if (lineas().length > 0 && lineasFiltradas.length === 0) {
-    <ion-text class="ion-text-center">
-      <p>No se encontraron líneas con ese criterio.</p>
-    </ion-text>
-  }
-
+    @if (lineas().length > 0 && lineasFiltradas.length === 0) {
+      <ion-text class="feedback">
+        <p>No se encontraron lineas con ese criterio.</p>
+      </ion-text>
+    }
+  </section>
 </ion-content>

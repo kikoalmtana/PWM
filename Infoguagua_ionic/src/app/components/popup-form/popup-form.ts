@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-popup-form',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './popup-form.html',
   styleUrl: './popup-form.css',

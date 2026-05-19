@@ -1,11 +1,11 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { Router, RouterLink } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from '../../components/header/header';
+import { Heading } from '../../components/heading/heading';
 import { Linea } from 'src/app/models/lines.model';
-import { Subscription } from 'rxjs/internal/Subscription';
-import {Router} from "@angular/router";
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -13,50 +13,54 @@ import { DatabaseService } from 'src/app/services/database.service';
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HeaderComponent]
+  imports: [IonicModule, CommonModule, FormsModule, RouterLink, HeaderComponent, Heading]
 })
-export class FavoritesPage implements OnDestroy {
-
+export class FavoritesPage {
   private databaseService = inject(DatabaseService);
   private router = inject(Router);
 
   favorites: Linea[] = [];
-  private favoritesSub: Subscription | undefined;
-
-
+  isLoading = false;
+  favoriteLoadingIds = new Set<string>();
 
   async ionViewWillEnter() {
-    //await this.clearFavorites();
     await this.loadFavorites();
-
   }
 
   async loadFavorites() {
+    this.isLoading = true;
     this.favorites = await this.databaseService.getFavorites();
-
-    console.log("favorites: ", JSON.stringify(this.favorites));
+    this.isLoading = false;
   }
 
-  async removeFromFavorites(id: string) {
+  isFavoriteLoading(linea: Linea): boolean {
+    return !!linea.id && this.favoriteLoadingIds.has(linea.id);
+  }
+
+  async toggleFavorite(event: Event, linea: Linea) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (!linea.id || this.favoriteLoadingIds.has(linea.id)) return;
+
+    this.favoriteLoadingIds.add(linea.id);
+    await this.databaseService.removeFavorite(linea.id);
+    await this.loadFavorites();
+    this.favoriteLoadingIds.delete(linea.id);
+  }
+
+  async removeFromFavorites(id: string, event?: Event) {
+    event?.preventDefault();
+    event?.stopPropagation();
     await this.databaseService.removeFavorite(id);
     await this.loadFavorites();
   }
 
   async clearFavorites() {
     await this.databaseService.clearFavorites();
-    await this.loadFavorites(); // Volvemos a cargar (lista vacía)
+    await this.loadFavorites();
   }
-
-  ngOnDestroy() {
-    if (this.favoritesSub) {
-      this.favoritesSub.unsubscribe();
-    }
-  }
-
 
   goToDetail(id: string) {
-    // Implementa la navegación al detalle
-    this.router.navigate(['/detail', id]);
+    this.router.navigate(['/line-info'], { queryParams: { id } });
   }
-
 }

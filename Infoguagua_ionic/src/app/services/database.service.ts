@@ -38,9 +38,11 @@ export class DatabaseService {
         await db.execute(`
           CREATE TABLE IF NOT EXISTS favorites (
             id TEXT PRIMARY KEY,
-            title TEXT,
-            description TEXT,
-            imageUrl TEXT
+            numero INTEGER,
+            primera_salida TEXT,
+            segunda_salida TEXT,
+            horarios TEXT,
+            paradas TEXT
           );
         `);
       } catch (error) {
@@ -71,8 +73,17 @@ export class DatabaseService {
       }
     } else if (this.db) {
       await this.db.run(
-        `INSERT OR REPLACE INTO favorites (id, title, description, imageUrl) VALUES (?, ?, ?, ?)`,
-        [item.id, item.title, item.description, item.imageUrl]
+        `INSERT OR REPLACE INTO favorites
+          (id, numero, primera_salida, segunda_salida, horarios, paradas)
+          VALUES (?, ?, ?, ?, ?, ?)`,
+        [
+          item.id,
+          item.numero,
+          item.primera_salida,
+          item.segunda_salida,
+          JSON.stringify(item.horarios),
+          JSON.stringify(item.paradas)
+        ]
       );
       //this.favoritesChanged.next();
     }
@@ -97,7 +108,11 @@ export class DatabaseService {
       return stored ? JSON.parse(stored) : [];
     } else if (this.db) {
       const res = await this.db.query(`SELECT * FROM favorites`);
-      return res.values ?? [];
+      return (res.values ?? []).map((item: any) => ({
+        ...item,
+        horarios: typeof item.horarios === 'string' ? JSON.parse(item.horarios) : item.horarios,
+        paradas: typeof item.paradas === 'string' ? JSON.parse(item.paradas) : item.paradas
+      }));
     }
     return [];
   }

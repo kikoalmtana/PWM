@@ -56,7 +56,7 @@ export class AuthService {
 
     const uid = currentUser.uid;
 
-    await deleteUser(currentUser);
     await deleteDoc(doc(this.firestore, 'users', uid));
+    await deleteUser(currentUser);
   }
 }

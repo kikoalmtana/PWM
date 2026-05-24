@@ -32,4 +32,10 @@ export class HeaderComponent {
     this.closeAccountMenu();
     await this.router.navigate(['/home']);
   }
+
+  async deleteAccount() {
+    await this.authService.deleteAccount();
+    this.closeAccountMenu();
+    await this.router.navigate(['/home']);
+  }
 }

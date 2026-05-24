@@ -1,33 +1,54 @@
 <header class="header">
-  <a class="logo" routerLink="">
+  <a class="logo" routerLink="" (click)="closeMenu()">
     <img src="assets/logo/imagotipo-horizontal-azul.svg" alt="logo image">
   </a>
 
-  <input type="checkbox" id="menu-toggle" hidden>
-  <label for="menu-toggle" class="hamburger">
+  <!-- Hamburger button (móvil) -->
+  <button class="hamburger" type="button" (click)="toggleMenu()" [class.open]="isMenuOpen" aria-label="Abrir menú">
     <span></span>
     <span></span>
     <span></span>
-  </label>
-  <nav>
+  </button>
+
+  <!-- Backdrop móvil para cerrar al clicar fuera -->
+  @if (isMenuOpen) {
+    <div class="mobile-backdrop" (click)="closeMenu()"></div>
+  }
+
+  <!-- Nav móvil + escritorio -->
+  <nav [class.nav-open]="isMenuOpen">
     <ul class="navbar">
-      <li><a routerLink="/lines">Lineas</a></li>
-      <li><a routerLink="/favorites">Favoritos</a></li>
+      <li><a routerLink="/lines" (click)="closeMenu()">Lineas</a></li>
+      <li><a routerLink="/favorites" (click)="closeMenu()">Favoritos</a></li>
 
       @if (authService.currentUserProfile$ | async; as user) {
         @if (user.role === 'admin') {
-          <li><a routerLink="/administrator-page">Administración</a></li>
+          <li><a routerLink="/administrator-page" (click)="closeMenu()">Administración</a></li>
         }
       }
 
-      @if (authService.currentUserProfile$ | async) {
-        <li><a class="user-nav" routerLink="/user-info">Tu Perfil</a></li>
+      <!-- Tu Perfil: en escritorio es invisible (gestionado por account-area); en móvil es interactivo -->
+      @if (authService.currentUserProfile$ | async; as user) {
+        <li class="mobile-profile-item">
+          <a class="user-nav" (click)="toggleMobileProfile($event)">
+            Tu Perfil
+            <span class="profile-arrow" [class.rotated]="isMobileProfileOpen">▾</span>
+          </a>
+          @if (isMobileProfileOpen) {
+            <div class="mobile-profile-submenu">
+              <p class="mobile-account-name">{{ user.displayName }}</p>
+              <button class="mobile-action-btn" type="button" (click)="logout()">Cerrar sesión</button>
+              <button class="mobile-action-btn delete-btn" type="button" (click)="deleteAccount()">Borrar cuenta</button>
+            </div>
+          }
+        </li>
       } @else {
-        <li><a class="user-nav" routerLink="/login">Tu Perfil</a></li>
+        <li><a class="user-nav" routerLink="/login" (click)="closeMenu()">Tu Perfil</a></li>
       }
     </ul>
   </nav>
 
+  <!-- Área cuenta escritorio -->
   @if (authService.currentUserProfile$ | async; as user) {
     <div class="account-area">
       <button class="login-button account-button" type="button" (click)="toggleAccountMenu($event)">

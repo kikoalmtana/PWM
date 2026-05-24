@@ -15,7 +15,21 @@ export class HeaderComponent {
   authService = inject(AuthService);
   private router = inject(Router);
 
+  isMenuOpen = false;
   isAccountMenuOpen = false;
+  isMobileProfileOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    if (!this.isMenuOpen) {
+      this.isMobileProfileOpen = false;
+    }
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+    this.isMobileProfileOpen = false;
+  }
 
   toggleAccountMenu(event: Event) {
     event.preventDefault();
@@ -27,15 +41,23 @@ export class HeaderComponent {
     this.isAccountMenuOpen = false;
   }
 
+  toggleMobileProfile(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isMobileProfileOpen = !this.isMobileProfileOpen;
+  }
+
   async logout() {
     await this.authService.logout();
     this.closeAccountMenu();
+    this.closeMenu();
     await this.router.navigate(['/home']);
   }
 
   async deleteAccount() {
     await this.authService.deleteAccount();
     this.closeAccountMenu();
+    this.closeMenu();
     await this.router.navigate(['/home']);
   }
 }

@@ -1,4 +1,4 @@
-.header{
+.header {
   display: flex;
   align-items: center;
   background-color: var(--orange);
@@ -16,33 +16,37 @@
     }
   }
 
-  nav{
+  nav {
     margin-right: auto;
   }
 }
 
-.navbar{
+.navbar {
   list-style: none;
   display: flex;
   gap: 40px;
   padding: 0;
+  margin: 0;
 }
 
-.user-nav{
+/* "Tu Perfil" solo visible en móvil */
+.user-nav {
   display: none;
 }
 
-.navbar li a{
+.navbar li a {
   text-decoration: none;
   color: var(--blue);
   font-weight: bold;
   font-size: 20px;
+  cursor: pointer;
 
-  &:hover{
+  &:hover {
     color: white;
   }
 }
 
+/* Botón cuenta escritorio */
 .login-button {
   display: block;
   background: transparent;
@@ -55,7 +59,7 @@
   font-family: inherit;
   padding: 0;
 
-  &:hover{
+  &:hover {
     color: white;
   }
 }
@@ -113,14 +117,18 @@
   background: #c62828;
 }
 
-.hamburger{
+/* Hamburger */
+.hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
   margin-left: auto;
+  background: transparent;
+  border: 0;
+  padding: 4px;
 
-  span{
+  span {
     display: block;
     width: 25px;
     height: 2px;
@@ -128,13 +136,21 @@
     border-radius: 2px;
     transition: all 0.3s ease;
   }
+
+  /* Animación X cuando está abierto */
+  &.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  &.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  &.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 }
 
-#menu-toggle {
-  display: none;
-}
-
-/*pixeles suficientes para que el nav no cambie*/
+/* ── Responsive móvil ── */
 @media (max-width: 928px) {
 
   .hamburger {
@@ -142,54 +158,121 @@
     order: 2;
   }
 
-
-  .login-button{
-    display: none;
-  }
-
+  /* Ocultar botón cuenta de escritorio */
+  .login-button,
   .account-area {
     display: none;
   }
 
-  .user-nav{
+  /* Mostrar "Tu Perfil" en el nav móvil */
+  .user-nav {
     display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Backdrop para cerrar el menú al tocar fuera */
+  .mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 98;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #d97200;
+    z-index: 99;
+    box-shadow: 0 8px 24px lightgray;
+    margin-right: 0;
+
+    &.nav-open {
+      display: block;
+      animation: fadeDown 0.25s ease both;
+    }
   }
 
   .navbar {
-    display: none;
-    position: absolute;
-    top: 60px; left: 0; right: 0;
     flex-direction: column;
-    background: #d97200;
-    padding: 8px 0 16px;
-    box-shadow: 0 8px 24px lightgray;
-    z-index: 100;
-    list-style: none;
     gap: 0;
-  }
-
-  #menu-toggle:checked ~ nav .navbar {
-    display: flex;
-    animation: fadeDown 0.25s ease both;
+    padding: 8px 0 16px;
   }
 
   .navbar li a {
     display: block;
     padding: 14px 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .navbar li:last-child a { border-bottom: none; }
-
-  /* Animación X */
-  #menu-toggle:checked ~ .hamburger span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-  #menu-toggle:checked ~ .hamburger span:nth-child(2) {
-    opacity: 0; transform: scaleX(0);
-  }
-  #menu-toggle:checked ~ .hamburger span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+  .navbar li:last-child > a {
+    border-bottom: none;
   }
 
+  /* Flecha del perfil */
+  .profile-arrow {
+    font-size: 14px;
+    transition: transform 0.2s ease;
+    display: inline-block;
+    &.rotated {
+      transform: rotate(180deg);
+    }
+  }
+
+  /* Submenú "Tu Perfil" en móvil */
+  .mobile-profile-item {
+    .user-nav {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  .mobile-profile-submenu {
+    background: rgba(0, 0, 0, 0.12);
+    padding: 12px 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-account-name {
+    margin: 0 0 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-action-btn {
+    display: block;
+    width: 100%;
+    min-height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--blue);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: inherit;
+    margin-top: 8px;
+
+    &:hover {
+      filter: brightness(0.92);
+    }
+
+    &.delete-btn {
+      background: #c62828;
+    }
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
